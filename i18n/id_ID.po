@@ -1,0 +1,110 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* lost_found_dashboard
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-20 22:40+0000\n"
+"PO-Revision-Date: 2026-06-20 22:40+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Home"
+msgstr "Beranda"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Search Items"
+msgstr "Cari Barang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "My Reports"
+msgstr "Laporan Saya"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Lost Items"
+msgstr "Barang Hilang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Found Items"
+msgstr "Barang Ditemukan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Notifications"
+msgstr "Notifikasi"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Manage System (Admin)"
+msgstr "Kelola Sistem (Admin)"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "New Report"
+msgstr "Lapor Cepat"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Report Lost Item"
+msgstr "Lapor Kehilangan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Report Found Item"
+msgstr "Lapor Temuan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Log In"
+msgstr "Masuk"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Profile Settings"
+msgstr "Pengaturan Profil"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Admin Dashboard"
+msgstr "Dasbor Admin"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Logout"
+msgstr "Keluar"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Lost Item"
+msgstr "Barang Hilang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Report Form"
+msgstr "Formulir Laporan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Help us find your item by filling out the lost item report form"
+msgstr "Bantu kami menemukan barang Anda dengan mengisi formulir laporan kehilangan ini"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Found Item"
+msgstr "Barang Ditemukan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+msgid "Help the owner find their item by reporting the item you found."
+msgstr "Bantu pemilik menemukan barangnya dengan melaporkan barang temuan Anda."

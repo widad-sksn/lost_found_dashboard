@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Laporan Hilang Dibuat -->
+        <record id="email_template_lost_claim_created" model="mail.template">
+            <field name="name">Laporan Barang Hilang: Berhasil Dibuat</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Laporan Barang Hilang Berhasil Dibuat: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        Laporan Anda mengenai barang hilang <strong><t t-out="object.name"/></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong> oleh Admin.<br/><br/>
+                        Terima kasih.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Hilang Selesai -->
+        <record id="email_template_lost_claim_done" model="mail.template">
+            <field name="name">Laporan Barang Hilang: Selesai</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Laporan Barang Hilang Selesai: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        Laporan Anda mengenai barang hilang <strong><t t-out="object.name"/></strong> telah ditandai sebagai <strong>Selesai</strong>.<br/><br/>
+                        Terima kasih atas kerja samanya.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Ditemukan Dibuat -->
+        <record id="email_template_found_item_created" model="mail.template">
+            <field name="name">Laporan Barang Ditemukan: Berhasil Dibuat</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="subject">Laporan Penemuan Barang Berhasil Dibuat: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
+                        Laporan Anda mengenai barang ditemukan <strong><t t-out="object.name"/></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong>.<br/><br/>
+                        Terima kasih atas kebaikan Anda.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+        <!-- Laporan Selesai (Lost Claim) -->
+        <record id="email_template_report_done" model="mail.template">
+            <field name="name">Laporan Selesai</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Laporan Anda Telah Selesai: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        Kabar baik! Laporan barang hilang Anda untuk <strong><t t-out="object.name"/></strong> kini telah kami tandai sebagai <strong>Selesai</strong>.<br/>
+                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Selesai (Found Item) -->
+        <record id="email_template_report_done_found" model="mail.template">
+            <field name="name">Penemuan Selesai</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="subject">Laporan Penemuan Selesai: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name"/>,<br/><br/>
+                        Barang yang Anda temukan (<strong><t t-out="object.name"/></strong>) telah berhasil dikembalikan kepada pemiliknya dan laporan ini dinyatakan <strong>Selesai</strong>.<br/>
+                        Terima kasih atas kebaikan Anda!<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Klaim Diterima -->
+        <record id="email_template_claim_approved" model="mail.template">
+            <field name="name">Klaim Barang Diterima</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="subject">Klaim Kepemilikan Diterima!</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name"/>,<br/><br/>
+                        Selamat! Klaim Anda untuk barang <strong><t t-out="object.found_item_id.name"/></strong> telah <strong>Diterima</strong> oleh Admin.<br/>
+                        <t t-if="object.admin_notes">
+                            <strong>Catatan Admin:</strong> <t t-out="object.admin_notes"/><br/>
+                        </t>
+                        <br/>
+                        Silakan ambil barang Anda di pos keamanan / pusat layanan kampus.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Klaim Ditolak -->
+        <record id="email_template_claim_rejected" model="mail.template">
+            <field name="name">Klaim Barang Ditolak</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="subject">Status Klaim Kepemilikan Barang</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name"/>,<br/><br/>
+                        Mohon maaf, klaim kepemilikan Anda untuk barang <strong><t t-out="object.found_item_id.name"/></strong> <strong>Ditolak</strong> karena informasi/bukti tidak valid atau kurang lengkap.<br/>
+                        <t t-if="object.admin_notes">
+                            <strong>Alasan Penolakan:</strong> <t t-out="object.admin_notes"/><br/>
+                        </t>
+                    </p>
+                </div>
+            </field>
+        </record>
+        <!-- Enable Password Reset -->
+        <function model="ir.config_parameter" name="set_param">
+            <value>auth_signup.reset_password</value>
+            <value>True</value>
+        </function>
+
+        <!-- Laporan Hilang Diterima -->
+        <record id="email_template_lost_claim_approved" model="mail.template">
+            <field name="name">Laporan Barang Hilang: Diterima</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Laporan Diterima: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        Laporan kehilangan Anda untuk barang <strong><t t-out="object.name"/></strong> telah diperiksa dan <strong>DITERIMA</strong> oleh Admin.<br/>
+                        Kami akan segera menghubungi Anda jika ada perkembangan pencarian.<br/><br/>
+                        Terima kasih.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Hilang Ditolak -->
+        <record id="email_template_lost_claim_rejected" model="mail.template">
+            <field name="name">Laporan Barang Hilang: Ditolak</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Laporan Ditolak: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        Mohon maaf, laporan kehilangan Anda untuk barang <strong><t t-out="object.name"/></strong> <strong>DITOLAK</strong> oleh Admin.<br/>
+                        Hal ini mungkin karena informasi yang diberikan kurang lengkap atau tidak valid. Silakan buat laporan baru dengan detail yang lebih jelas.<br/><br/>
+                        Terima kasih.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Penemuan Diterima -->
+        <record id="email_template_found_item_approved" model="mail.template">
+            <field name="name">Laporan Penemuan: Diterima</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="subject">Laporan Penemuan Diterima: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
+                        Laporan penemuan Anda untuk barang <strong><t t-out="object.name"/></strong> telah <strong>DITERIMA</strong> oleh Admin.<br/>
+                        Barang tersebut kini telah tercatat di sistem pencarian publik. Terima kasih atas kejujuran dan partisipasi Anda!<br/><br/>
+                        Salam,<br/>Tim Smart Lost &amp; Found<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Laporan Penemuan Ditolak -->
+        <record id="email_template_found_item_rejected" model="mail.template">
+            <field name="name">Laporan Penemuan: Ditolak</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="subject">Laporan Penemuan Ditolak: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
+                        Mohon maaf, laporan penemuan Anda untuk barang <strong><t t-out="object.name"/></strong> <strong>DITOLAK</strong> oleh Admin karena terdeteksi tidak valid.<br/><br/>
+                        Terima kasih.<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Barang Anda Ditemukan (Matched) -->
+        <record id="email_template_lost_claim_matched" model="mail.template">
+            <field name="name">Barang Anda Ditemukan (Matched)</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="subject">Kabar Gembira! Barang Anda Ditemukan: {{ object.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        <strong>Kabar Gembira!</strong> Sistem kami mendeteksi bahwa barang Anda yang hilang (<strong><t t-out="object.name"/></strong>) kemungkinan besar telah ditemukan!<br/>
+                        Barang tersebut dilaporkan ditemukan di sekitar: <strong><t t-out="object.matched_item_location"/></strong>.<br/><br/>
+                        Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk memverifikasi dan mengambil barang tersebut.<br/><br/>
+                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
+        <record id="email_template_finder_matched" model="mail.template">
+            <field name="name">Barang Ditemukan: Telah Diklaim dan Disetujui</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="subject">Barang Temuan Anda Telah Dikembalikan: {{ object.found_item_id.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.found_item_id.user_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.found_item_id.user_id.name or 'Penemu'"/>,<br/><br/>
+                        Barang yang Anda laporkan (<strong><t t-out="object.found_item_id.name"/></strong>) telah berhasil diklaim dan diverifikasi oleh pemilik aslinya!<br/>
+                        Terima kasih atas kebaikan dan kejujuran Anda membantu sesama.<br/><br/>
+                        Salam hangat,<br/>Tim Smart Lost &amp; Found<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
+        <record id="email_template_loser_matched" model="mail.template">
+            <field name="name">Barang Hilang: Telah Ditemukan dan Disetujui</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="subject">Kabar Gembira! Barang Anda Telah Ditemukan: {{ object.lost_claim_id.name }}</field>
+            <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
+            <field name="email_to">{{ object.lost_claim_id.user_id.email or object.lost_claim_id.contact_email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Halo <t t-out="object.lost_claim_id.person_name or 'Warga Kampus'"/>,<br/><br/>
+                        <strong>Kabar Gembira!</strong> Klaim dari penemu atas barang hilang Anda (<strong><t t-out="object.lost_claim_id.name"/></strong>) telah diverifikasi dan disetujui!<br/>
+                        Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk mengambil barang tersebut.<br/><br/>
+                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

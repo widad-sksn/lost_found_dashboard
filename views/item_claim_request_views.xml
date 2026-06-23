@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="item_claim_request_action" model="ir.actions.act_window">
+        <field name="name">Klaim Kepemilikan Barang</field>
+        <field name="res_model">item.claim.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="item_claim_request_view_search" model="ir.ui.view">
+        <field name="name">item.claim.request.search</field>
+        <field name="model">item.claim.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Menunggu Verifikasi" name="filter_pending" domain="[('status', '=', 'draft')]"/>
+                <filter string="Diterima" name="filter_approved" domain="[('status', '=', 'approved')]"/>
+                <filter string="Ditolak" name="filter_rejected" domain="[('status', '=', 'rejected')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_status" context="{'group_by':'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Submenus are removed -->
+
+    <record id="item_claim_request_view_list" model="ir.ui.view">
+        <field name="name">item.claim.request.list</field>
+        <field name="model">item.claim.request</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="found_item_id"/>
+                <field name="lost_claim_id"/>
+                <field name="user_id"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="item_claim_request_view_form" model="ir.ui.view">
+        <field name="name">item.claim.request.form</field>
+        <field name="model">item.claim.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" type="object" string="Selesai" class="oe_highlight" invisible="status != 'draft'" groups="lost_found_dashboard.group_lostnfound_staff"/>
+                    <button name="action_reject" type="object" string="Tolak Klaim" invisible="status != 'draft'" groups="lost_found_dashboard.group_lostnfound_staff"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,approved,rejected" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="found_item_id" invisible="not found_item_id"/>
+                        <field name="lost_claim_id" invisible="not lost_claim_id"/>
+                        <field name="user_id"/>
+                        <field name="proof_description"/>
+                        <field name="photo_proof" widget="image"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,80 @@
+<odoo>
+    <record id="lost_claim_action" model="ir.actions.act_window">
+        <field name="name">Lost Claims</field>
+        <field name="res_model">lost.claim</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="lost_claim_view_search" model="ir.ui.view">
+        <field name="name">lost.claim.search</field>
+        <field name="model">lost.claim</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="person_name"/>
+                <filter string="Pending" name="filter_pending" domain="[('status', '=', 'draft')]"/>
+                <filter string="Published" name="filter_published" domain="[('status', '=', 'approved')]"/>
+                <filter string="Rejected" name="filter_rejected" domain="[('status', '=', 'rejected')]"/>
+                <filter string="Done" name="filter_done" domain="[('status', '=', 'done')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_status" context="{'group_by':'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Submenus are removed so that only the Dashboard action is available from Odoo main screen -->
+
+    <record id="lost_claim_view_list" model="ir.ui.view">
+        <field name="name">lost.claim.list</field>
+        <field name="model">lost.claim</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="person_name"/>
+                <field name="name"/>
+
+                <field name="date_lost"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="lost_claim_view_form" model="ir.ui.view">
+        <field name="name">lost.claim.form</field>
+        <field name="model">lost.claim</field>
+        <field name="arch" type="xml">
+            <form>
+            <!--Made it so that only the Staff is able to Run the AUTO-match and not the students!@XO@ ; removed: options="{'clickable': '1'} -->
+                <header>
+                    <button name="action_approve" type="object" string="Terima Laporan" class="oe_highlight" invisible="status != 'draft'" groups="lost_found_dashboard.group_lostnfound_staff"/>
+                    <button name="action_reject" type="object" string="Tolak" invisible="status != 'draft'" groups="lost_found_dashboard.group_lostnfound_staff"/>
+
+                    <button name="action_done" type="object" string="Tandai Selesai" invisible="status != 'approved'" groups="lost_found_dashboard.group_lostnfound_staff"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,approved,rejected,done" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="e.g. Blue Water Bottle"/></h1>
+                    </div>
+                    <group>
+                        <group string="Student Info">
+                            <field name="person_name"/>
+                            <field name="contact_email"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group string="Item Details">
+                            <field name="description"/>
+
+                            <field name="date_lost"/>
+                            <field name="location"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="photo" widget="image"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

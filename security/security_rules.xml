@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Record rules for Found Item -->
+        <record id="rule_found_item_portal_user" model="ir.rule">
+            <field name="name">Portal User can only read and write their own found items</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        
+        <record id="rule_found_item_public" model="ir.rule">
+            <field name="name">Portal User can read all approved found items</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="domain_force">[('status', 'in', ('approved', 'done'))]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_found_item_staff" model="ir.rule">
+            <field name="name">Staff can see all found items</field>
+            <field name="model_id" ref="model_found_item"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('lost_found_dashboard.group_lostnfound_staff'))]"/>
+        </record>
+
+        <!-- Record rules for Lost Claim -->
+        <record id="rule_lost_claim_portal_user" model="ir.rule">
+            <field name="name">Portal User can only see their own lost claims</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+
+        <record id="rule_lost_claim_staff" model="ir.rule">
+            <field name="name">Staff can see all lost claims</field>
+            <field name="model_id" ref="model_lost_claim"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('lost_found_dashboard.group_lostnfound_staff'))]"/>
+        </record>
+
+        <!-- Record rules for Item Claim Request -->
+        <record id="rule_item_claim_request_portal_user" model="ir.rule">
+            <field name="name">Portal User can only see their own claim requests</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+
+        <record id="rule_item_claim_request_staff" model="ir.rule">
+            <field name="name">Staff can see all claim requests</field>
+            <field name="model_id" ref="model_item_claim_request"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('lost_found_dashboard.group_lostnfound_staff'))]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="lost_found_menu_root"
+        name="Sistem Hilang Temu"
+        web_icon="lost_found_dashboard,static/description/icon.png"
+        action="action_item_matching_dashboard"
+        sequence="10"/>
+
+    <record id="action_item_matching_dashboard" model="ir.actions.client">
+        <field name="name">Sistem Hilang Temu</field>
+        <field name="tag">lost_found_dashboard.action_item_matching</field>
+        <field name="target">fullscreen</field>
+    </record>
+</odoo>

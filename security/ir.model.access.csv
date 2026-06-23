@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_found_item_staff,access.found.item.staff,model_found_item,lost_found_dashboard.group_lostnfound_staff,1,1,1,1
+access_found_item_portal,access.found.item.portal,model_found_item,base.group_portal,1,1,1,0
+access_item_tag,access.item.tag,model_item_tag,base.group_user,1,1,1,1
+access_lost_claim_staff,access.lost.claim.staff,model_lost_claim,lost_found_dashboard.group_lostnfound_staff,1,1,1,1
+access_lost_claim_portal,access.lost.claim.portal,model_lost_claim,base.group_portal,1,1,1,0
+access_item_claim_request_staff,access.item.claim.request.staff,model_item_claim_request,lost_found_dashboard.group_lostnfound_staff,1,1,1,1
+access_item_claim_request_portal,access.item.claim.request.portal,model_item_claim_request,base.group_portal,1,1,1,0
+access_found_item_user,access.found.item.user,model_found_item,base.group_user,1,1,1,1
+access_lost_claim_user,access.lost.claim.user,model_lost_claim,base.group_user,1,1,1,1
+access_item_claim_request_user,access.item.claim.request.user,model_item_claim_request,base.group_user,1,1,1,1
