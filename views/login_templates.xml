@@ -75,7 +75,7 @@
 
         <!-- Custom Reset Password Page -->
         <template id="custom_reset_password" inherit_id="auth_signup.reset_password">
-            <xpath expr="." position="replace">
+            <xpath expr="/t/*" position="replace">
                 <t t-call="web.layout">
                     <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
                     <t t-set="head">
