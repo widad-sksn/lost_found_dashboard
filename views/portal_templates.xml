@@ -82,7 +82,9 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: rgba(15, 17, 26, 0.95); backdrop-filter: blur(10px);">
                                         <li><a class="dropdown-item" href="/my/profil">Profile Settings</a></li>
-                                        <li><a class="dropdown-item" href="/web#action=lost_found_dashboard.action_item_matching_dashboard">Admin Dashboard</a></li>
+                                        <t t-if="request.env.user.has_group('lost_found_dashboard.group_lostnfound_staff') or request.env.user._is_admin()">
+                                            <li><a class="dropdown-item" href="/web#action=lost_found_dashboard.action_item_matching_dashboard">Admin Dashboard</a></li>
+                                        </t>
                                         <li><hr class="dropdown-divider" style="border-color: rgba(255,255,255,0.1);"/></li>
                                         <li><a class="dropdown-item text-danger" href="/web/session/logout?redirect=/">Logout</a></li>
                                     </ul>
