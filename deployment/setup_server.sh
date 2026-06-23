@@ -18,10 +18,5 @@ echo "Enabling and starting Docker..."
 sudo systemctl enable docker
 sudo systemctl start docker
 
-echo "Setting up UFW Firewall..."
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw --force enable
 
 echo "Server setup complete. Please proceed to configure your .env file and run 'docker compose up -d'."
