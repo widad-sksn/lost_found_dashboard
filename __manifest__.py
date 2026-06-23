@@ -6,7 +6,7 @@
         -Students file lost claims.
         -Auto-match engine connects claims to found items based on category and date
             """,
-    "depends":["base", "mail", "portal", "website"],
+    "depends":["base", "mail", "portal", "website", "auth_signup"],
     "version": '1.0.17',
     "application": True,
     "data":[
