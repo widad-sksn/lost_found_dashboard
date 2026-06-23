@@ -45,14 +45,20 @@
                             </t>
                         </ul>
                         <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 mt-3 mt-lg-0">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                    <i class="fa fa-globe me-1"/> Language
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" style="background-color: rgba(15, 17, 26, 0.95); backdrop-filter: blur(10px);">
-                                    <li><a class="dropdown-item js_change_lang" data-url_code="en" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='en_US')">English</a></li>
-                                    <li><a class="dropdown-item js_change_lang" data-url_code="id" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='id_ID')">Bahasa Indonesia</a></li>
-                                </ul>
+                            <!-- Language Switcher Pill Toggle -->
+                            <div class="lang-switcher-wrapper d-flex align-items-center" style="background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                                <a class="btn btn-sm rounded-pill text-white js_change_lang d-flex align-items-center justify-content-center" 
+                                   t-attf-style="#{request.env.lang == 'en_US' and 'background: rgba(167, 139, 250, 0.3); font-weight: bold; border: 1px solid rgba(167,139,250,0.5);' or 'background: transparent; opacity: 0.6; border: 1px solid transparent;'}"
+                                   data-url_code="en" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='en_US')"
+                                   style="width: 45px; height: 32px; font-size: 0.8rem; transition: all 0.3s ease;">
+                                    EN
+                                </a>
+                                <a class="btn btn-sm rounded-pill text-white js_change_lang d-flex align-items-center justify-content-center" 
+                                   t-attf-style="#{request.env.lang == 'id_ID' and 'background: rgba(59, 130, 246, 0.3); font-weight: bold; border: 1px solid rgba(59,130,246,0.5);' or 'background: transparent; opacity: 0.6; border: 1px solid transparent;'}"
+                                   data-url_code="id" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='id_ID')"
+                                   style="width: 45px; height: 32px; font-size: 0.8rem; transition: all 0.3s ease;">
+                                    ID
+                                </a>
                             </div>
                             <!-- Tombol Laporan Baru -->
                             <t t-if="not (request.env.user.has_group('lost_found_dashboard.group_lostnfound_staff') or request.env.user._is_admin())">
@@ -180,7 +186,7 @@
                         </div>
                     </div>
 
-                    <!-- Section: Barang Hilang -->
+                    <!-- Section: Lost Item -->
                     <div class="d-flex justify-content-between align-items-end border-bottom border-secondary pb-2 mb-4">
                         <h3 class="text-white font-weight-bold mb-0"><span class="text-gradient">Lost</span> Items</h3>
                         <a href="/public/found_items?type=lost" class="text-white-50 text-decoration-none small">View All <i class="fa fa-arrow-right ms-1"/></a>
@@ -223,7 +229,7 @@
                     </div>
                     <div class="mb-5 pb-2"></div>
 
-                    <!-- Section: Barang Ditemukan -->
+                    <!-- Section: Found Items -->
                     <div class="d-flex justify-content-between align-items-end border-bottom border-secondary pb-2 mb-4">
                         <h3 class="text-white font-weight-bold mb-0"><span class="text-gradient">Found</span> Items</h3>
                         <a href="/public/found_items?type=found" class="text-white-50 text-decoration-none small">View All <i class="fa fa-arrow-right ms-1"/></a>
@@ -686,7 +692,7 @@
                             </div>
                             
                             <div class="glass-card p-4 p-md-5" style="border-radius: 16px; background: linear-gradient(135deg, rgba(30,160,110,0.1) 0%, rgba(35,40,75,0.6) 100%); border: 1px solid rgba(30,160,110,0.3);">
-                                <h4 class="text-white mb-2"><i class="fa fa-check-circle text-success me-2"/>Ini barang punya saya</h4>
+                                <h4 class="text-white mb-2"><i class="fa fa-check-circle text-success me-2"/>This is my item</h4>
                                 <p class="text-white-50 mb-4">Silakan berikan deskripsi spesifik beserta foto bukti kepemilikan Anda untuk diverifikasi oleh admin.</p>
                                 
                                 <form t-attf-action="/claim/found_item/#{item.id}" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Submitting...';">
@@ -780,7 +786,7 @@
                             </div>
                             
                             <div class="glass-card p-4 p-md-5 mt-5" style="border-radius: 16px; background: linear-gradient(135deg, rgba(120,115,245,0.1) 0%, rgba(35,40,75,0.6) 100%); border: 1px solid rgba(120,115,245,0.3);">
-                                <h4 class="text-white mb-2"><i class="fa fa-handshake-o text-primary me-2"/>Saya menemukan barang ini</h4>
+                                <h4 class="text-white mb-2"><i class="fa fa-handshake-o text-primary me-2"/>I found this item</h4>
                                 <p class="text-white-50 mb-4">Silakan berikan deskripsi kondisi penemuan beserta foto barang yang ditemukan untuk dikirimkan ke admin.</p>
                                 <form t-attf-action="/claim/lost_item/#{item.id}" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Submitting...';">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>

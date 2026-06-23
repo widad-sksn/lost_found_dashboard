@@ -4,10 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 17.0-20260611\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-20 22:40+0000\n"
-"PO-Revision-Date: 2026-06-20 22:40+0000\n"
+"POT-Creation-Date: 2026-06-23 15:47+0000\n"
+"PO-Revision-Date: 2026-06-23 15:47+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,96 +16,2435 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Home"
-msgstr "Beranda"
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "&amp;copy; 2026 Smart Lost &amp; Found. Group 4."
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Search Items"
-msgstr "Cari Barang"
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__1st_floor
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__1st_floor
+msgid "1st Floor (Lainnya)"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "My Reports"
-msgstr "Laporan Saya"
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__2nd_floor
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__2nd_floor
+msgid "2nd Floor (Lainnya)"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Lost Items"
-msgstr "Barang Hilang"
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__3rd_floor
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__3rd_floor
+msgid "3rd Floor (Lainnya)"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Found Items"
-msgstr "Barang Ditemukan"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_finder_matched
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.found_item_id.user_id.name or 'Penemu'\"></t>,<br><br>\n"
+"                        Barang yang Anda laporkan (<strong><t t-out=\"object.found_item_id.name\"></t></strong>) telah berhasil diklaim dan diverifikasi oleh pemilik aslinya!<br>\n"
+"                        Terima kasih atas kebaikan dan kejujuran Anda membantu sesama.<br><br>\n"
+"                        Salam hangat,<br>Tim Smart Lost &amp; Found<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Notifications"
-msgstr "Notifikasi"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_loser_matched
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.lost_claim_id.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        <strong>Kabar Gembira!</strong> Klaim dari penemu atas barang hilang Anda (<strong><t t-out=\"object.lost_claim_id.name\"></t></strong>) telah diverifikasi dan disetujui!<br>\n"
+"                        Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk mengambil barang tersebut.<br><br>\n"
+"                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Manage System (Admin)"
-msgstr "Kelola Sistem (Admin)"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_lost_claim_matched
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        <strong>Kabar Gembira!</strong> Sistem kami mendeteksi bahwa barang Anda yang hilang (<strong><t t-out=\"object.name\"></t></strong>) kemungkinan besar telah ditemukan!<br>\n"
+"                        Barang tersebut dilaporkan ditemukan di sekitar: <strong><t t-out=\"object.matched_item_location\"></t></strong>.<br><br>\n"
+"                        Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk memverifikasi dan mengambil barang tersebut.<br><br>\n"
+"                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "New Report"
-msgstr "Lapor Cepat"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_report_done
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        Kabar baik! Laporan barang hilang Anda untuk <strong><t t-out=\"object.name\"></t></strong> kini telah kami tandai sebagai <strong>Selesai</strong>.<br>\n"
+"                        Terima kasih telah menggunakan layanan Smart Lost &amp; Found.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Report Lost Item"
-msgstr "Lapor Kehilangan"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_lost_claim_created
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        Laporan Anda mengenai barang hilang <strong><t t-out=\"object.name\"></t></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong> oleh Admin.<br><br>\n"
+"                        Terima kasih.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Report Found Item"
-msgstr "Lapor Temuan"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_lost_claim_done
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        Laporan Anda mengenai barang hilang <strong><t t-out=\"object.name\"></t></strong> telah ditandai sebagai <strong>Selesai</strong>.<br><br>\n"
+"                        Terima kasih atas kerja samanya.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Log In"
-msgstr "Masuk"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_lost_claim_approved
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        Laporan kehilangan Anda untuk barang <strong><t t-out=\"object.name\"></t></strong> telah diperiksa dan <strong>DITERIMA</strong> oleh Admin.<br>\n"
+"                        Kami akan segera menghubungi Anda jika ada perkembangan pencarian.<br><br>\n"
+"                        Terima kasih.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Profile Settings"
-msgstr "Pengaturan Profil"
+#: model:mail.template,body_html:lost_found_dashboard.email_template_lost_claim_rejected
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.person_name or 'Warga Kampus'\"></t>,<br><br>\n"
+"                        Mohon maaf, laporan kehilangan Anda untuk barang <strong><t t-out=\"object.name\"></t></strong> <strong>DITOLAK</strong> oleh Admin.<br>\n"
+"                        Hal ini mungkin karena informasi yang diberikan kurang lengkap atau tidak valid. Silakan buat laporan baru dengan detail yang lebih jelas.<br><br>\n"
+"                        Terima kasih.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+#: model:mail.template,body_html:lost_found_dashboard.email_template_found_item_created
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name or 'Penemu'\"></t>,<br><br>\n"
+"                        Laporan Anda mengenai barang ditemukan <strong><t t-out=\"object.name\"></t></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong>.<br><br>\n"
+"                        Terima kasih atas kebaikan Anda.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,body_html:lost_found_dashboard.email_template_found_item_approved
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name or 'Penemu'\"></t>,<br><br>\n"
+"                        Laporan penemuan Anda untuk barang <strong><t t-out=\"object.name\"></t></strong> telah <strong>DITERIMA</strong> oleh Admin.<br>\n"
+"                        Barang tersebut kini telah tercatat di sistem pencarian publik. Terima kasih atas kejujuran dan partisipasi Anda!<br><br>\n"
+"                        Salam,<br>Tim Smart Lost &amp; Found<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,body_html:lost_found_dashboard.email_template_found_item_rejected
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name or 'Penemu'\"></t>,<br><br>\n"
+"                        Mohon maaf, laporan penemuan Anda untuk barang <strong><t t-out=\"object.name\"></t></strong> <strong>DITOLAK</strong> oleh Admin karena terdeteksi tidak valid.<br><br>\n"
+"                        Terima kasih.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,body_html:lost_found_dashboard.email_template_report_done_found
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name\"></t>,<br><br>\n"
+"                        Barang yang Anda temukan (<strong><t t-out=\"object.name\"></t></strong>) telah berhasil dikembalikan kepada pemiliknya dan laporan ini dinyatakan <strong>Selesai</strong>.<br>\n"
+"                        Terima kasih atas kebaikan Anda!<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,body_html:lost_found_dashboard.email_template_claim_rejected
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name\"></t>,<br><br>\n"
+"                        Mohon maaf, klaim kepemilikan Anda untuk barang <strong><t t-out=\"object.found_item_id.name\"></t></strong> <strong>Ditolak</strong> karena informasi/bukti tidak valid atau kurang lengkap.<br>\n"
+"                        <t t-if=\"object.admin_notes\">\n"
+"                            <strong>Alasan Penolakan:</strong> <t t-out=\"object.admin_notes\"></t><br>\n"
+"                        </t>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,body_html:lost_found_dashboard.email_template_claim_approved
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Halo <t t-out=\"object.user_id.name\"></t>,<br><br>\n"
+"                        Selamat! Klaim Anda untuk barang <strong><t t-out=\"object.found_item_id.name\"></t></strong> telah <strong>Diterima</strong> oleh Admin.<br>\n"
+"                        <t t-if=\"object.admin_notes\">\n"
+"                            <strong>Catatan Admin:</strong> <t t-out=\"object.admin_notes\"></t><br>\n"
+"                        </t>\n"
+"                        <br>\n"
+"                        Silakan ambil barang Anda di pos keamanan / pusat layanan kampus.<br>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "<i class=\"fa fa-arrow-left me-2\"/>Back to List"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "<i class=\"fa fa-arrow-left me-2\"/>Back to My Reports"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid ""
+"<i class=\"fa fa-calendar-times-o me-2\"/> <strong>Date Lost:</strong> <br/>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid "<i class=\"fa fa-check-circle text-success me-2\"/>Ini barang punya saya"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "<i class=\"fa fa-clock-o me-1\"/> Reported"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-cogs me-1\"/> Manage System (Admin)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "<i class=\"fa fa-edit me-2\"/> Edit Report"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid ""
+"<i class=\"fa fa-exclamation-triangle me-2\"/> Please complete your "
+"Phone/WhatsApp Number before using the reporting features."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-globe me-1\"/> Language"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid ""
+"<i class=\"fa fa-handshake-o text-primary me-2\"/>Saya menemukan barang ini"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "<i class=\"fa fa-home me-2\"/>Back to Home"
+msgstr "<i class=\"fa fa-home me-2\"/>Kembali ke Beranda"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "<i class=\"fa fa-image fa-3x mb-2\"/><br/>No photo"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+msgid "<i class=\"fa fa-map-marker me-1\"/> Location:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "<i class=\"fa fa-map-marker me-1\"/> Lost at"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid ""
+"<i class=\"fa fa-map-marker me-2\"/> <strong>Approximate Location:</strong> "
+"<br/>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-plus me-1\"/> New Report"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "<i class=\"fa fa-plus me-2\"/>New Report"
+msgstr "<i class=\"fa fa-plus me-2\"/>Lapor Cepat"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+msgid "<i class=\"fa fa-plus me-2\"/>Report Found Item"
+msgstr "<i class=\"fa fa-plus me-2\"/>Lapor Temuan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "<i class=\"fa fa-search me-2\"/>Search Other Items"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-search-minus me-2\"/>Report Lost Item"
+msgstr "<i class=\"fa fa-search-minus me-2\"/>Lapor Kehilangan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-search-plus me-2\"/>Report Found Item"
+msgstr "<i class=\"fa fa-search-plus me-2\"/>Lapor Temuan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "<i class=\"fa fa-sign-in fa-lg me-1\"/> Log In"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "<i class=\"fa fa-user me-2\"/>Reporter: User"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid ""
+"<small class=\"text-muted-dark\">Help us identify your item by uploading a "
+"reference photo.</small>"
+msgstr ""
+"<small class=\"text-muted-dark\">Bantu kami mengidentifikasi barang Anda "
+"dengan mengunggah foto referensi.</small>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid ""
+"<small class=\"text-muted-dark\">Please upload a photo of the found item to "
+"help the owner identify it.</small>"
+msgstr ""
+"<small class=\"text-muted-dark\">Tolong unggah foto barang temuan untuk "
+"membantu pemilik mengenalinya.</small>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid ""
+"<small class=\"text-white-50 mt-1 d-block\">Lampirkan foto asli dari barang "
+"yang baru saja Anda temukan tersebut sebagai bukti ke admin.</small>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid ""
+"<small class=\"text-white-50 mt-1 d-block\">Lampirkan foto yang membuktikan "
+"bahwa ini milik Anda (cth. foto Anda menggunakannya, struk pembelian, box, "
+"dll).</small>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid ""
+"<small class=\"text-white-50\" style=\"font-size: 0.7rem;\">Active "
+"Users</small>"
+msgstr ""
+"<small class=\"text-white-50\" style=\"font-size: 0.7rem;\">Pengguna "
+"Aktif</small>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid ""
+"<small class=\"text-white-50\" style=\"font-size: 0.7rem;\">Found "
+"Items</small>"
+msgstr ""
+"<small class=\"text-white-50\" style=\"font-size: 0.7rem;\">Barang "
+"Ditemukan</small>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid ""
+"<span class=\"badge bg-danger text-white rounded px-2 py-1\" style=\"font-"
+"size: 0.7rem;\">Lost</span>"
+msgstr ""
+"<span class=\"badge bg-danger text-white rounded px-2 py-1\" style=\"font-"
+"size: 0.7rem;\">Hilang</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid ""
+"<span class=\"badge bg-danger\"><i class=\"fa fa-times me-1\"/> Claim "
+"Rejected</span>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid ""
+"<span class=\"badge bg-success\"><i class=\"fa fa-check me-1\"/> Claim "
+"Approved</span>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid ""
+"<span class=\"badge bg-warning text-dark\"><i class=\"fa fa-clock-o me-1\"/>"
+" Pending Verification</span>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid ""
+"<span class=\"badge rounded-pill px-3 py-2 me-3\" style=\"background-color: "
+"#1ea06e; color: white; font-size: 0.85rem; letter-spacing: 0.5px;\">FOUND "
+"ITEM</span>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid ""
+"<span class=\"badge rounded-pill px-3 py-2 me-3\" style=\"background-color: "
+"#dc3545; color: white; font-size: 0.85rem; letter-spacing: 0.5px;\">LOST "
+"ITEM</span>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid ""
+"<span class=\"badge text-dark rounded px-2 py-1\" style=\"font-size: 0.7rem;"
+" background-color: #1ea06e; color: white !important;\">Found</span>"
+msgstr ""
+"<span class=\"badge text-dark rounded px-2 py-1\" style=\"font-size: 0.7rem;"
+" background-color: #1ea06e; color: white !important;\">Ditemukan</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid ""
+"<span class=\"badge text-dark rounded px-2 py-1\" style=\"font-size: 0.7rem;"
+" background-color: #e0e0e0;\">Found</span>"
+msgstr ""
+"<span class=\"badge text-dark rounded px-2 py-1\" style=\"font-size: 0.7rem;"
+" background-color: #e0e0e0;\">Ditemukan</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "<span class=\"text-gradient\">Found Item</span> Report Form"
+msgstr "<span class=\"text-gradient\">Barang Temuan</span> Report Form"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "<span class=\"text-gradient\">Found</span> Items"
+msgstr "<span class=\"text-gradient\">Barang</span> Ditemukan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "<span class=\"text-gradient\">Lost</span> Items"
+msgstr "<span class=\"text-gradient\">Barang</span> Hilang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "<span>Find Your</span> <br/><span>Lost Items</span>"
+msgstr "<span>Temukan</span> <br/><span>Barang Hilang</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "<strong>Proof provided:</strong>"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_needaction
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_needaction
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "Active / Approved"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_exception_decoration
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_state
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_type_icon
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
 msgid "Admin Dashboard"
 msgstr "Dasbor Admin"
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "All <span class=\"text-gradient\">Items</span>"
+msgstr "Semua <span class=\"text-gradient\">Barang</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "Approved"
+msgstr "Disetujui"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__asrama_lt1
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__asrama_lt1
+msgid "Asrama - AP ASRAMA LT 1"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__asrama_lt2
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__asrama_lt2
+msgid "Asrama - AP ASRAMA LT 2"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__asrama_lt3
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__asrama_lt3
+msgid "Asrama - AP ASRAMA LT 3"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__asrama_lt4
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__asrama_lt4
+msgid "Asrama - AP ASRAMA LT 4"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_attachment_count
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_attachment_count
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__auditorium
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__auditorium
+msgid "Auditorium (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Bahasa Indonesia"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_lost_claim_matched
+msgid "Barang Anda Ditemukan (Matched)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Barang Asli"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__found_item_id
+#, python-format
+msgid "Barang Ditemukan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_finder_matched
+msgid "Barang Ditemukan: Telah Diklaim dan Disetujui"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_loser_matched
+msgid "Barang Hilang: Telah Ditemukan dan Disetujui"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_finder_matched
+msgid "Barang Temuan Anda Telah Dikembalikan: {{ object.found_item_id.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Belum punya akun? Daftar di sini"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Browse all reported found items on campus"
+msgstr "Jelajahi semua barang temuan yang dilaporkan di kampus"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Browse all reported lost items on campus"
+msgstr "Jelajahi semua barang hilang yang dilaporkan di kampus"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Browse the entire Lost &amp; Found database"
+msgstr "Jelajahi seluruh database Hilang &amp; Temu"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__cafeteria
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__cafeteria
+msgid "Cafeteria (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_edit
+msgid "Cancel"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__cash_register
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__cash_register
+msgid "Cash Register (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__admin_notes
+msgid "Catatan Admin"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Cek Detail"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Check Report Status"
+msgstr "Cek Status Laporan"
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+#, python-format
+msgid "Close"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Cocok / Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__color
+msgid "Color"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__contact_email
+msgid "Contact Email"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Create Report <i class=\"fa fa-arrow-right ms-1\"/>"
+msgstr "Buat Laporan <i class=\"fa fa-arrow-right ms-1\"/>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid ""
+"Create your lost item report quickly and in detail to increase the chances "
+"of finding it."
+msgstr ""
+"Buat laporan kehilangan dengan cepat dan detail untuk memperbesar peluang "
+"barang Anda ditemukan."
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__create_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__create_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__create_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__create_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__create_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__create_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__lost_claim_id
+#, python-format
+msgid "Data Barang Hilang"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Data Klaim Pengguna"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__date
+msgid "Date"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "Date Found"
+msgstr "Tanggal Penemuan"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__date_lost
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Date Lost"
+msgstr "Tanggal Kehilangan"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__description
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_edit
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Description / Details"
+msgstr "Deskripsi / Detail"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "Description / Details:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Deskripsi Asli:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid "Deskripsi Bukti Kepemilikan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Deskripsi Penemuan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid ""
+"Deskripsikan ciri khusus (cth. warna spesifik, merk, isi dompet, wallpaper "
+"HP, dll)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid ""
+"Deskripsikan secara rinci di mana, kapan, dan bagaimana kondisi barang saat "
+"Anda menemukannya."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "Detail"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Details"
+msgstr "Detail"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Details &amp; Claim"
+msgstr "Detail &amp; Klaim"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__status__done
+msgid "Dikembalikan (Returned)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__status__done
+msgid "Diklaim (Claimed)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__status__approved
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__status__approved
+msgid "Dipublikasikan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__display_name
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__display_name
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__display_name
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__item_claim_request__status__approved
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_search
+msgid "Diterima"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__status__rejected
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__item_claim_request__status__rejected
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__status__rejected
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_search
+msgid "Ditolak"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "Done"
+msgstr "Selesai"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_edit
+msgid "Edit Lost Item Report"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "Email"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_web_login
+msgid "Email / Student ID"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "English"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Explain in detail..."
+msgstr "Jelaskan secara detail..."
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_follower_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_follower_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_partner_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_partner_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__activity_type_icon
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Forgot password?"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Foto Barang yang Ditemukan (Wajib)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__photo_proof
+msgid "Foto Bukti"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid "Foto Bukti Kepemilikan (Wajib)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model,name:lost_found_dashboard.model_found_item
+msgid "Found Item list"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.actions.act_window,name:lost_found_dashboard.found_item_action
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Found Items"
+msgstr "Barang Ditemukan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_graph
+msgid "Found Items Analysis"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Found something? Help the owner by reporting the item you found."
+msgstr ""
+"Menemukan sesuatu? Bantu pemiliknya dengan melaporkan barang tersebut."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "Full Name"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a1_gymnasium
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a1_gymnasium
+msgid "Gedung A - A.1. Depan R. Gymnasium"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a1_lab_utara
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a1_lab_utara
+msgid "Gedung A - A.1. Lab Utara"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a2_r_prodi
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a2_r_prodi
+msgid "Gedung A - A.2. R. Prodi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a3_301
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a3_301
+msgid "Gedung A - A.3. 301"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a3_meeting
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a3_meeting
+msgid "Gedung A - A.3. MEETING FIKES"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a4_aula_selatan
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a4_aula_selatan
+msgid "Gedung A - A.4. Aula Selatan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a4_aula_utara
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a4_aula_utara
+msgid "Gedung A - A.4. Aula Utara"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a4_r_dosen
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a4_r_dosen
+msgid "Gedung A - A.4. R. Dosen"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__a_sw_lt4
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__a_sw_lt4
+msgid "Gedung A - SW Lt.4.R.Kls.FK1"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_anatomi_basah
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_anatomi_basah
+msgid "Gedung B - B.1. ANATOMI BASAH"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_anatomi_kering
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_anatomi_kering
+msgid "Gedung B - B.1. ANATOMI KERING"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_lab_histologi
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_lab_histologi
+msgid "Gedung B - B.1. LAB Histologi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_mr1
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_mr1
+msgid "Gedung B - B.1. MR 1 (Barat Admin FK)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_mr2
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_mr2
+msgid "Gedung B - B.1. MR 2 (Depan Panggung)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_r_dosen
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_r_dosen
+msgid "Gedung B - B.1. R. Dosen Profesi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b1_r_transit
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b1_r_transit
+msgid "Gedung B - B.1. R. Transit"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b2_02
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b2_02
+msgid "Gedung B - B.2. 02"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b2_05
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b2_05
+msgid "Gedung B - B.2. 05"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b2_12
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b2_12
+msgid "Gedung B - B.2. 12"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b2_lab_komunikasi
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b2_lab_komunikasi
+msgid "Gedung B - B.2. Lab Komunikasi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b3_02
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b3_02
+msgid "Gedung B - B.3. 02"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b3_depan_lab
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b3_depan_lab
+msgid "Gedung B - B.3. Depan Lab"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b3_lorong
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b3_lorong
+msgid "Gedung B - B.3. Lorong"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_01
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_01
+msgid "Gedung B - B.4. 01"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_03
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_03
+msgid "Gedung B - B.4. 03"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_07_biotek
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_07_biotek
+msgid "Gedung B - B.4. 07 / Biotek"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_lab_lt4
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_lab_lt4
+msgid "Gedung B - B.4. Lab Lantai 4"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_lab_skill
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_lab_skill
+msgid "Gedung B - B.4. Lab Skill"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b4_lab_toksikologi
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b4_lab_toksikologi
+msgid "Gedung B - B.4. Lab Toksikologi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b5_02_01
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b5_02_01
+msgid "Gedung B - B.5. 02/01"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b5_06_07
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b5_06_07
+msgid "Gedung B - B.5. 06/07"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b5_depan_lab
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b5_depan_lab
+msgid "Gedung B - B.5. Depan Lab"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b6_01
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b6_01
+msgid "Gedung B - B.6. 01"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__b6_lab_skill
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__b6_lab_skill
+msgid "Gedung B - B.6. Lab Skill"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r202
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r202
+msgid "Gedung C - C.R. 2.02 (Meeting-Barat)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r3_timur
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r3_timur
+msgid "Gedung C - C.R. 3 (Timur)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r404
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r404
+msgid "Gedung C - C.R. 4.04"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r502
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r502
+msgid "Gedung C - C.R. 5.02"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r503
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r503
+msgid "Gedung C - C.R. 5.03"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r504
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r504
+msgid "Gedung C - C.R. 5.04"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r505
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r505
+msgid "Gedung C - C.R. 5.05"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r507
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r507
+msgid "Gedung C - C.R. 5.07"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r508
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r508
+msgid "Gedung C - C.R. 5.08"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__c_r509
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__c_r509
+msgid "Gedung C - C.R. 5.09"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm_pojok_perpus
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm_pojok_perpus
+msgid "Gedung SM - POJOK PERPUS"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm1_lab_adm
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm1_lab_adm
+msgid "Gedung SM - SM 1 Lab Adm Publik"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm1_public_selatan
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm1_public_selatan
+msgid "Gedung SM - SM 1 Public (Barat-Selatan)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm1_public_utara
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm1_public_utara
+msgid "Gedung SM - SM 1 Public (Barat-Utara)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm2_sidang_barat
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm2_sidang_barat
+msgid "Gedung SM - SM 2 R. Sidang Barat"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__sm9_tengah
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__sm9_tengah
+msgid "Gedung SM - SM Lt.9 Tengah"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__hallway
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__hallway
+msgid "Hallway (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__has_message
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__has_message
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "Help the owner find their item by reporting the item you found."
+msgstr ""
+"Bantu pemilik menemukan barangnya dengan melaporkan barang temuan Anda."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Help us find your item by filling out the lost item report form"
+msgstr ""
+"Bantu kami menemukan barang Anda dengan mengisi formulir laporan kehilangan "
+"ini"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Hilang Temu"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "History Laporan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Home"
+msgstr "Beranda"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__id
+msgid "ID"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_exception_icon
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__activity_exception_icon
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__message_needaction
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__message_needaction
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__message_has_error
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__message_has_sms_error
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__message_has_error
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__message_has_sms_error
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__message_has_error
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Illustration"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_is_follower
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_is_follower
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model,name:lost_found_dashboard.model_item_claim_request
+msgid "Item Claim Request"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__description
+msgid "Item Description"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "Item Details"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Item Information"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__name
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_edit
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Item Name"
+msgstr "Nama Barang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "Item Photo (Optional)"
+msgstr "Foto Barang (Opsional)"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__photo
+msgid "Item Photo(s)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model,name:lost_found_dashboard.model_item_tag
+msgid "Item Tags"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_206
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_206
+msgid "KP1 - R. 206"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_210
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_210
+msgid "KP1 - R. 210"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_211
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_211
+msgid "KP1 - R. 211"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_212
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_212
+msgid "KP1 - R. 212"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_213
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_213
+msgid "KP1 - R. 213"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_218
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_218
+msgid "KP1 - R. 218"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_304
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_304
+msgid "KP1 - R. 304"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_akademik
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_akademik
+msgid "KP1 - R. Akademik"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kp1_perpus
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kp1_perpus
+msgid "KP1 - R. Perpustakaan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_lost_claim_matched
+msgid "Kabar Gembira! Barang Anda Ditemukan: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_loser_matched
+msgid ""
+"Kabar Gembira! Barang Anda Telah Ditemukan: {{ object.lost_claim_id.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__kantin
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__kantin
+msgid "Kantin Kampus"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Keterangan / Bukti:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__proof_description
+msgid "Keterangan / Detail Bukti"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Kirim ke Admin"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_claim_approved
+msgid "Klaim Barang Diterima"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_claim_rejected
+msgid "Klaim Barang Ditolak"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.actions.act_window,name:lost_found_dashboard.item_claim_request_action
+msgid "Klaim Kepemilikan Barang"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_claim_approved
+msgid "Klaim Kepemilikan Diterima!"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Klaim:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_report_done
+msgid "Laporan Anda Telah Selesai: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_found_item_created
+msgid "Laporan Barang Ditemukan: Berhasil Dibuat"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_lost_claim_created
+msgid "Laporan Barang Hilang Berhasil Dibuat: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_lost_claim_done
+msgid "Laporan Barang Hilang Selesai: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_lost_claim_created
+msgid "Laporan Barang Hilang: Berhasil Dibuat"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_lost_claim_approved
+msgid "Laporan Barang Hilang: Diterima"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_lost_claim_rejected
+msgid "Laporan Barang Hilang: Ditolak"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_lost_claim_done
+msgid "Laporan Barang Hilang: Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_lost_claim_approved
+msgid "Laporan Diterima: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_lost_claim_rejected
+msgid "Laporan Ditolak: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_found_item_created
+msgid "Laporan Penemuan Barang Berhasil Dibuat: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_found_item_approved
+msgid "Laporan Penemuan Diterima: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_found_item_rejected
+msgid "Laporan Penemuan Ditolak: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_report_done_found
+msgid "Laporan Penemuan Selesai: {{ object.name }}"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_found_item_approved
+msgid "Laporan Penemuan: Diterima"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_found_item_rejected
+msgid "Laporan Penemuan: Ditolak"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_report_done
+msgid "Laporan Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__write_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__write_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__write_uid
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__write_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__write_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__write_date
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__library
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__library
+msgid "Library (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "List of <span class=\"text-gradient\">Found Items</span>"
+msgstr "List of <span class=\"text-gradient\">Barang Ditemukan</span>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "List of <span class=\"text-gradient\">Lost Items</span>"
+msgstr "List of <span class=\"text-gradient\">Barang Hilang</span>"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__location
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__location
+msgid "Location"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "Location Found"
+msgstr "Lokasi Ditemukan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid "Location Lost"
+msgstr "Lokasi Kehilangan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Log In"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Log Out"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Log in as superuser"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+#, python-format
+msgid "Logo"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
 msgid "Logout"
 msgstr "Keluar"
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Lost Item"
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Lokasi:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.actions.act_window,name:lost_found_dashboard.lost_claim_action
+msgid "Lost Claims"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Lost Item <span class=\"text-gradient\">Report Form</span>"
+msgstr "Barang Hilang <span class=\"text-gradient\">Formulir Laporan</span>"
+
+#. module: lost_found_dashboard
+#: model:ir.model,name:lost_found_dashboard.model_lost_claim
+msgid "Lost Item Claim"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Lost Items"
 msgstr "Barang Hilang"
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Report Form"
-msgstr "Formulir Laporan"
+#: model:res.groups,name:lost_found_dashboard.group_lostnfound_staff
+msgid "Lost and Found Staff"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Help us find your item by filling out the lost item report form"
-msgstr "Bantu kami menemukan barang Anda dengan mengisi formulir laporan kehilangan ini"
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__main_lobby
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__main_lobby
+msgid "Main Lobby (Lainnya)"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Found Item"
-msgstr "Barang Ditemukan"
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Manajemen Data"
+msgstr ""
 
 #. module: lost_found_dashboard
-#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_templates
-msgid "Help the owner find their item by reporting the item you found."
-msgstr "Bantu pemilik menemukan barangnya dengan melaporkan barang temuan Anda."
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__masjid
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__masjid
+msgid "Masjid Kampus"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "Matched"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__status__draft
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__status__draft
+msgid "Menunggu"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__item_claim_request__status__draft
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_search
+msgid "Menunggu Verifikasi"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_has_error
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_has_error
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Monitor the progress of your lost or found item reports in real-time."
+msgstr ""
+"Pantau perkembangan laporan kehilangan atau temuan Anda secara real-time."
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Muat Ulang"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__my_activity_date_deadline
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "My Claim Status"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+msgid "My Found Item Reports"
+msgstr "Laporan Barang Temuan Saya"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "My Lost Item Reports"
+msgstr "Laporan Barang Hilang Saya"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "My Profile"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "My Reports"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "NIM"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Nama:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_date_deadline
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_summary
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_type_id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "No Claims Yet"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "No Data Available"
+msgstr "Tidak Ada Data Tersedia"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "No Reports Yet"
+msgstr "Belum Ada Laporan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "No items match your search criteria."
+msgstr "Tidak ada barang yang cocok dengan pencarian Anda."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "No recent found items."
+msgstr "Tidak ada barang temuan terbaru."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "No recent lost items found."
+msgstr "Tidak ada barang hilang terbaru ditemukan."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Notifications"
+msgstr "Notifikasi"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_needaction_counter
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_needaction_counter
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_has_error_counter
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_has_error_counter
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__message_needaction_counter
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__message_needaction_counter
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__message_has_error_counter
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__message_has_error_counter
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
+msgid "Open Modern Dashboard"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__campus_grounds
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__campus_grounds
+msgid "Outdoor Campus Grounds (Lainnya)"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__parkir_dosen
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__parkir_dosen
+msgid "Parkiran Dosen"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__parkir_b
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__parkir_b
+msgid "Parkiran Gedung B"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__parkir_c
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__parkir_c
+msgid "Parkiran Gedung C"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__parkir_masjid
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__parkir_masjid
+msgid "Parkiran Masjid"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Password"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Pelapor:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Pencocokan Barang"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "Pending"
+msgstr "Tertunda"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "Pending Verification"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,name:lost_found_dashboard.email_template_report_done_found
+msgid "Penemuan Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__user_id
+msgid "Pengklaim"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Pengklaim:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "Phone Number / WhatsApp"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__photo
+msgid "Photo"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Portal Web"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Profile Settings"
+msgstr "Pengaturan Profil"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "Profile updated successfully!"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+msgid "Published"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__rating_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__rating_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_detail
+msgid "Reference Photo"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Reference Photo (Optional)"
+msgstr "Foto Referensi (Opsional)"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "Rejected"
+msgstr "Ditolak"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid ""
+"Reliable platform to report and find lost items on campus. Fast, easy, and "
+"secure for all students."
+msgstr ""
+"Platform terpercaya untuk melaporkan dan mencari barang hilang di kampus. "
+"Cepat, mudah, dan aman untuk semua."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "Remember me"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Report Found Item"
+msgstr "Lapor Temuan"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Report Item <i class=\"fa fa-arrow-right ms-1\"/>"
+msgstr "Lapor Barang <i class=\"fa fa-arrow-right ms-1\"/>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Report Lost Item"
+msgstr "Lapor Kehilangan"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__user_id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__user_id
+msgid "Reporter"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_form
+msgid "Resolution Info"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__activity_user_id
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__message_has_sms_error
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__message_has_sms_error
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_lost_item_edit
+msgid "Save Changes"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "Save Profile"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Search <i class=\"fa fa-arrow-right ms-2\"/>"
+msgstr "Cari <i class=\"fa fa-arrow-right ms-2\"/>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "Search Items"
+msgstr "Cari Barang"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Search for your lost item here"
+msgstr "Cari barang hilang Anda di sini"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
+msgid "Search items here..."
+msgstr "Cari barang di sini..."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "Search now <i class=\"fa fa-arrow-right ms-2\"/>"
+msgstr "Cari sekarang <i class=\"fa fa-arrow-right ms-2\"/>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_form
+msgid "Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
+msgid ""
+"Silakan berikan deskripsi kondisi penemuan beserta foto barang yang "
+"ditemukan untuk dikirimkan ke admin."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
+msgid ""
+"Silakan berikan deskripsi spesifik beserta foto bukti kepemilikan Anda untuk"
+" diverifikasi oleh admin."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.actions.client,name:lost_found_dashboard.action_item_matching_dashboard
+#: model:ir.ui.menu,name:lost_found_dashboard.lost_found_menu_root
+msgid "Sistem Hilang Temu"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Sistem Hilang Temu Terpadu"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__status
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__status
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_search
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_search
+msgid "Status"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__status
+msgid "Status Klaim"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:mail.template,subject:lost_found_dashboard.email_template_claim_rejected
+msgid "Status Klaim Kepemilikan Barang"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__activity_state
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "Student Info"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__person_name
+msgid "Student Name"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+msgid "Submit"
+msgstr "Kirim"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "Submit Report"
+msgstr "Kirim Laporan"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_tag__name
+msgid "Tag Name"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__tag_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__tag_ids
+msgid "Tags"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Tags:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__taman
+#: model:ir.model.fields.selection,name:lost_found_dashboard.selection__lost_claim__location__taman
+msgid "Taman Kampus"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_form
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "Tandai Selesai"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Tanggal:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_form
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "Terima Laporan"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Tidak ada data barang yang tersedia untuk dicocokkan."
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Tipe:"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_lost_found_layout
+msgid "Toggle navigation"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_form
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "Tolak"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.item_claim_request_view_form
+#, python-format
+msgid "Tolak Klaim"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__ref_id
+msgid "Tracking ID"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__activity_exception_decoration
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "User"
+msgstr ""
+
+#. module: lost_found_dashboard
+#. odoo-javascript
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#: code:addons/lost_found_dashboard/static/src/xml/item_matching_dashboard.xml:0
+#, python-format
+msgid "Verifikasi Klaim"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "View All <i class=\"fa fa-arrow-right ms-1\"/>"
+msgstr "Lihat Semua <i class=\"fa fa-arrow-right ms-1\"/>"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
+msgid "View Status <i class=\"fa fa-arrow-right ms-1\"/>"
+msgstr "Lihat Status <i class=\"fa fa-arrow-right ms-1\"/>"
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_found_item__website_message_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_item_claim_request__website_message_ids
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,help:lost_found_dashboard.field_found_item__website_message_ids
+#: model:ir.model.fields,help:lost_found_dashboard.field_item_claim_request__website_message_ids
+#: model:ir.model.fields,help:lost_found_dashboard.field_lost_claim__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
+msgid "Welcome to the Campus Citizen Portal!"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__name
+msgid "What did you lose?"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
+msgid ""
+"You can now access the advanced Lost &amp; Found dashboard with a new theme."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items
+msgid "You have not created any lost item reports."
+msgstr "Anda belum membuat laporan barang hilang."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_found_items
+msgid "You have not reported any found items."
+msgstr "Anda belum melaporkan barang temuan apapun."
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_claims
+msgid "You have not submitted any ownership claims."
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.lost_claim_view_form
+msgid "e.g. Blue Water Bottle"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_profil
+msgid "e.g., 08123456789"
+msgstr ""
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_found_item
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_new_lost_item
+msgid "e.g., Wallet"
+msgstr "mis. Dompet"
+
+#. module: lost_found_dashboard
+#: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_login_page
+msgid "welcome"
+msgstr ""
+
