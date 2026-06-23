@@ -10,7 +10,7 @@ services:
       - "127.0.0.1:8069:8069"
     volumes:
       - odoo-web-data:/var/lib/odoo
-      - ./config/odoo.conf:/etc/odoo/odoo.conf
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
       - ../:/mnt/extra-addons/lost_found_dashboard
     environment:
       - HOST=db
