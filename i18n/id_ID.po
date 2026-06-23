@@ -2,6 +2,7 @@
 # This file contains the translation of the following modules:
 # 	* lost_found_dashboard
 #
+#. module: lost_found_dashboard
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0-20260611\n"
@@ -2449,49 +2450,64 @@ msgid "welcome"
 msgstr ""
 
 
+#. module: lost_found_dashboard
 msgid "Proof of Ownership Description"
 msgstr "Deskripsi Bukti Kepemilikan"
 
+#. module: lost_found_dashboard
 msgid "Describe specific characteristics (e.g., serial number, specific scratches, unique marks, etc.)"
 msgstr "Deskripsikan ciri khusus barang (cth: nomor seri, goresan tertentu, tanda unik, dll.)"
 
+#. module: lost_found_dashboard
 msgid "Proof of Ownership Photo (Required)"
 msgstr "Foto Bukti Kepemilikan (Wajib)"
 
+#. module: lost_found_dashboard
 msgid "Found Item Description"
 msgstr "Deskripsi Penemuan"
 
+#. module: lost_found_dashboard
 msgid "Describe in detail where, when, and the condition of the item when you found it."
 msgstr "Deskripsikan secara rinci di mana, kapan, dan bagaimana kondisi barang saat Anda menemukannya."
 
+#. module: lost_found_dashboard
 msgid "Found Item Photo (Required)"
 msgstr "Foto Barang yang Ditemukan (Wajib)"
 
+#. module: lost_found_dashboard
 msgid "Send to Admin"
 msgstr "Kirim ke Admin"
 
 
+#. module: lost_found_dashboard
 msgid "This is my item"
 msgstr "Ini barang saya"
 
+#. module: lost_found_dashboard
 msgid "Please provide a specific description and photo proof of ownership for verification by the admin."
 msgstr "Mohon berikan deskripsi spesifik dan foto bukti kepemilikan untuk verifikasi oleh admin."
 
+#. module: lost_found_dashboard
 msgid "I found this item"
 msgstr "Saya menemukan barang ini"
 
+#. module: lost_found_dashboard
 msgid "Please provide a description of the found item's condition along with a photo to be sent to the admin."
 msgstr "Mohon berikan deskripsi kondisi barang yang ditemukan beserta fotonya untuk dikirim ke admin."
 
+#. module: lost_found_dashboard
 msgid "Proof of Ownership Photo *"
 msgstr "Foto Bukti Kepemilikan *"
 
+#. module: lost_found_dashboard
 msgid "Found Item Photo *"
 msgstr "Foto Barang yang Ditemukan *"
 
+#. module: lost_found_dashboard
 msgid "Attach a photo proving this item is yours (e.g., a photo of you using it, a receipt, etc)."
 msgstr "Lampirkan foto yang membuktikan barang ini milik Anda (cth: foto Anda saat menggunakannya, struk pembelian, dll)."
 
+#. module: lost_found_dashboard
 msgid "Attach a photo of the item you just found as proof for the admin."
 msgstr "Lampirkan foto barang yang baru saja Anda temukan sebagai bukti untuk admin."
 
