@@ -2448,3 +2448,50 @@ msgstr "mis. Dompet"
 msgid "welcome"
 msgstr ""
 
+
+msgid "Proof of Ownership Description"
+msgstr "Deskripsi Bukti Kepemilikan"
+
+msgid "Describe specific characteristics (e.g., serial number, specific scratches, unique marks, etc.)"
+msgstr "Deskripsikan ciri khusus barang (cth: nomor seri, goresan tertentu, tanda unik, dll.)"
+
+msgid "Proof of Ownership Photo (Required)"
+msgstr "Foto Bukti Kepemilikan (Wajib)"
+
+msgid "Found Item Description"
+msgstr "Deskripsi Penemuan"
+
+msgid "Describe in detail where, when, and the condition of the item when you found it."
+msgstr "Deskripsikan secara rinci di mana, kapan, dan bagaimana kondisi barang saat Anda menemukannya."
+
+msgid "Found Item Photo (Required)"
+msgstr "Foto Barang yang Ditemukan (Wajib)"
+
+msgid "Send to Admin"
+msgstr "Kirim ke Admin"
+
+
+msgid "This is my item"
+msgstr "Ini barang saya"
+
+msgid "Please provide a specific description and photo proof of ownership for verification by the admin."
+msgstr "Mohon berikan deskripsi spesifik dan foto bukti kepemilikan untuk verifikasi oleh admin."
+
+msgid "I found this item"
+msgstr "Saya menemukan barang ini"
+
+msgid "Please provide a description of the found item's condition along with a photo to be sent to the admin."
+msgstr "Mohon berikan deskripsi kondisi barang yang ditemukan beserta fotonya untuk dikirim ke admin."
+
+msgid "Proof of Ownership Photo *"
+msgstr "Foto Bukti Kepemilikan *"
+
+msgid "Found Item Photo *"
+msgstr "Foto Barang yang Ditemukan *"
+
+msgid "Attach a photo proving this item is yours (e.g., a photo of you using it, a receipt, etc)."
+msgstr "Lampirkan foto yang membuktikan barang ini milik Anda (cth: foto Anda saat menggunakannya, struk pembelian, dll)."
+
+msgid "Attach a photo of the item you just found as proof for the admin."
+msgstr "Lampirkan foto barang yang baru saja Anda temukan sebagai bukti untuk admin."
+

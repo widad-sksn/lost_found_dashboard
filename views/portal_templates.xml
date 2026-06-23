@@ -49,13 +49,13 @@
                             <div class="lang-switcher-wrapper d-flex align-items-center" style="background: rgba(255,255,255,0.05); border-radius: 30px; padding: 4px; border: 1px solid rgba(255,255,255,0.1);">
                                 <a class="btn btn-sm rounded-pill text-white js_change_lang d-flex align-items-center justify-content-center" 
                                    t-attf-style="#{request.env.lang == 'en_US' and 'background: rgba(167, 139, 250, 0.3); font-weight: bold; border: 1px solid rgba(167,139,250,0.5);' or 'background: transparent; opacity: 0.6; border: 1px solid transparent;'}"
-                                   data-url_code="en" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='en_US')"
+                                   data-url_code="en_US" t-att-href="'/website/lang/en_US?r=' + request.httprequest.path"
                                    style="width: 45px; height: 32px; font-size: 0.8rem; transition: all 0.3s ease;">
                                     EN
                                 </a>
                                 <a class="btn btn-sm rounded-pill text-white js_change_lang d-flex align-items-center justify-content-center" 
                                    t-attf-style="#{request.env.lang == 'id_ID' and 'background: rgba(59, 130, 246, 0.3); font-weight: bold; border: 1px solid rgba(59,130,246,0.5);' or 'background: transparent; opacity: 0.6; border: 1px solid transparent;'}"
-                                   data-url_code="id" t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code='id_ID')"
+                                   data-url_code="id_ID" t-att-href="'/website/lang/id_ID?r=' + request.httprequest.path"
                                    style="width: 45px; height: 32px; font-size: 0.8rem; transition: all 0.3s ease;">
                                     ID
                                 </a>
@@ -633,7 +633,7 @@
     </template>
 
     <!-- Form Claim Found Item -->
-    <template id="portal_claim_found_item" name="Item Details &amp; Claim">
+    <template id="portal_claim_found_item" name="Item Details &amp; Claim " >
         <t t-call="lost_found_dashboard.custom_lost_found_layout">
             <div id="wrap" class="o_portal" style="padding: 60px 0; min-height: calc(100vh - 80px);">
                 <div class="container">
@@ -693,21 +693,21 @@
                             
                             <div class="glass-card p-4 p-md-5" style="border-radius: 16px; background: linear-gradient(135deg, rgba(30,160,110,0.1) 0%, rgba(35,40,75,0.6) 100%); border: 1px solid rgba(30,160,110,0.3);">
                                 <h4 class="text-white mb-2"><i class="fa fa-check-circle text-success me-2"/>This is my item</h4>
-                                <p class="text-white-50 mb-4">Silakan berikan deskripsi spesifik beserta foto bukti kepemilikan Anda untuk diverifikasi oleh admin.</p>
+                                <p class="text-white-50 mb-4">Please provide a specific description and photo proof of ownership for verification by the admin.</p>
                                 
                                 <form t-attf-action="/claim/found_item/#{item.id}" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Submitting...';">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Deskripsi Bukti Kepemilikan</label>
-                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Deskripsikan ciri khusus (cth. warna spesifik, merk, isi dompet, wallpaper HP, dll)"></textarea>
+                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Proof of Ownership Description</label>
+                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Describe specific characteristics (e.g., serial number, specific scratches, unique marks, etc.)"></textarea>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Foto Bukti Kepemilikan (Wajib)</label>
+                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Proof of Ownership Photo *</label>
                                         <input type="file" class="form-control dark-form-control p-2" name="photo_proof" accept="image/*" required="required"/>
-                                        <small class="text-white-50 mt-1 d-block">Lampirkan foto yang membuktikan bahwa ini milik Anda (cth. foto Anda menggunakannya, struk pembelian, box, dll).</small>
+                                        <small class="text-white-50 mt-1 d-block">Attach a photo proving this item is yours (e.g., a photo of you using it, a receipt, etc).</small>
                                     </div>
                                     <button type="submit" class="btn btn-grad w-100 py-3 rounded-pill font-weight-bold" style="background: linear-gradient(90deg, #1ea06e 0%, #157347 100%); font-size: 1.1rem; border: none; box-shadow: 0 4px 15px rgba(30,160,110,0.4);">
-                                        Kirim ke Admin
+                                        Send to Admin
                                     </button>
                                 </form>
                             </div>
@@ -787,20 +787,20 @@
                             
                             <div class="glass-card p-4 p-md-5 mt-5" style="border-radius: 16px; background: linear-gradient(135deg, rgba(120,115,245,0.1) 0%, rgba(35,40,75,0.6) 100%); border: 1px solid rgba(120,115,245,0.3);">
                                 <h4 class="text-white mb-2"><i class="fa fa-handshake-o text-primary me-2"/>I found this item</h4>
-                                <p class="text-white-50 mb-4">Silakan berikan deskripsi kondisi penemuan beserta foto barang yang ditemukan untuk dikirimkan ke admin.</p>
+                                <p class="text-white-50 mb-4">Please provide a description of the found item's condition along with a photo to be sent to the admin.</p>
                                 <form t-attf-action="/claim/lost_item/#{item.id}" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Submitting...';">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Deskripsi Penemuan</label>
-                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Deskripsikan secara rinci di mana, kapan, dan bagaimana kondisi barang saat Anda menemukannya."></textarea>
+                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Found Item Description</label>
+                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Describe in detail where, when, and the condition of the item when you found it."></textarea>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Foto Barang yang Ditemukan (Wajib)</label>
+                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Found Item Photo *</label>
                                         <input type="file" class="form-control dark-form-control p-2" name="photo_proof" accept="image/*" required="required"/>
-                                        <small class="text-white-50 mt-1 d-block">Lampirkan foto asli dari barang yang baru saja Anda temukan tersebut sebagai bukti ke admin.</small>
+                                        <small class="text-white-50 mt-1 d-block">Attach a photo of the item you just found as proof for the admin.</small>
                                     </div>
                                     <button type="submit" class="btn btn-grad w-100 py-3 rounded-pill font-weight-bold" style="background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 100%); font-size: 1.1rem; border: none; box-shadow: 0 4px 15px rgba(108,92,231,0.4);">
-                                        Kirim ke Admin
+                                        Send to Admin
                                     </button>
                                 </form>
                             </div>
@@ -1031,3 +1031,10 @@
         </t>
     </template>
 </odoo>
+
+
+
+
+
+
+

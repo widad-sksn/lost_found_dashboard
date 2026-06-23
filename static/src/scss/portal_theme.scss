@@ -261,3 +261,9 @@ select.dark-form-control option {
         margin: 0 auto 15px auto;
     }
 }
+
+
+/* Sembunyikan language selector bawaan Odoo agar tidak double dengan pill toggle kita */
+li.js_language_selector { display: none !important; }
+.o_lang_flag { display: none !important; }
+
