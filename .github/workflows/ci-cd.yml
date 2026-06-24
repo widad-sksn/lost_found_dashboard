@@ -1,0 +1,75 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Code Quality and Compilation Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install Linting Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+          
+      - name: Run Flake8 Linter
+        run: |
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Start Database for Odoo Test
+        run: |
+          docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:15
+          
+      - name: Test Odoo Module Compilation
+        run: |
+          # Wait for DB to be ready
+          sleep 10
+          # We mount the current repository into /mnt/extra-addons/lost_found_dashboard
+          # We run Odoo to install the module and stop after init. If it fails, the container exits with non-zero status.
+          docker run --rm --link db:db -v ${{ github.workspace }}:/mnt/extra-addons/lost_found_dashboard odoo:17.0 odoo -i lost_found_dashboard --stop-after-init --without-demo=all
+
+  deploy:
+    name: Deploy to Server
+    needs: test
+    runs-on: ubuntu-latest
+    # Only deploy if this is a push to main (not just a PR test)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            # Navigate to the Odoo deployment directory
+            cd /opt/lost_found_dashboard
+            
+            echo "Pulling latest changes from GitHub..."
+            git pull origin main
+            
+            echo "Restarting Odoo container to apply new module code..."
+            cd deployment
+            docker compose restart web
+            
+            echo "Deployment successful!"
