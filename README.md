@@ -378,8 +378,8 @@ Penjelasan blok krusial:
 Pipeline CI/CD terdiri dari 2 tahap berurutan:
 
 **Tahap 1 — `test` (Continuous Integration):**
-1. `actions/checkout@v4` → Mengunduh *source code* dari repositori.
-2. `actions/setup-python@v5` → Menyiapkan Python 3.10 di *runner* GitHub.
+1. `actions/checkout@v7` → Mengunduh *source code* dari repositori.
+2. `actions/setup-python@v6` → Menyiapkan Python 3.10 di *runner* GitHub.
 3. `flake8` → Memindai seluruh file `.py` untuk mendeteksi *syntax error* dan variabel yang tidak terdefinisi.
 4. `docker run postgres:15` → Membuat kontainer database PostgreSQL sementara.
 5. `docker run odoo:17.0 odoo -i lost_found_dashboard --stop-after-init` → Menginstal modul secara virtual. Jika ada error di Model atau View, proses ini akan gagal dan menolak kode.
