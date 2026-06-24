@@ -35,3 +35,7 @@ Proyek ini menggunakan database bernama hilang_temu. File backup databasenya sud
 1. Buka browser dan akses: http://localhost:8069
 2. Pilih database yang baru saja di-*restore*.
 3. Login menggunakan akun yang sudah ada di database tersebut.
+
+<p align="center">
+  <img src="https://statik.tempo.co/data/2025/10/24/id_1436958/1436958_720.jpg" width="500">
+</p>
