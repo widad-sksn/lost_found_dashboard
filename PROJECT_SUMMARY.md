@@ -1,57 +1,63 @@
-# Rangkuman Pengembangan Proyek "Lost & Found Dashboard"
+# Dokumentasi Teknis Odoo: Modul "Lost & Found Dashboard"
 
-Dokumen ini berisi rangkuman detail mengenai seluruh konfigurasi, perbaikan, dan fitur yang telah kita bangun bersama dari awal hingga tahap otomatisasi *deployment* (CI/CD). 
-
-## 1. Konfigurasi Server & Database Odoo
-**Masalah Awal:** Saat mengakses halaman *login*, pengguna justru diarahkan ke halaman pemilihan *database* (Database Manager).
-**Solusi:**
-- **Lokasi File:** `deployment/config/odoo.conf`
-- **Perubahan:** Menambahkan konfigurasi `dbfilter = ^hilang_temu$` agar Odoo secara otomatis memilih *database* bernama `hilang_temu` dan langsung menampilkan halaman *login* tanpa melalui halaman pemilihan *database*.
-
-## 2. Konfigurasi Mail Server (Reset Password & Notifikasi)
-**Masalah Awal:** Pengiriman email dari dalam Odoo (seperti fitur *Lupa Password*) tidak berfungsi, meskipun *server* Ubuntu sudah bisa mengirim email via `sendmail`/Postfix.
-**Solusi:**
-- **Lokasi File:** `deployment/config/odoo.conf`
-- **Perubahan:** Menambahkan konfigurasi SMTP:
-  ```ini
-  smtp_server = host.docker.internal
-  smtp_port = 25
-  ```
-  Ini mengizinkan Odoo (yang berada di dalam wadah Docker) untuk berkomunikasi langsung dengan sistem Postfix yang ada di komputer *host* server Ubuntu Anda.
-
-## 3. Perbaikan Desain Tampilan (UI) Halaman Reset Password
-**Masalah Awal:** Halaman *Reset Password* terpotong di perangkat *mobile* (HP) sehingga tombol konfirmasi di bawah tidak terlihat dan halaman tidak bisa digulir (*scroll*).
-**Solusi:**
-- **Lokasi File XML:** `views/login_templates.xml`
-  - *Perubahan:* Menghapus batasan lebar statis (*fixed max-width*) pada kotak *login* dan menggunakan *class* Bootstrap yang responsif seperti `mx-auto`, `p-3`, dan `p-md-4` agar lebar kotak menyesuaikan ukuran layar HP.
-- **Lokasi File CSS:** `static/src/scss/login.scss`
-  - *Perubahan:* Menghapus atribut `overflow: hidden;` yang mengunci *scroll*, dan mengubah `height: 100vh;` menjadi `min-height: 100vh;` agar kotak bisa memanjang secara elastis ke bawah mengikuti jumlah kolom formulir yang ada.
-
-## 4. Konfigurasi Dashboard Monitoring (Grafana & Prometheus)
-**Masalah Awal:** *Dashboard* monitoring server di Grafana menampilkan "No Data" dan pengguna kesulitan mengatur *Datasource* Prometheus.
-**Solusi:**
-- **Aksi:** Memodifikasi konfigurasi *dashboard* JSON (*Node Exporter Full*) langsung di dalam *server* menggunakan *script* otomatis.
-- **Perubahan:** Mengunci (*hardcode*) sumber data (*Datasource*) setiap grafik agar langsung menunjuk ke ID Prometheus. Hasilnya, begitu Anda membuka URL `monitor.lostn-found.web.id`, semua grafik pemantauan CPU, RAM, dan Jaringan langsung menyala secara otomatis.
-
-## 5. Konfigurasi Keamanan SSH Server
-**Masalah Awal:** GitHub Actions gagal masuk ke *server* karena *server* secara *default* menolak otentikasi menggunakan *password* otomatis.
-**Solusi:**
-- **Lokasi File (di dalam Server):** `/etc/ssh/sshd_config.d/60-cloudimg-settings.conf`
-- **Perubahan:** Mengubah nilai `PasswordAuthentication no` menjadi `PasswordAuthentication yes` dan me-restart layanan SSH di server agar robot GitHub Actions bisa masuk.
-
-## 6. Arsitektur Otomatisasi CI/CD (GitHub Actions)
-**Masalah Awal:** Perlu cara untuk menarik kode terbaru secara otomatis dari GitHub ke *server* Odoo dengan aman.
-**Solusi:**
-- **Lokasi File:** `.github/workflows/ci-cd.yml`
-- **Perubahan:** Membangun *pipeline* CI/CD lengkap yang terdiri dari 2 tahapan (*Jobs*):
-  1. **Job `test` (Continuous Integration):**
-     - **Linting:** Memeriksa seluruh *syntax* Python dengan `flake8`.
-     - **Uji Kompilasi:** Membuat simulasi wadah Odoo dan PostgreSQL di dalam GitHub Actions untuk melakukan *dry-run* instalasi modul. Jika *database crash*, kode akan ditolak.
-  2. **Job `deploy` (Continuous Deployment):**
-     - Berjalan **hanya jika** Job `test` berhasil.
-     - *Script* akan melakukan `git pull origin main` secara otomatis ke dalam direktori `/opt/lost_found_dashboard` di *server*.
-     - Menjalankan `docker compose restart web` di *server* untuk mengaplikasikan versi *website* yang paling baru.
+Selamat datang! Dokumen ini disusun khusus dari sudut pandang *Odoo Programmer* untuk membedah anatomi, arsitektur, dan bahasa pemrograman yang digunakan di balik modul `lost_found_dashboard`.
 
 ---
-**Status Terkini:**
-Semua *source code* di lingkungan lokal Anda (Windows), di repositori GitHub, dan di *server* produksi Ubuntu sudah **100% tersinkronisasi** dengan mulus melalui sistem otomatisasi di atas.
+
+## 1. Arsitektur Pemrograman Odoo
+Sebagai kerangka kerja (*framework*), Odoo menggunakan arsitektur **Model-View-Controller (MVC)** klasik yang sangat terstruktur. Seluruh logika dan alur sistem dibangun dengan kombinasi berbagai bahasa pemrograman berikut:
+
+### A. Python (Logika Backend & Model)
+Python adalah "otak" dari sistem ini. Semua logika bisnis, hak akses, validasi data, hingga komunikasi dengan *database* ditulis menggunakan bahasa Python 3.10. Odoo memanfaatkan teknik *Object-Relational Mapping* (ORM) sehingga kita tidak perlu menulis query SQL secara manual.
+- **Contoh Penggunaan:** Memvalidasi apakah barang yang hilang sudah diklaim, atau membuat perhitungan otomatis.
+
+### B. XML (Struktur Antarmuka & View)
+Jika HTML digunakan di *web browser* standar, Odoo menggunakan XML sebagai bahasa *markup* untuk merancang tampilan aplikasinya (halaman formulir, daftar tabel, *kanban*, menu, dll).
+- **Contoh Penggunaan:** `login_templates.xml` dirancang menggunakan struktur tata letak XML yang memanggil *class* Bootstrap untuk membuat tombol atau kotak *input*.
+
+### C. SCSS / CSS (Desain Visual & Styling)
+Untuk memberikan tampilan (*User Interface*) yang lebih cantik dan responsif (terutama pada halaman *frontend* atau portal), Odoo menggunakan preprosesor CSS yaitu SCSS.
+- **Contoh Penggunaan:** `login.scss` yang kita ubah untuk menghilangkan `overflow: hidden` dan menambahkan elastisitas `min-height` agar tampilan selaras di HP.
+
+### D. PostgreSQL (Database Server)
+Semua struktur data yang kita bangun di Python secara otomatis diterjemahkan menjadi tabel-tabel di *database* PostgreSQL. Ini adalah jantung penyimpanan data Odoo yang sangat tangguh.
+
+---
+
+## 2. Pembedahan Struktur Folder Modul
+Berikut adalah struktur anatomi dalam modul `lost_found_dashboard` Anda beserta peran krusialnya:
+
+### 📁 `models/` (Python)
+Folder ini menampung "Buku Besar" atau kerangka dasar *database*. Di sinilah kita mendefinisikan objek-objek utama:
+- `found_item.py`: Mengatur tabel untuk barang-barang yang ditemukan.
+- `lost_claim.py`: Mengatur tabel dan status laporan barang hilang.
+- `item_claim_request.py`: Menghubungkan logika transaksi saat seseorang mengklaim sebuah barang.
+- `item_tag.py`: Label/kategori tambahan untuk barang.
+
+### 📁 `views/` (XML)
+Tempat di mana wajah aplikasi dibentuk. File-file di sini mengatur bagaimana data dari `models` ditampilkan kepada *user*. 
+- Di sinilah letak file `login_templates.xml` yang baru saja kita bedah strukturnya, memperbaiki *layout max-width*, dan menambahkan atribut Bootstrap seperti `w-100 m-auto p-3 p-md-4` agar responsif.
+
+### 📁 `static/src/scss/` (SCSS/CSS)
+Direktori statis untuk memoles tampilan. Di dalamnya terdapat file `login.scss` tempat kita mematikan (*override*) pengaturan Odoo bawaan yang membatasi *scroll* pada halaman pengguna (terutama pada *form Reset Password*).
+
+### 📁 `controllers/` (Python)
+Mengatur *routing* URL web. Jika `models` digunakan untuk *backend* staf/karyawan, `controllers` mengatur halaman yang diakses publik atau portal eksternal via URL (seperti halaman web publik Odoo).
+
+### 📁 `security/` (XML/CSV)
+Menangani tata kelola hak akses pengguna. Di sini ditentukan tabel mana yang boleh dibaca (*read*), diisi (*write*), dibuat (*create*), atau dihapus (*unlink*) oleh grup *user* tertentu.
+
+### 📁 `deployment/config/` (Konfigurasi Server)
+Folder ekstra yang kita kelola untuk menyelaraskan *environment* server, memuat dua file sakti:
+- `odoo.conf`: Menjembatani sistem dengan server. Di sini kita mengatur filter `dbfilter = ^hilang_temu$` (memaksa akses langsung ke *database*) dan membuka gerbang SMTP Postfix melalui `host.docker.internal:25` agar sistem email aktif.
+- `docker-compose.yml`: Arsitektur *container* server Anda secara keseluruhan.
+
+---
+
+## 3. Rangkuman Perbaikan Proyek Saat Ini
+Sebagai seorang *programmer*, ini adalah daftar parameter teknis yang baru saja kita perbaiki:
+1. **Odoo Database Router:** Injeksi `dbfilter` di `.conf`.
+2. **Mail Gateway:** *Binding* port 25 Docker Odoo ke SMTP *Host*.
+3. **UI/UX Hotfix:** Redesain struktur elemen XML (*wrapper*) dan pembersihan kuncian tinggi layar pada kelas SCSS (`.custom-login-body`).
+
+*Catatan: Dokumen ini telah difokuskan murni pada kerangka pemrogaman Odoo dan sistem internalnya sesuai permintaan Anda.*
