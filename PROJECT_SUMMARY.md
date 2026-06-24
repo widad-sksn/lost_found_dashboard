@@ -105,3 +105,10 @@ Selain penulisan *source code* Odoo, kelancaran aplikasi ini juga ditopang oleh 
 *Fungsi: Memantau kesehatan dan beban *server* (CPU, RAM, Jaringan) secara visual dan realtime.*
 - **Alur Kerja:** Layanan *Node Exporter* ditanam di *server* untuk membaca suhu dan metrik mesin. Data ini dikumpulkan oleh *database* runtun waktu bernama *Prometheus*. Terakhir, *Grafana* bertugas menggambar data tersebut menjadi grafik interaktif yang bisa Anda akses di `http://monitor.lostn-found.web.id`.
 - **Injeksi Datasource Grafana:** Sebelumnya Grafana selalu menampilkan masalah "No Data". Untuk memperbaikinya, telah dilakukan injeksi *script* berbasis API JSON yang secara paksa mengunci *Datasource* pada *dashboard* utama ("Node Exporter Full") langsung menuju *Unique ID* (UID) mutlak milik Prometheus (`efq30lnjdnnk0e`), sehingga grafik kini menyala dengan sempurna secara presisi.
+
+### D. Keamanan Jaringan & Enkripsi (Arsitektur Cloudflare)
+*Fungsi: Melindungi server dari serangan siber (DDoS) dan mengenkripsi data sensitif (password mahasiswa) saat login.*
+Jika dosen bertanya, *"Mengapa menggunakan Cloudflare dan tidak langsung menggunakan IP Server?"*, berikut adalah 3 alasan teknisnya:
+1. **Enkripsi HTTPS Instan (SSL/TLS):** Secara *default*, sistem Odoo kita hanya memancarkan lalu lintas HTTP (tanpa enkripsi) melalui port 80 di web server Nginx lokal. Cloudflare bertindak sebagai "Tameng SSL" di depan *server* yang membungkus trafik tersebut menjadi HTTPS (Gembok Hijau). Tanpa ini, *password* dan data pribadi mahasiswa sangat rawan disadap oleh pihak ketiga.
+2. **Reverse Proxy & Penyembunyian IP:** IP publik asli dari *server* Ubuntu kita disembunyikan di balik *server* Cloudflare. Ini sangat vital untuk mencegah peretas (hacker) menyerang atau mengirim *traffic spam* (DDoS) ke *server* kampus secara langsung.
+3. **Smart HTTP to HTTPS Redirection:** Nginx kita telah diprogram secara khusus untuk berkolaborasi dengan *header* dari Cloudflare. Jika ada *user* yang mengetik alamat `http://` biasa, sistem Nginx akan membaca *header* `X-Forwarded-Proto` dari Cloudflare dan secara paksa membelokkan *user* tersebut ke jalur `https://` yang aman.
