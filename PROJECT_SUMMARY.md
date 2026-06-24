@@ -1,63 +1,63 @@
-# Dokumentasi Teknis Odoo: Modul "Lost & Found Dashboard"
+# Materi Presentasi Sistem Odoo: Modul "Lost & Found Dashboard"
 
-Selamat datang! Dokumen ini disusun khusus dari sudut pandang *Odoo Programmer* untuk membedah anatomi, arsitektur, dan bahasa pemrograman yang digunakan di balik modul `lost_found_dashboard`.
-
----
-
-## 1. Arsitektur Pemrograman Odoo
-Sebagai kerangka kerja (*framework*), Odoo menggunakan arsitektur **Model-View-Controller (MVC)** klasik yang sangat terstruktur. Seluruh logika dan alur sistem dibangun dengan kombinasi berbagai bahasa pemrograman berikut:
-
-### A. Python (Logika Backend & Model)
-Python adalah "otak" dari sistem ini. Semua logika bisnis, hak akses, validasi data, hingga komunikasi dengan *database* ditulis menggunakan bahasa Python 3.10. Odoo memanfaatkan teknik *Object-Relational Mapping* (ORM) sehingga kita tidak perlu menulis query SQL secara manual.
-- **Contoh Penggunaan:** Memvalidasi apakah barang yang hilang sudah diklaim, atau membuat perhitungan otomatis.
-
-### B. XML (Struktur Antarmuka & View)
-Jika HTML digunakan di *web browser* standar, Odoo menggunakan XML sebagai bahasa *markup* untuk merancang tampilan aplikasinya (halaman formulir, daftar tabel, *kanban*, menu, dll).
-- **Contoh Penggunaan:** `login_templates.xml` dirancang menggunakan struktur tata letak XML yang memanggil *class* Bootstrap untuk membuat tombol atau kotak *input*.
-
-### C. SCSS / CSS (Desain Visual & Styling)
-Untuk memberikan tampilan (*User Interface*) yang lebih cantik dan responsif (terutama pada halaman *frontend* atau portal), Odoo menggunakan preprosesor CSS yaitu SCSS.
-- **Contoh Penggunaan:** `login.scss` yang kita ubah untuk menghilangkan `overflow: hidden` dan menambahkan elastisitas `min-height` agar tampilan selaras di HP.
-
-### D. PostgreSQL (Database Server)
-Semua struktur data yang kita bangun di Python secara otomatis diterjemahkan menjadi tabel-tabel di *database* PostgreSQL. Ini adalah jantung penyimpanan data Odoo yang sangat tangguh.
+Dokumen ini disusun sebagai panduan teknis bagi *programmer* untuk menjelaskan anatomi, arsitektur, dan logika pemrograman yang digunakan di balik modul `lost_found_dashboard`. Dokumen ini sangat cocok digunakan sebagai acuan saat presentasi teknis di hadapan dosen atau tim penilai.
 
 ---
 
-## 2. Pembedahan Struktur Folder Modul
-Berikut adalah struktur anatomi dalam modul `lost_found_dashboard` Anda beserta peran krusialnya:
+## 1. Konsep Dasar Sistem (Framework Odoo)
+Modul "Lost & Found Dashboard" dibangun menggunakan kerangka kerja (*framework*) **Odoo 17** yang secara fundamental menganut pola arsitektur **MVC (Model-View-Controller)**.
 
-### 📁 `models/` (Python)
-Folder ini menampung "Buku Besar" atau kerangka dasar *database*. Di sinilah kita mendefinisikan objek-objek utama:
-- `found_item.py`: Mengatur tabel untuk barang-barang yang ditemukan.
-- `lost_claim.py`: Mengatur tabel dan status laporan barang hilang.
-- `item_claim_request.py`: Menghubungkan logika transaksi saat seseorang mengklaim sebuah barang.
-- `item_tag.py`: Label/kategori tambahan untuk barang.
+Sistem ini tidak menggunakan *query* SQL manual untuk berinteraksi dengan *database*. Odoo memanfaatkan teknologi **ORM (*Object-Relational Mapping*)**, di mana setiap tabel di *database* direpresentasikan sebagai sebuah Objek (Class) dalam bahasa Python.
 
-### 📁 `views/` (XML)
-Tempat di mana wajah aplikasi dibentuk. File-file di sini mengatur bagaimana data dari `models` ditampilkan kepada *user*. 
-- Di sinilah letak file `login_templates.xml` yang baru saja kita bedah strukturnya, memperbaiki *layout max-width*, dan menambahkan atribut Bootstrap seperti `w-100 m-auto p-3 p-md-4` agar responsif.
-
-### 📁 `static/src/scss/` (SCSS/CSS)
-Direktori statis untuk memoles tampilan. Di dalamnya terdapat file `login.scss` tempat kita mematikan (*override*) pengaturan Odoo bawaan yang membatasi *scroll* pada halaman pengguna (terutama pada *form Reset Password*).
-
-### 📁 `controllers/` (Python)
-Mengatur *routing* URL web. Jika `models` digunakan untuk *backend* staf/karyawan, `controllers` mengatur halaman yang diakses publik atau portal eksternal via URL (seperti halaman web publik Odoo).
-
-### 📁 `security/` (XML/CSV)
-Menangani tata kelola hak akses pengguna. Di sini ditentukan tabel mana yang boleh dibaca (*read*), diisi (*write*), dibuat (*create*), atau dihapus (*unlink*) oleh grup *user* tertentu.
-
-### 📁 `deployment/config/` (Konfigurasi Server)
-Folder ekstra yang kita kelola untuk menyelaraskan *environment* server, memuat dua file sakti:
-- `odoo.conf`: Menjembatani sistem dengan server. Di sini kita mengatur filter `dbfilter = ^hilang_temu$` (memaksa akses langsung ke *database*) dan membuka gerbang SMTP Postfix melalui `host.docker.internal:25` agar sistem email aktif.
-- `docker-compose.yml`: Arsitektur *container* server Anda secara keseluruhan.
+**Bahasa & Teknologi yang Digunakan:**
+- **Python (Backend/Logika):** Digunakan untuk membangun Model (struktur tabel *database*) dan mengatur logika bisnis.
+- **XML (Frontend/Struktur Visual):** Digunakan sebagai *markup language* untuk membangun kerangka tata letak antarmuka pengguna (*form*, tabel, *kanban*).
+- **PostgreSQL (Database Server):** Sistem manajemen *database* relasional yang menyimpan seluruh data yang diproses oleh Python.
+- **SCSS/CSS & Bootstrap (Desain UI):** Digunakan untuk memberikan penataan visual (*styling*) agar antarmuka aplikasi menjadi responsif (*mobile-friendly*).
 
 ---
 
-## 3. Kapabilitas Infrastruktur Saat Ini
-Sebagai sebuah sistem yang utuh, modul ini telah dilengkapi dengan arsitektur infrastruktur tingkat lanjut:
-1. **Odoo Database Router:** Menggunakan aturan `dbfilter` di `.conf` untuk memaksa koneksi langsung ke *database* utama secara otomatis.
-2. **Integrated Mail Gateway:** Penyatuan sistem email Odoo dengan SMTP Host menggunakan `host.docker.internal:25`, memungkinkan pengiriman email notifikasi dan tautan otentikasi.
-3. **Responsive UI Architecture:** Mengimplementasikan kerangka elemen antarmuka yang sangat responsif (*mobile-friendly*) menggunakan struktur *wrapper* XML dan aturan elastisitas SCSS yang menyesuaikan otomatis di seluruh perangkat.
+## 2. Membedah Anatomi Folder Modul (Arsitektur MVC)
 
-*Catatan: Dokumen ini merangkum arsitektur pemrograman Odoo dan sistem internal modul.*
+Sebagai sistem berbasis MVC, modul ini memiliki struktur direktori yang memisahkan tugas pengolahan data, tampilan, dan logika rute.
+
+### A. MODEL (Direktori: `models/`)
+*Fungsi: Mendefinisikan tabel di database dan logika bisnis (Backend).*
+Ditulis murni dalam bahasa Python. File di dalam direktori ini otomatis dikonversi oleh ORM Odoo menjadi tabel-tabel di dalam PostgreSQL.
+- **`found_item.py`**: Mendefinisikan tabel barang temuan. Menyimpan kolom-kolom seperti nama barang, foto, lokasi ditemukan, dan tanggal penemuan.
+- **`lost_claim.py`**: Mendefinisikan tabel untuk mencatat laporan *user* yang kehilangan barang.
+- **`item_claim_request.py`**: Merupakan tabel transaksional penghubung antara pihak yang kehilangan (*Claimer*) dengan barang temuan. Menangani logika status persetujuan klaim: *Draft* (menunggu), *Approved* (disetujui), atau *Rejected* (ditolak).
+- **`item_tag.py`**: Tabel relasional sederhana untuk mengkategorikan barang (contoh: "Elektronik", "Dompet", "Dokumen").
+
+### B. VIEW (Direktori: `views/`)
+*Fungsi: Antarmuka yang dilihat dan berinteraksi langsung dengan pengguna (Frontend).*
+Ditulis dalam bahasa XML. Direktori ini bertugas mengambil data dari Model untuk ditampilkan ke layar pengguna. Modul ini memanfaatkan 3 bentuk tata letak utama Odoo:
+1. **Tree View (List):** Menampilkan data berbentuk daftar baris dan kolom.
+2. **Form View:** Menampilkan lembar kerja detail untuk menginput atau mengedit data suatu barang secara spesifik.
+3. **Kanban View:** Menampilkan data berbentuk kartu-kartu visual (seperti papan pengumuman), sangat interaktif untuk melihat daftar barang beserta gambarnya.
+- *Catatan Khusus:* Terdapat file `login_templates.xml` di mana struktur elemen UI dimodifikasi menggunakan *class* Bootstrap (`mx-auto`, `p-3`, `w-100`) agar portal halaman publik seperti reset password bersifat responsif di layar ponsel.
+
+### C. CONTROLLER (Direktori: `controllers/`)
+*Fungsi: Jembatan Routing URL Web Publik.*
+Jika direktori `views/` biasanya digunakan untuk halaman admin internal (*backend*), direktori `controllers/` (Python) menangkap permintaan (*request*) dari peramban (*browser*) untuk merender halaman *website* publik (Portal). *Controller* akan menjembatani Model menuju *template* web (QWeb/XML).
+
+---
+
+## 3. Komponen Krusial Lainnya
+
+### File Jantung Modul: `__manifest__.py`
+File ini adalah deklarasi identitas utama dari modul. Saat proses instalasi sistem, Odoo akan membaca file ini terlebih dahulu. Isinya mencakup:
+- Identitas modul (nama, deskripsi, *author*, versi).
+- **Dependencies:** Modul-modul prasyarat yang wajib terpasang agar modul ini dapat berjalan (contoh: modul `base`, `mail`).
+- **Data (Views & Security):** Daftar absolut *file* XML yang harus dimuat oleh mesin Odoo secara berurutan.
+
+### Tata Kelola Hak Akses: `security/ir.model.access.csv`
+File fundamental untuk sistem **Security / ACL (Access Control List)**. File ini mendefinisikan batas hak prerogatif setiap kelompok pengguna (Admin, Staf, Mahasiswa). Di file inilah sistem diinstruksikan tabel mana yang boleh di-Read (Baca), Write (Tulis), Create (Buat), atau Unlink (Hapus) oleh kelompok *user* tertentu guna mencegah manipulasi data ilegal.
+
+---
+
+## 4. Kapabilitas Infrastruktur Ekstra
+Sebagai sebuah sistem yang utuh, modul ini juga didukung oleh arsitektur infrastruktur tingkat lanjut di tingkat Server (Linux/Docker):
+1. **Odoo Database Router:** Menggunakan aturan `dbfilter` di `odoo.conf` untuk memaksa *routing* langsung ke *database* utama secara otomatis.
+2. **Integrated Mail Gateway:** Penyatuan sistem email Odoo dengan Postfix (SMTP Host) menggunakan `host.docker.internal:25`, memungkinkan pengiriman email notifikasi dan reset password.
+3. **Responsive UI Architecture:** Mengimplementasikan kerangka antarmuka menggunakan aturan elastisitas SCSS pada file statis (`static/src/scss/login.scss`) yang menyesuaikan otomatis di seluruh ukuran perangkat genggam.
