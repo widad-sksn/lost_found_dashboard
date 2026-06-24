@@ -9,7 +9,6 @@ Modul ERP berbasis **Odoo 17** untuk manajemen pelaporan barang hilang dan penem
 2. [Arsitektur Sistem (MVC)](#2-arsitektur-sistem-mvc)
 3. [Struktur Direktori & Penjelasan File](#3-struktur-direktori--penjelasan-file)
 4. [Administrasi Sistem](#4-administrasi-sistem-server-cicd--monitoring)
-5. [Cara Menjalankan di Lokal](#5-cara-menjalankan-di-lokal-untuk-developer)
 
 ---
 
@@ -277,6 +276,100 @@ Seluruh infrastruktur server dijalankan menggunakan Docker Compose yang mengorke
 
 Catatan: Hanya Nginx yang mengekspos port ke publik (80 & 443). Semua kontainer lainnya berkomunikasi secara internal melalui jaringan Docker.
 
+**Isi lengkap `docker-compose.yml`:**
+```yaml
+version: '3.8'
+
+services:
+  web:
+    image: odoo:17.0
+    container_name: odoo_web
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:8069:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      - ../:/mnt/extra-addons/lost_found_dashboard
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - HOST=db
+      - USER=${POSTGRES_USER}
+      - PASSWORD=${POSTGRES_PASSWORD}
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    container_name: odoo_db
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - web
+      - grafana
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:
+  prometheus_data:
+  grafana_data:
+```
+
+Penjelasan konfigurasi kunci:
+- `127.0.0.1:8069:8069` → Odoo hanya bisa diakses dari localhost (Nginx), **bukan** dari luar server secara langsung. Ini adalah lapisan keamanan tambahan.
+- `extra_hosts: host.docker.internal:host-gateway` → Membuat alias DNS `host.docker.internal` yang mengarah ke IP gateway Docker. Inilah yang memungkinkan Odoo mengirim email ke Postfix di Host.
+- `./config/odoo.conf:/etc/odoo/odoo.conf:ro` → Me-*mount* file konfigurasi lokal ke dalam kontainer. Flag `:ro` berarti *read-only* (kontainer tidak bisa mengubah file ini).
+- `${POSTGRES_USER}` dan `${POSTGRES_PASSWORD}` → Variabel *environment* yang dibaca dari file `.env` di folder `deployment/`.
+- `pid: host` pada Node Exporter → Mengizinkan kontainer melihat seluruh proses di mesin Host, diperlukan agar metrik CPU dan RAM akurat.
+- `'/:/host:ro,rslave'` → Me-*mount* seluruh *filesystem* Host ke dalam kontainer Node Exporter secara *read-only*.
+
 ---
 
 ### C. Reverse Proxy Nginx — HTTPS Redirect & Load Balancing
@@ -452,27 +545,3 @@ Terdapat 3 alasan teknis mengapa proyek ini menggunakan Cloudflare:
 - **Always Use HTTPS:** ON
 - **Proxied (Orange Cloud):** Aktif pada record DNS `lostn-found.web.id` dan `monitor.lostn-found.web.id`
 
----
-
-## 5. Cara Menjalankan di Lokal (Untuk Developer)
-
-### Prasyarat
-- **Odoo 17** sudah terinstal dan berjalan di komputer Anda.
-
-### Langkah 1: Pasang Modul ke Odoo
-1. *Clone* atau *Download* repositori ini.
-2. Pindahkan folder `lost_found_dashboard` ke dalam folder `addons` Odoo 17 Anda.
-   Contoh path di Windows: `C:\Program Files\Odoo 17.0.xxxx\server\odoo\addons\`
-3. *Restart* service Odoo 17 agar mendeteksi modul baru.
-
-### Langkah 2: Restore Database
-1. Buka browser dan akses: `http://localhost:8069/web/database/manager`
-2. Klik tombol **Restore Database**.
-3. Pada kolom **File**, pilih file `hilang_temu_db.sql` dari folder repositori ini.
-4. Pada kolom **Database Name**, ketikkan: `hilang_temu`
-5. Masukkan **Master Password** Odoo Anda.
-6. Klik **Continue** dan tunggu hingga proses *restore* selesai.
-
-### Langkah 3: Selesai!
-1. Buka browser dan akses: `http://localhost:8069`
-2. Login menggunakan akun yang sudah ada di database tersebut.
