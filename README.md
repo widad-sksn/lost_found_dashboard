@@ -1,119 +1,247 @@
+# Smart Lost & Found — Odoo 17 Module
 
-
----
-
-## 1. Konsep Dasar Sistem (Framework Odoo)
-Modul "Lost & Found Dashboard" dibangun menggunakan kerangka kerja (*framework*) **Odoo 17** yang secara fundamental menganut pola arsitektur **MVC (Model-View-Controller)**.
-
-Sistem ini tidak menggunakan *query* SQL manual untuk berinteraksi dengan *database*. Odoo memanfaatkan teknologi **ORM (*Object-Relational Mapping*)**, di mana setiap tabel di *database* direpresentasikan sebagai sebuah Objek (Class) dalam bahasa Python.
-
-**Bahasa & Teknologi yang Digunakan:**
-- **Python (Backend/Logika):** Digunakan untuk membangun Model (struktur tabel *database*) dan mengatur logika bisnis.
-- **XML (Frontend/Struktur Visual):** Digunakan sebagai *markup language* untuk membangun kerangka tata letak antarmuka pengguna (*form*, tabel, *kanban*).
-- **PostgreSQL (Database Server):** Sistem manajemen *database* relasional yang menyimpan seluruh data yang diproses oleh Python.
-- **SCSS/CSS & Bootstrap (Desain UI):** Digunakan untuk memberikan penataan visual (*styling*) agar antarmuka aplikasi menjadi responsif (*mobile-friendly*).
+Modul ERP berbasis **Odoo 17** untuk manajemen pelaporan barang hilang dan penemuan barang di lingkungan kampus. Dilengkapi dengan portal publik responsif, *dark-mode* modern, dukungan dwibahasa (Indonesia & Inggris), serta sistem pencocokan otomatis (*auto-matching*) antara barang hilang dan barang temuan.
 
 ---
 
-## 2. Membedah Anatomi Folder Modul (Arsitektur MVC)
-
-Sebagai sistem berbasis MVC, modul ini memiliki struktur direktori yang memisahkan tugas pengolahan data, tampilan, dan logika rute.
-
-### A. MODEL (Direktori: `models/`)
-*Fungsi: Mendefinisikan tabel di database dan logika bisnis (Backend).*
-Ditulis murni dalam bahasa Python. File di dalam direktori ini otomatis dikonversi oleh ORM Odoo menjadi tabel-tabel di dalam PostgreSQL.
-
-1. **`models/found_item.py` (Tabel Barang Temuan)**
-   - **Tujuan:** Menyimpan data saat seseorang (misal Satpam) menemukan barang di area kampus.
-   - **Isi Kode Penting:** 
-     - Menyimpan `name` (Nama barang), `location` (Dropdown daftar panjang lokasi penemuan dari Gedung A sampai Taman), `date` (Tanggal ditemukan), dan `photo` (Gambar barang).
-     - **Status Barang:** Diatur dengan nilai: *Draft* (Menunggu), *Approved* (Publik), *Rejected* (Ditolak), dan *Done* (Sudah Diklaim).
-     - **Auto-Numbering:** Terdapat fungsi Python `create()` yang otomatis memberikan ID unik seperti `FND/001` setiap kali barang baru diinput.
-
-2. **`models/lost_claim.py` (Tabel Laporan Kehilangan)**
-   - **Tujuan:** Menyimpan laporan dari mahasiswa yang merasa kehilangan barangnya.
-   - **Isi Kode Penting:**
-     - Sama seperti barang temuan, menyimpan nama barang, tanggal hilang, dan lokasi perkiraan hilang.
-     - **Logika Cerdas (Pencocokan Otomatis):** Terdapat fungsi `get_matching_pairs()` yang bertugas membandingkan laporan kehilangan ini dengan daftar barang temuan. Sistem akan memberi "Skor Kecocokan" berdasarkan: Lokasi sama (+40 poin), Kategori Tag sama (+30 poin), dan Kemiripan Nama (+10 poin).
-
-3. **`models/item_claim_request.py` (Tabel Transaksi Klaim)**
-   - **Tujuan:** Jembatan persetujuan. Jika barang yang hilang dan ditemukan dirasa cocok, sistem atau *user* akan membuat tiket permintaan klaim di tabel ini.
-   - **Isi Kode Penting:**
-     - Terdapat kolom `proof_description` di mana *user* harus menyertakan bukti (misal: "Itu dompet saya, di dalamnya ada KTP atas nama Budi").
-     - **Logika Notifikasi:** Saat admin mengklik "Setujui" (`action_approve()`), Python akan memicu sistem untuk mengirimkan email otomatis ke penemu barang dan pengklaim bahwa barang sudah bisa diambil.
-
-### B. VIEW (Direktori: `views/`)
-*Fungsi: Antarmuka yang dilihat dan berinteraksi langsung dengan pengguna (Frontend).*
-Ditulis dalam bahasa XML. Direktori ini bertugas mengambil data dari Model untuk ditampilkan ke layar pengguna. Modul ini memanfaatkan 3 bentuk tata letak utama Odoo:
-1. **Tree View (List):** Menampilkan data berbentuk daftar baris dan kolom.
-2. **Form View:** Menampilkan lembar kerja detail untuk menginput atau mengedit data suatu barang secara spesifik.
-3. **Kanban View:** Menampilkan data berbentuk kartu-kartu visual (seperti papan pengumuman), sangat interaktif untuk melihat daftar barang beserta gambarnya.
-
-**File Krusial UI/UX:**
-- `views/login_templates.xml`: Berisi struktur elemen UI di mana kita telah menginjeksi *class* Bootstrap (`mx-auto`, `p-3`, `w-100`) agar portal halaman publik seperti *reset password* bersifat sangat responsif di layar ponsel (yang tadinya sempat terpotong).
-
-### C. CONTROLLER (Direktori: `controllers/`)
-*Fungsi: Jembatan Routing URL Web Publik.*
-Jika direktori `views/` biasanya digunakan untuk halaman admin internal (*backend*), direktori `controllers/` (Python) menangkap permintaan (*request*) dari peramban (*browser*) untuk merender halaman *website* publik (Portal). *Controller* akan menjembatani data dari Model menuju *template* web (QWeb/XML) agar mahasiswa bisa melihat barang temuan tanpa harus *login* sebagai admin.
+## Daftar Isi
+1. [Teknologi yang Digunakan](#1-teknologi-yang-digunakan)
+2. [Arsitektur Sistem (MVC)](#2-arsitektur-sistem-mvc)
+3. [Struktur Direktori & Penjelasan File](#3-struktur-direktori--penjelasan-file)
+4. [Administrasi Sistem](#4-administrasi-sistem-server-cicd--monitoring)
+5. [Cara Menjalankan di Lokal](#5-cara-menjalankan-di-lokal-untuk-developer)
 
 ---
 
-## 3. Komponen Krusial Lainnya
+## 1. Teknologi yang Digunakan
 
-### File Jantung Modul: `__manifest__.py`
-File ini adalah deklarasi identitas utama dari modul. Berada di akar/luar folder. Saat proses instalasi sistem, Odoo akan membaca file ini terlebih dahulu. Isinya mencakup:
-- Identitas modul (nama: "Smart Lost & Found", versi: 1.0.17).
-- **Dependencies:** Modul-modul bawaan Odoo yang wajib terpasang agar modul ini dapat berjalan (contoh: modul `mail` untuk notifikasi email, `portal` untuk web publik).
-- **Data (Views & Security):** Daftar absolut *file* XML (seperti `views/found_item_views.xml`) yang harus dimuat oleh mesin Odoo secara berurutan saat server dinyalakan.
+| Teknologi | Peran |
+|---|---|
+| **Python 3.10** | Bahasa utama untuk logika bisnis (*backend*), struktur tabel *database* (ORM), dan routing URL |
+| **XML (QWeb)** | *Markup language* untuk membangun antarmuka pengguna Odoo (formulir, tabel, kartu *kanban*, menu) |
+| **PostgreSQL 15** | Sistem manajemen *database* relasional yang menyimpan seluruh data aplikasi |
+| **SCSS / CSS** | Preprosesor *stylesheet* untuk membuat tampilan (*frontend*) responsif dan modern |
+| **Bootstrap 5** | *Framework* CSS untuk tata letak kolom, tombol, dan elemen UI yang responsif di perangkat *mobile* |
+| **JavaScript (OWL)** | Digunakan untuk membangun *dashboard* pencocokan barang secara interaktif di *backend* |
+| **Docker & Docker Compose** | Kontainerisasi seluruh aplikasi (Odoo, PostgreSQL, Nginx, Grafana, Prometheus) di *server* produksi |
+| **Nginx** | *Reverse proxy* web *server* yang meneruskan permintaan *browser* ke kontainer Odoo |
+| **Cloudflare** | *CDN & Reverse Proxy* untuk enkripsi HTTPS (SSL/TLS), perlindungan DDoS, dan penyembunyian IP *server* |
+| **GitHub Actions** | Platform CI/CD untuk otomatisasi pengujian kode dan *deployment* ke *server* |
+| **Grafana & Prometheus** | Sistem *monitoring* kesehatan *server* (CPU, RAM, jaringan) secara *real-time* |
 
-### Tata Kelola Hak Akses: `security/ir.model.access.csv`
-File fundamental untuk sistem **Security / ACL (Access Control List)**. File ini mendefinisikan batas hak prerogatif setiap kelompok pengguna. Di file inilah sistem diinstruksikan tabel mana yang boleh di-Read (Baca), Write (Tulis), Create (Buat), atau Unlink (Hapus) oleh kelompok *user* tertentu guna mencegah mahasiswa sembarangan menghapus data barang temuan milik pihak keamanan kampus.
+Odoo menggunakan teknologi **ORM (*Object-Relational Mapping*)**, di mana setiap tabel di *database* direpresentasikan sebagai Class Python. Dengan ORM, kita tidak perlu menulis *query* SQL manual — cukup mendefinisikan `fields` di Python, dan Odoo otomatis membuatkan tabel beserta kolomnya di PostgreSQL.
+
+---
+
+## 2. Arsitektur Sistem (MVC)
+
+Modul ini menganut pola arsitektur **Model-View-Controller (MVC)** yang membagi sistem menjadi 3 lapisan terpisah:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                      BROWSER                            │
+│          (Mahasiswa / Admin / Satpam)                    │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+          ┌────────────▼────────────┐
+          │   CONTROLLER (Python)   │  ← Menangkap URL request
+          │   controllers/main.py   │
+          └────────────┬────────────┘
+                       │
+        ┌──────────────▼──────────────┐
+        │       MODEL (Python)        │  ← Logika bisnis & ORM
+        │   models/found_item.py      │
+        │   models/lost_claim.py      │
+        │   models/item_claim_request.py│
+        └──────────────┬──────────────┘
+                       │
+          ┌────────────▼────────────┐
+          │     VIEW (XML/QWeb)     │  ← Tampilan antarmuka
+          │   views/*_views.xml     │
+          │   views/portal_templates│
+          └─────────────────────────┘
+```
+
+- **Model** → Otak sistem. Mendefinisikan struktur tabel dan logika bisnis.
+- **View** → Wajah sistem. Menampilkan data ke layar pengguna.
+- **Controller** → Jembatan. Menghubungkan URL *browser* dengan Model dan View.
+
+---
+
+## 3. Struktur Direktori & Penjelasan File
+
+```
+lost_found_dashboard/
+│
+├── __manifest__.py              # Identitas & registrasi modul
+├── __init__.py                  # Inisialisasi package Python
+│
+├── models/                      # MODEL — Struktur database & logika bisnis
+│   ├── __init__.py
+│   ├── found_item.py            # Tabel barang temuan
+│   ├── lost_claim.py            # Tabel laporan kehilangan + Auto-Match
+│   ├── item_claim_request.py    # Tabel transaksi klaim barang
+│   └── item_tag.py              # Tabel kategori/label barang
+│
+├── views/                       # VIEW — Antarmuka pengguna (XML)
+│   ├── menu_views.xml           # Definisi menu navigasi sidebar
+│   ├── found_item_views.xml     # Form, List, Kanban barang temuan
+│   ├── lost_claim_views.xml     # Form, List, Kanban laporan hilang
+│   ├── item_claim_request_views.xml # Form & List permintaan klaim
+│   ├── portal_templates.xml     # Halaman portal publik (website)
+│   └── login_templates.xml      # Kustomisasi halaman login & reset password
+│
+├── controllers/                 # CONTROLLER — Routing URL publik
+│   ├── __init__.py
+│   ├── main.py                  # Route halaman portal publik
+│   └── api.py                   # Endpoint API untuk dashboard
+│
+├── security/                    # Hak akses & aturan keamanan data
+│   ├── security.xml             # Definisi grup pengguna
+│   ├── security_rules.xml       # Record rules (pembatasan data per user)
+│   └── ir.model.access.csv      # ACL: hak CRUD per grup pengguna
+│
+├── static/src/                  # Aset statis (CSS, JS, gambar)
+│   ├── scss/
+│   │   ├── login.scss           # Styling halaman login (responsif mobile)
+│   │   ├── portal_theme.scss    # Tema portal publik (dark-mode)
+│   │   ├── backend_theme.scss   # Tema backend admin
+│   │   └── item_matching_dashboard.scss  # Styling dashboard pencocokan
+│   ├── js/
+│   │   └── item_matching_dashboard.js    # Logika dashboard OWL component
+│   ├── xml/
+│   │   └── item_matching_dashboard.xml   # Template dashboard pencocokan
+│   └── img/                     # Gambar dan ikon
+│
+├── data/                        # Data bawaan modul
+│   ├── mail_templates.xml       # Template email notifikasi otomatis
+│   └── student_users.xml        # Data user mahasiswa awal
+│
+├── i18n/                        # File terjemahan (dwibahasa)
+│
+├── deployment/                  # Konfigurasi deployment server
+│   ├── config/
+│   │   └── odoo.conf            # Konfigurasi Odoo (DB filter, SMTP)
+│   ├── nginx/
+│   │   └── nginx.conf           # Konfigurasi reverse proxy & HTTPS redirect
+│   ├── prometheus/
+│   │   └── prometheus.yml       # Konfigurasi pengumpul metrik server
+│   ├── ssl/                     # Sertifikat SSL (jika ada)
+│   └── docker-compose.yml       # Orkestrasi semua container Docker
+│
+└── .github/workflows/
+    └── ci-cd.yml                # Pipeline CI/CD GitHub Actions
+```
+
+### Detail File-File Kunci
+
+#### `__manifest__.py` — Identitas Modul
+File pertama yang dibaca Odoo saat instalasi. Berisi:
+- **Nama modul:** "Smart Lost & Found"
+- **Versi:** 1.0.17
+- **Dependencies:** `base`, `mail`, `portal`, `website`, `auth_signup`
+- **Data:** Daftar urutan file XML yang harus dimuat saat server dinyalakan
+- **Assets:** Registrasi file SCSS, JS, dan XML untuk frontend dan backend
+
+#### `models/found_item.py` — Tabel Barang Temuan
+- Menyimpan: nama barang (`name`), lokasi penemuan (`location` — dropdown 80+ lokasi kampus), tanggal (`date`), foto (`photo`), dan status.
+- **Status alur:** `Draft` → `Approved` → `Done` (Diklaim)
+- **Auto-Numbering:** Fungsi `create()` otomatis memberi ID unik format `FND/001`, `FND/002`, dst.
+- **Email Otomatis:** Setiap perubahan status memicu pengiriman email notifikasi ke pelapor.
+
+#### `models/lost_claim.py` — Tabel Laporan Kehilangan
+- Menyimpan data dari mahasiswa yang kehilangan barang.
+- **Fitur Unggulan — Algoritma Auto-Match (`get_matching_pairs()`):**
+  Fungsi ini membandingkan setiap laporan kehilangan dengan setiap barang temuan, lalu memberikan *Skor Kecocokan* berdasarkan:
+  - Lokasi sama: **+40 poin**
+  - Kategori/Tag sama: **+30 poin**
+  - Rentang waktu ≤ 7 hari: **+20 poin**
+  - Kemiripan nama barang: **+10 poin**
+  Hasil pencocokan diurutkan dari skor tertinggi ke terendah.
+
+#### `models/item_claim_request.py` — Tabel Transaksi Klaim
+- Jembatan persetujuan antara pengklaim dan barang.
+- Kolom `proof_description`: pengguna wajib menyertakan bukti kepemilikan.
+- Kolom `photo_proof`: foto bukti pendukung.
+- **Logika `action_approve()`:** Saat admin menyetujui klaim, Python akan:
+  1. Mengubah status klaim menjadi "Diterima"
+  2. Mengirim email ke pengklaim
+  3. Mengirim email ke penemu asli
+  4. Mengubah status barang temuan menjadi "Done"
+
+#### `models/item_tag.py` — Tabel Kategori Barang
+- Tabel sederhana untuk label/tag barang (misal: "Elektronik", "Dokumen", "Dompet").
+- Memiliki atribut `color` untuk pemberian warna pada *badge* tag di tampilan *kanban*.
+
+#### `security/ir.model.access.csv` — Hak Akses (ACL)
+- Mengatur hak CRUD (*Create, Read, Update, Delete*) per grup pengguna.
+- Contoh: Mahasiswa hanya bisa *Read* (melihat), Admin/Satpam bisa *Create*, *Update*, dan *Delete*.
+
+#### `deployment/config/odoo.conf` — Konfigurasi Server Odoo
+- `dbfilter = ^hilang_temu$` → Memaksa Odoo langsung terhubung ke database utama tanpa halaman pilih database.
+- `smtp_server = host.docker.internal` & `smtp_port = 25` → Menjembatani Odoo (dalam Docker) ke Postfix (di Host Ubuntu) agar email bisa terkirim.
+
+#### `deployment/nginx/nginx.conf` — Reverse Proxy & HTTPS
+- Meneruskan request dari port 80 ke kontainer Odoo (port 8069) dan Grafana (port 3000).
+- Mengecek header `X-Forwarded-Proto` dari Cloudflare: jika bukan `https`, paksa redirect ke `https://`.
+- Mendukung WebSocket untuk fitur *live chat/bus* Odoo.
+
+#### `.github/workflows/ci-cd.yml` — Pipeline CI/CD
+- **Job `test` (Continuous Integration):**
+  1. Linting Python dengan `flake8` — mendeteksi syntax error
+  2. Uji kompilasi: menjalankan Docker Odoo 17 + PostgreSQL, lalu menginstal modul secara virtual
+- **Job `deploy` (Continuous Deployment):**
+  - Hanya berjalan jika `test` berhasil 100%
+  - SSH ke server → `git pull` → `docker compose restart web`
 
 ---
 
 ## 4. Administrasi Sistem (Server, CI/CD & Monitoring)
-Selain penulisan *source code* Odoo, kelancaran aplikasi ini juga ditopang oleh administrasi *server* Ubuntu dan Docker tingkat lanjut. Berikut dokumentasi pendukungnya:
 
-### A. Konfigurasi Mail Server (Notifikasi Email)
-*Fungsi: Memastikan Odoo bisa mengirim email "Reset Password" dan pemberitahuan klaim barang ke mahasiswa.*
+### A. Mail Server (Notifikasi Email)
 - **Letak File:** `deployment/config/odoo.conf`
-- **Konfigurasi Teknis:** Karena Odoo terisolasi di dalam *container* Docker, sementara aplikasi pengirim email (Postfix) berada di sistem utama (Host Ubuntu), kita harus membuat jembatan komunikasi jaringan. Kita menambahkan parameter:
-  ```ini
-  smtp_server = host.docker.internal
-  smtp_port = 25
-  ```
-  Sistem ini berfungsi untuk meneruskan (*forward*) semua paket email dari dalam *container* Odoo keluar menuju mesin *Host* Ubuntu Anda.
+- Odoo terisolasi di dalam kontainer Docker, sementara Postfix (pengirim email) berjalan di Host Ubuntu. Untuk menghubungkannya, kita menggunakan *gateway* Docker `host.docker.internal:25` yang meneruskan semua paket email keluar dari kontainer menuju Host.
 
-### B. Otomatisasi CI/CD (GitHub Actions)
-*Fungsi: Memastikan kode yang di-push ke GitHub diuji dulu secara otomatis sebelum di-deploy ke server produksi.*
-- **Letak File CI/CD:** `.github/workflows/ci-cd.yml` (di dalam repositori kode lokal/GitHub).
-- **Tahap Pengujian / *Continuous Integration* (Job `test`):**
-  1. **Linting (`flake8`):** Robot GitHub akan memindai *typo* atau *error syntax* penulisan pada *file-file* Python (`.py`).
-  2. **Uji Kompilasi Odoo:** Robot akan menciptakan sebuah lingkungan *server virtual* singkat yang berisi Docker PostgreSQL & Odoo 17, lalu memasang modul `lost_found_dashboard` Anda di sana. Jika instalasinya menyebabkan *database crash*, kode akan ditolak.
-- **Tahap Rilis / *Continuous Deployment* (Job `deploy`):**
-  - Menggunakan modul `appleboy/ssh-action` untuk melakukan *remote login* secara otomatis ke *server* Ubuntu Anda.
-  - Skrip perintah (`bash`) yang dijalankan oleh robot secara otomatis di dalam *server* produksi:
-    1. `cd /opt/lost_found_dashboard`
-    2. `git pull origin main` (Menarik kode terbaru yang sudah terverifikasi)
-    3. `cd deployment`
-    4. `docker compose restart web` (Me-restart kontainer Odoo untuk mengaplikasikan *update*).
-- **Penyesuaian Keamanan SSH Server:**
-  - **Letak File:** `/etc/ssh/sshd_config.d/60-cloudimg-settings.conf` (di dalam *server* Linux).
-  - Agar robot CI/CD GitHub Action bisa masuk ke server Anda menggunakan kredensial *password* otomatis, pengaturan `PasswordAuthentication no` telah diubah secara permanen menjadi `PasswordAuthentication yes`.
+### B. CI/CD Pipeline (GitHub Actions)
+- **Letak File:** `.github/workflows/ci-cd.yml`
+- Setiap `git push` ke branch `main` akan memicu robot GitHub untuk:
+  1. Memindai kualitas kode Python (linting)
+  2. Menguji instalasi modul di lingkungan virtual (Docker)
+  3. Jika lulus → deploy otomatis ke server via SSH
+- **Penyesuaian SSH:** File `/etc/ssh/sshd_config.d/60-cloudimg-settings.conf` di server diubah menjadi `PasswordAuthentication yes` agar robot CI/CD bisa login.
 
-### C. Sistem Monitoring (Grafana & Prometheus)
-*Fungsi: Memantau kesehatan dan beban *server* (CPU, RAM, Jaringan) secara visual dan realtime.*
-- **Alur Kerja:** Layanan *Node Exporter* ditanam di *server* untuk membaca suhu dan metrik mesin. Data ini dikumpulkan oleh *database* runtun waktu bernama *Prometheus*. Terakhir, *Grafana* bertugas menggambar data tersebut menjadi grafik interaktif yang bisa Anda akses di `http://monitor.lostn-found.web.id`.
-- **Injeksi Datasource Grafana:** Sebelumnya Grafana selalu menampilkan masalah "No Data". Untuk memperbaikinya, telah dilakukan injeksi *script* berbasis API JSON yang secara paksa mengunci *Datasource* pada *dashboard* utama ("Node Exporter Full") langsung menuju *Unique ID* (UID) mutlak milik Prometheus (`efq30lnjdnnk0e`), sehingga grafik kini menyala dengan sempurna secara presisi.
+### C. Monitoring (Grafana & Prometheus)
+- **URL Akses:** `https://monitor.lostn-found.web.id`
+- **Alur:** Node Exporter (pembaca metrik mesin) → Prometheus (pengumpul data) → Grafana (visualisasi grafik CPU, RAM, jaringan)
+- Dashboard "Node Exporter Full" di-*hardcode* datasource-nya ke UID Prometheus (`efq30lnjdnnk0e`) agar grafik langsung menyala tanpa konfigurasi manual.
 
-### D. Keamanan Jaringan & Enkripsi (Arsitektur Cloudflare)
-*Fungsi: Melindungi server dari serangan siber (DDoS) dan mengenkripsi data sensitif (password mahasiswa) saat login.*
-Jika dosen bertanya, *"Mengapa menggunakan Cloudflare dan tidak langsung menggunakan IP Server?"*, berikut adalah 3 alasan teknisnya:
-1. **Enkripsi HTTPS Instan (SSL/TLS):** Secara *default*, sistem Odoo kita hanya memancarkan lalu lintas HTTP (tanpa enkripsi) melalui port 80 di web server Nginx lokal. Cloudflare bertindak sebagai "Tameng SSL" di depan *server* yang membungkus trafik tersebut menjadi HTTPS (Gembok Hijau). Tanpa ini, *password* dan data pribadi mahasiswa sangat rawan disadap oleh pihak ketiga.
-2. **Reverse Proxy & Penyembunyian IP:** IP publik asli dari *server* Ubuntu kita disembunyikan di balik *server* Cloudflare. Ini sangat vital untuk mencegah peretas (hacker) menyerang atau mengirim *traffic spam* (DDoS) ke *server* kampus secara langsung.
-3. **Smart HTTP to HTTPS Redirection:** Nginx kita telah diprogram secara khusus untuk berkolaborasi dengan *header* dari Cloudflare. Jika ada *user* yang mengetik alamat `http://` biasa, sistem Nginx akan membaca *header* `X-Forwarded-Proto` dari Cloudflare dan secara paksa membelokkan *user* tersebut ke jalur `https://` yang aman.
+### D. Keamanan Jaringan (Cloudflare)
+Terdapat 3 alasan teknis mengapa proyek ini menggunakan Cloudflare:
+1. **Enkripsi HTTPS (SSL/TLS):** Nginx internal hanya memancarkan HTTP (port 80). Cloudflare membungkus trafik tersebut menjadi HTTPS (gembok hijau), sehingga *password* dan data mahasiswa terenkripsi aman dari penyadapan.
+2. **Reverse Proxy & Penyembunyian IP:** IP publik server Ubuntu disembunyikan di balik jaringan Cloudflare, mencegah serangan DDoS langsung ke server kampus.
+3. **HTTP → HTTPS Redirect:** Nginx diprogram untuk membaca header `X-Forwarded-Proto` dari Cloudflare. Jika pengguna mengakses via `http://`, Nginx secara paksa membelokkan ke `https://`.
 
+---
 
-<p align="center">
-  <img src="https://statik.tempo.co/data/2025/10/24/id_1436958/1436958_720.jpg" width="500">
-</p>
+## 5. Cara Menjalankan di Lokal (Untuk Developer)
+
+### Prasyarat
+- **Odoo 17** sudah terinstal dan berjalan di komputer Anda.
+
+### Langkah 1: Pasang Modul ke Odoo
+1. *Clone* atau *Download* repositori ini.
+2. Pindahkan folder `lost_found_dashboard` ke dalam folder `addons` Odoo 17 Anda.
+   Contoh path di Windows: `C:\Program Files\Odoo 17.0.xxxx\server\odoo\addons\`
+3. *Restart* service Odoo 17 agar mendeteksi modul baru.
+
+### Langkah 2: Restore Database
+1. Buka browser dan akses: `http://localhost:8069/web/database/manager`
+2. Klik tombol **Restore Database**.
+3. Pada kolom **File**, pilih file `hilang_temu_db.sql` dari folder repositori ini.
+4. Pada kolom **Database Name**, ketikkan: `hilang_temu`
+5. Masukkan **Master Password** Odoo Anda.
+6. Klik **Continue** dan tunggu hingga proses *restore* selesai.
+
+### Langkah 3: Selesai!
+1. Buka browser dan akses: `http://localhost:8069`
+2. Login menggunakan akun yang sudah ada di database tersebut.
