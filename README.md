@@ -1,4 +1,7 @@
-﻿# Lost & Found Dashboard (Odoo 17)
+tes cicd
+ 
+ 
+ # Lost & Found Dashboard (Odoo 17)
 
 Modul Odoo 17 untuk manajemen pelaporan barang hilang dan penemuan barang. Modul ini dilengkapi dengan antarmuka portal publik yang responsif, *dark-mode* modern, serta dukungan dwibahasa (Bahasa Indonesia & Bahasa Inggris).
 
