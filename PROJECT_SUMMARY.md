@@ -1,6 +1,4 @@
-# Materi Presentasi Sistem Odoo: Modul "Lost & Found Dashboard"
 
-Dokumen ini disusun sebagai panduan teknis bagi *programmer* untuk menjelaskan anatomi, arsitektur, dan logika pemrograman yang digunakan di balik modul `lost_found_dashboard`. Dokumen ini sangat cocok digunakan sebagai acuan saat presentasi teknis di hadapan dosen atau teman sejawat yang awam.
 
 ---
 
