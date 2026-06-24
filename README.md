@@ -545,3 +545,7 @@ Terdapat 3 alasan teknis mengapa proyek ini menggunakan Cloudflare:
 - **Always Use HTTPS:** ON
 - **Proxied (Orange Cloud):** Aktif pada record DNS `lostn-found.web.id` dan `monitor.lostn-found.web.id`
 
+<p align="center">
+  <img src="https://statik.tempo.co/data/2025/10/24/id_1436958/1436958_720.jpg" width="500">
+</p>
+
