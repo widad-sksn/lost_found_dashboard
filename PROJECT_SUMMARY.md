@@ -71,8 +71,37 @@ File fundamental untuk sistem **Security / ACL (Access Control List)**. File ini
 
 ---
 
-## 4. Kapabilitas Infrastruktur Ekstra
-Sebagai sebuah sistem yang utuh, modul ini juga didukung oleh arsitektur infrastruktur tingkat lanjut di tingkat Server (Linux/Docker):
-1. **Odoo Database Router:** Menggunakan aturan `dbfilter` di `odoo.conf` untuk memaksa *routing* langsung ke *database* utama secara otomatis.
-2. **Integrated Mail Gateway:** Penyatuan sistem email Odoo dengan Postfix (SMTP Host) menggunakan *gateway* `host.docker.internal:25`, memungkinkan pengiriman email notifikasi dan *reset password* tanpa masalah.
-3. **Responsive UI Architecture:** Mengimplementasikan kerangka antarmuka menggunakan aturan elastisitas SCSS pada file statis (`static/src/scss/login.scss`) yang menyesuaikan ukuran komponen agar tidak bertabrakan saat diakses di perangkat seluler berlayar kecil.
+## 4. Administrasi Sistem (Server, CI/CD & Monitoring)
+Selain penulisan *source code* Odoo, kelancaran aplikasi ini juga ditopang oleh administrasi *server* Ubuntu dan Docker tingkat lanjut. Berikut dokumentasi pendukungnya:
+
+### A. Konfigurasi Mail Server (Notifikasi Email)
+*Fungsi: Memastikan Odoo bisa mengirim email "Reset Password" dan pemberitahuan klaim barang ke mahasiswa.*
+- **Letak File:** `deployment/config/odoo.conf`
+- **Konfigurasi Teknis:** Karena Odoo terisolasi di dalam *container* Docker, sementara aplikasi pengirim email (Postfix) berada di sistem utama (Host Ubuntu), kita harus membuat jembatan komunikasi jaringan. Kita menambahkan parameter:
+  ```ini
+  smtp_server = host.docker.internal
+  smtp_port = 25
+  ```
+  Sistem ini berfungsi untuk meneruskan (*forward*) semua paket email dari dalam *container* Odoo keluar menuju mesin *Host* Ubuntu Anda.
+
+### B. Otomatisasi CI/CD (GitHub Actions)
+*Fungsi: Memastikan kode yang di-push ke GitHub diuji dulu secara otomatis sebelum di-deploy ke server produksi.*
+- **Letak File CI/CD:** `.github/workflows/ci-cd.yml` (di dalam repositori kode lokal/GitHub).
+- **Tahap Pengujian / *Continuous Integration* (Job `test`):**
+  1. **Linting (`flake8`):** Robot GitHub akan memindai *typo* atau *error syntax* penulisan pada *file-file* Python (`.py`).
+  2. **Uji Kompilasi Odoo:** Robot akan menciptakan sebuah lingkungan *server virtual* singkat yang berisi Docker PostgreSQL & Odoo 17, lalu memasang modul `lost_found_dashboard` Anda di sana. Jika instalasinya menyebabkan *database crash*, kode akan ditolak.
+- **Tahap Rilis / *Continuous Deployment* (Job `deploy`):**
+  - Menggunakan modul `appleboy/ssh-action` untuk melakukan *remote login* secara otomatis ke *server* Ubuntu Anda.
+  - Skrip perintah (`bash`) yang dijalankan oleh robot secara otomatis di dalam *server* produksi:
+    1. `cd /opt/lost_found_dashboard`
+    2. `git pull origin main` (Menarik kode terbaru yang sudah terverifikasi)
+    3. `cd deployment`
+    4. `docker compose restart web` (Me-restart kontainer Odoo untuk mengaplikasikan *update*).
+- **Penyesuaian Keamanan SSH Server:**
+  - **Letak File:** `/etc/ssh/sshd_config.d/60-cloudimg-settings.conf` (di dalam *server* Linux).
+  - Agar robot CI/CD GitHub Action bisa masuk ke server Anda menggunakan kredensial *password* otomatis, pengaturan `PasswordAuthentication no` telah diubah secara permanen menjadi `PasswordAuthentication yes`.
+
+### C. Sistem Monitoring (Grafana & Prometheus)
+*Fungsi: Memantau kesehatan dan beban *server* (CPU, RAM, Jaringan) secara visual dan realtime.*
+- **Alur Kerja:** Layanan *Node Exporter* ditanam di *server* untuk membaca suhu dan metrik mesin. Data ini dikumpulkan oleh *database* runtun waktu bernama *Prometheus*. Terakhir, *Grafana* bertugas menggambar data tersebut menjadi grafik interaktif yang bisa Anda akses di `http://monitor.lostn-found.web.id`.
+- **Injeksi Datasource Grafana:** Sebelumnya Grafana selalu menampilkan masalah "No Data". Untuk memperbaikinya, telah dilakukan injeksi *script* berbasis API JSON yang secara paksa mengunci *Datasource* pada *dashboard* utama ("Node Exporter Full") langsung menuju *Unique ID* (UID) mutlak milik Prometheus (`efq30lnjdnnk0e`), sehingga grafik kini menyala dengan sempurna secara presisi.
