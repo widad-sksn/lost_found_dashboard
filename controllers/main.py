@@ -21,12 +21,14 @@ class LostFoundPortal(CustomerPortal):
         found_items = request.env['found.item'].sudo().search([('status', '=', 'approved')], limit=4, order='create_date desc')
         
         found_count = request.env['found.item'].sudo().search_count([('status', '=', 'approved')])
+        lost_count = request.env['lost.claim'].sudo().search_count([('status', '=', 'approved')])
         user_count = request.env['res.users'].sudo().search_count([]) # Count all users including students
         
         values = {
             'lost_items': lost_items,
             'found_items': found_items,
             'found_count': found_count,
+            'lost_count': lost_count,
             'user_count': user_count,
         }
         return request.render("lost_found_dashboard.custom_portal_home", values)

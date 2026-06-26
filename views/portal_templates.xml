@@ -128,6 +128,15 @@
                             
                             <div class="hero-stats-wrapper d-flex align-items-center text-white">
                                 <div class="d-flex align-items-center me-5">
+                                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF6A00 0%, #EE0979 100%) !important;">
+                                        <i class="fa fa-search text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="mb-0 font-weight-bold"><t t-out="lost_count"/>+</h4>
+                                        <small class="text-white-50" style="font-size: 0.7rem;">Lost Items</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center me-5">
                                     <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: var(--grad-primary) !important;">
                                         <i class="fa fa-cube text-white"></i>
                                     </div>
