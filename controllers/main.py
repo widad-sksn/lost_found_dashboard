@@ -20,8 +20,8 @@ class LostFoundPortal(CustomerPortal):
         lost_items = request.env['lost.claim'].sudo().search([('status', '=', 'approved')], limit=4, order='create_date desc')
         found_items = request.env['found.item'].sudo().search([('status', '=', 'approved')], limit=4, order='create_date desc')
         
-        found_count = request.env['found.item'].sudo().search_count([])
-        user_count = request.env['res.users'].sudo().search_count([('share', '=', False)]) # Count internal users or all? Just general users.
+        found_count = request.env['found.item'].sudo().search_count([('status', '=', 'approved')])
+        user_count = request.env['res.users'].sudo().search_count([]) # Count all users including students
         
         values = {
             'lost_items': lost_items,
