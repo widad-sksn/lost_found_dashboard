@@ -110,7 +110,7 @@
     </template>
 
     <!-- Halaman Beranda Kustom / Dashboard Hilang Temu -->
-    <template id="custom_portal_home_v2" name="Beranda Hilang Temu">
+    <template id="custom_portal_home" name="Beranda Hilang Temu">
         <t t-call="lost_found_dashboard.custom_lost_found_layout">
             <div id="wrap" class="o_portal" style="min-height: 100vh; padding: 40px 0;">
                 <div class="container">
