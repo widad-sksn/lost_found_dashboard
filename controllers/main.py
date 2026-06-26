@@ -31,7 +31,7 @@ class LostFoundPortal(CustomerPortal):
             'lost_count': lost_count,
             'user_count': user_count,
         }
-        return request.render("lost_found_dashboard.custom_portal_home", values)
+        return request.render("lost_found_dashboard.custom_portal_home_v2", values)
 
     @http.route(['/my/lost_items', '/my/lost_items/page/<int:page>'], type='http', auth="user", website=True)
     def portal_my_lost_items(self, page=1, **kw):
