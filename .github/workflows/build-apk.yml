@@ -26,8 +26,8 @@ jobs:
       - name: Make Gradle Wrapper Executable
         run: |
           cd android_app
-          # Generate a gradle wrapper since we didn't commit one
-          gradle wrapper
+          # Generate a gradle wrapper with version 8.0 to be compatible with AGP 8.0.2
+          gradle wrapper --gradle-version 8.0
           chmod +x gradlew
           
       - name: Build Debug APK
