@@ -23,17 +23,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Make Gradle Wrapper Executable
-        run: |
-          cd android_app
-          # Generate a gradle wrapper with version 8.0 to be compatible with AGP 8.0.2
-          gradle wrapper --gradle-version 8.0
-          chmod +x gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.0'
           
       - name: Build Debug APK
         run: |
           cd android_app
-          ./gradlew assembleDebug
+          gradle assembleDebug
           
       - name: Upload APK
         uses: actions/upload-artifact@v4
