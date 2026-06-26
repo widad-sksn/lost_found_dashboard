@@ -19,7 +19,7 @@
                                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                                             <div class="mb-3 field-login">
-                                                <label for="login" class="form-label">NIM</label>
+                                                <label for="login" class="form-label">NIM / Email</label>
                                                 <input type="text" placeholder="" name="login" t-att-value="login" id="login" t-attf-class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
                                             </div>
 
