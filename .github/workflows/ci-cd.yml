@@ -68,8 +68,14 @@ jobs:
             echo "Pulling latest changes from GitHub..."
             git pull origin main
             
-            echo "Restarting Odoo container to apply new module code..."
+            echo "Restarting Odoo container to apply new Python code..."
             cd deployment
             docker compose restart web
+            
+            echo "Waiting 5 seconds for Odoo to start..."
+            sleep 5
+            
+            echo "Upgrading module lost_found_dashboard to apply XML/UI changes..."
+            docker compose exec -T web odoo -u lost_found_dashboard -d hilang_temu --stop-after-init
             
             echo "Deployment successful!"
