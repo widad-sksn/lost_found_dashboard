@@ -235,8 +235,6 @@ class LostFoundPortal(CustomerPortal):
                 
             if update_vals:
                 partner.sudo().write(update_vals)
-                if 'email' in update_vals:
-                    user.sudo().write({'login': update_vals['email']})
                     
             return request.redirect('/my/profil?success=1')
             
