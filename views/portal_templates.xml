@@ -1034,7 +1034,7 @@
                             <div class="glass-card p-4 text-center">
                                 <h5 class="text-white mb-3">Reference Photo</h5>
                                 <t t-if="item.photo">
-                                    <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
+                                    <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
                                 </t>
                                 <t t-else="">
                                     <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 200px; border: 1px dashed rgba(255,255,255,0.2);">
@@ -1125,7 +1125,7 @@
                             <div class="glass-card p-4 text-center">
                                 <h5 class="text-white mb-3">Item Photo</h5>
                                 <t t-if="item.photo">
-                                    <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
+                                    <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
                                 </t>
                                 <t t-else="">
                                     <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 200px; border: 1px dashed rgba(255,255,255,0.2);">
