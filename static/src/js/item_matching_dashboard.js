@@ -16,14 +16,15 @@ export class ItemMatchingDashboard extends Component {
         
         this.state = useState({
             activeMenu: 'matching', // 'matching', 'lost', 'found', 'claims'
-            currentResModel: '',
+            currentResModel: 'found.item',
             currentViewType: 'list',
             matches: [],
             currentIndex: 0,
             loading: false,
-            userName: "",
+            userName: session.name,
             modalImage: false,
-            selectedMatch: null
+            selectedMatch: null,
+            searchQuery: '',
         });
 
         onWillStart(async () => {
@@ -44,21 +45,35 @@ export class ItemMatchingDashboard extends Component {
         this.state.selectedMatch = null;
     }
 
+    onSearchInput(ev) {
+        this.state.searchQuery = ev.target.value;
+    }
+
     get viewProps() {
+        const domain = [];
+        
+        if (this.state.activeMenu === 'found' || this.state.activeMenu === 'lost') {
+            domain.push(['status', 'not in', ['done', 'rejected']]);
+        } else if (this.state.activeMenu === 'history_found' || this.state.activeMenu === 'history_lost') {
+            domain.push(['status', 'in', ['done', 'rejected']]);
+        }
+        
+        if (this.state.searchQuery) {
+            if (this.state.currentResModel === 'lost.claim') {
+                domain.push(['|', ['name', 'ilike', this.state.searchQuery], ['person_name', 'ilike', this.state.searchQuery]]);
+            } else {
+                domain.push(['name', 'ilike', this.state.searchQuery]);
+            }
+        }
+
         const props = {
             type: this.state.currentViewType,
             resModel: this.state.currentResModel,
-            display: { controlPanel: true },
+            display: { controlPanel: { 'bottom-right': true, 'bottom-left': true, 'top-right': false, 'top-left': false }, searchPanel: false },
             selectRecord: (resId) => this.openFormView(resId),
             createRecord: () => this.openFormView(false),
-            context: {}
+            domain: domain,
         };
-        
-        if (this.state.activeMenu === 'found' || this.state.activeMenu === 'lost') {
-            props.context.search_default_filter_active = 1;
-        } else if (this.state.activeMenu === 'history_found' || this.state.activeMenu === 'history_lost') {
-            props.context.search_default_filter_history = 1;
-        }
         
         if (this.state.currentViewType === 'kanban') {
             props.forceGlobalClick = true;

@@ -203,8 +203,12 @@
                         <!-- Odoo Standard View Embedding -->
                         <!-- Dark background wrap for lists -->
                         <div class="h-100" style="background-color: #0f111a; border-radius: 8px; margin: 15px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column;">
-                            <div style="background-color: #1a1f36; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div style="background-color: #1a1f36; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
                                 <h6 class="text-white mb-0 ms-2"><i class="fa fa-list me-2"/>Manajemen Data</h6>
+                                <div style="position: relative; width: 300px;">
+                                    <i class="fa fa-search text-white-50" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%);"></i>
+                                    <input type="text" class="form-control" style="background-color: #0f111a; border: 1px solid rgba(255,255,255,0.1); color: white; padding-left: 40px; border-radius: 20px;" placeholder="Cari data..." t-on-input="onSearchInput" t-att-value="state.searchQuery"/>
+                                </div>
                             </div>
                             <!-- Embed the native Odoo view -->
                             <div class="flex-grow-1 odoo-view-container dark-mode-odoo-view" style="background-color: #1a1f36;">
