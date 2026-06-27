@@ -82,28 +82,73 @@
     border: none;
     color: white !important;
     border-radius: 30px;
-    padding: 10px 24px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-grad::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+    transform: skewX(-20deg);
+}
+
+.btn-grad:hover::after {
+    left: 150%;
 }
 
 .btn-grad:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-grad:active {
+    transform: scale(0.95) translateY(0);
+}
+
+/* Fix untuk versi btn-sm agar padding-nya benar-benar kecil */
+.btn-grad.btn-sm, .btn-glass.btn-sm {
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    border-radius: 20px;
 }
 
 .btn-glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--border-glass);
     color: white !important;
     border-radius: 30px;
-    padding: 10px 24px;
-    transition: background 0.3s ease;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .btn-glass:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.btn-glass:active {
+    transform: scale(0.95) translateY(0);
 }
 
 /* Dark Form Controls */
