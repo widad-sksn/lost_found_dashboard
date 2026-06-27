@@ -21,7 +21,7 @@ export class ItemMatchingDashboard extends Component {
             matches: [],
             currentIndex: 0,
             loading: false,
-            userName: session.name,
+            userName: this.user.name,
             modalImage: false,
             selectedMatch: null,
             searchQuery: '',
