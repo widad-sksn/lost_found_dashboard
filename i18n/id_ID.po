@@ -2511,3 +2511,108 @@ msgstr "Lampirkan foto yang membuktikan barang ini milik Anda (cth: foto Anda sa
 msgid "Attach a photo of the item you just found as proof for the admin."
 msgstr "Lampirkan foto barang yang baru saja Anda temukan sebagai bukti untuk admin."
 
+
+#. module: lost_found_dashboard
+msgid "Find Your"
+msgstr "Temukan"
+
+#. module: lost_found_dashboard
+msgid "Lost Items"
+msgstr "Barang Hilang"
+
+#. module: lost_found_dashboard
+msgid "Reliable platform to report and find lost items on campus. Fast, easy, and secure for all students."
+msgstr "Platform andalan untuk melaporkan dan menemukan barang hilang di kampus. Cepat, mudah, dan aman untuk semua mahasiswa."
+
+#. module: lost_found_dashboard
+msgid "Search for your lost item here"
+msgstr "Cari barang hilang Anda di sini"
+
+#. module: lost_found_dashboard
+msgid "Search now"
+msgstr "Cari sekarang"
+
+#. module: lost_found_dashboard
+msgid "Found Items"
+msgstr "Barang Temuan"
+
+#. module: lost_found_dashboard
+msgid "Active Users"
+msgstr "Pengguna Aktif"
+
+#. module: lost_found_dashboard
+msgid "Report Lost Item"
+msgstr "Lapor Barang Hilang"
+
+#. module: lost_found_dashboard
+msgid "Create your lost item report quickly and in detail to increase the chances of finding it."
+msgstr "Buat laporan barang hilang Anda dengan cepat dan detail untuk meningkatkan peluang menemukannya."
+
+#. module: lost_found_dashboard
+msgid "Create Report"
+msgstr "Buat Laporan"
+
+#. module: lost_found_dashboard
+msgid "Report Found Item"
+msgstr "Lapor Barang Temuan"
+
+#. module: lost_found_dashboard
+msgid "Found something? Help the owner by reporting the item you found."
+msgstr "Menemukan sesuatu? Bantu pemiliknya dengan melaporkan barang yang Anda temukan."
+
+#. module: lost_found_dashboard
+msgid "Report Item"
+msgstr "Lapor Barang"
+
+#. module: lost_found_dashboard
+msgid "Check Report Status"
+msgstr "Cek Status Laporan"
+
+#. module: lost_found_dashboard
+msgid "Monitor the progress of your lost or found item reports in real-time."
+msgstr "Pantau perkembangan laporan barang hilang atau temuan Anda secara real-time."
+
+#. module: lost_found_dashboard
+msgid "View Status"
+msgstr "Lihat Status"
+
+#. module: lost_found_dashboard
+msgid "View All"
+msgstr "Lihat Semua"
+
+#. module: lost_found_dashboard
+msgid "Lost at"
+msgstr "Hilang di"
+
+#. module: lost_found_dashboard
+msgid "User"
+msgstr "Pengguna"
+
+#. module: lost_found_dashboard
+msgid "Detail"
+msgstr "Detail"
+
+#. module: lost_found_dashboard
+msgid "No recent lost items found."
+msgstr "Tidak ada barang hilang terbaru yang ditemukan."
+
+#. module: lost_found_dashboard
+msgid "Found"
+msgstr "Ditemukan"
+
+#. module: lost_found_dashboard
+msgid "Location:"
+msgstr "Lokasi:"
+
+#. module: lost_found_dashboard
+msgid "No recent found items found."
+msgstr "Tidak ada barang temuan terbaru yang ditemukan."
+
+#. module: lost_found_dashboard
+msgid "Back to Home"
+msgstr "Kembali ke Beranda"
+
+#. module: lost_found_dashboard
+msgid "Item Photo"
+msgstr "Foto Barang"
+
