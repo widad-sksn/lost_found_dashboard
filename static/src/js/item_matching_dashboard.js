@@ -51,12 +51,13 @@ export class ItemMatchingDashboard extends Component {
             display: { controlPanel: true },
             selectRecord: (resId) => this.openFormView(resId),
             createRecord: () => this.openFormView(false),
+            context: {}
         };
         
         if (this.state.activeMenu === 'found' || this.state.activeMenu === 'lost') {
-            props.domain = [['status', 'not in', ['done', 'rejected']]];
+            props.context.search_default_filter_active = 1;
         } else if (this.state.activeMenu === 'history_found' || this.state.activeMenu === 'history_lost') {
-            props.domain = [['status', 'in', ['done', 'rejected']]];
+            props.context.search_default_filter_history = 1;
         }
         
         if (this.state.currentViewType === 'kanban') {

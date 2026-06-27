@@ -15,6 +15,9 @@
                 <filter string="Pending" name="filter_pending" domain="[('status', '=', 'draft')]"/>
                 <filter string="Published" name="filter_published" domain="[('status', '=', 'approved')]"/>
                 <filter string="Done" name="filter_done" domain="[('status', '=', 'done')]"/>
+                <separator/>
+                <filter string="Active" name="filter_active" domain="[('status', 'not in', ['done', 'rejected'])]" invisible="1"/>
+                <filter string="History" name="filter_history" domain="[('status', 'in', ['done', 'rejected'])]" invisible="1"/>
                 <group expand="0" string="Group By">
                     <filter string="Status" name="group_status" context="{'group_by':'status'}"/>
                 </group>
