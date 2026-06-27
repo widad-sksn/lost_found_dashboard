@@ -5,6 +5,8 @@ class ItemClaimRequest(models.Model):
     _description = "Item Claim Request"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    name = fields.Char(string="Referensi Klaim", compute="_compute_name", store=True)
+
     found_item_id = fields.Many2one('found.item', string="Barang Ditemukan", tracking=True)
     lost_claim_id = fields.Many2one('lost.claim', string="Data Barang Hilang", tracking=True)
     user_id = fields.Many2one('res.users', string="Pengklaim", default=lambda self: self.env.user, readonly=True, required=True, tracking=True)
@@ -18,6 +20,16 @@ class ItemClaimRequest(models.Model):
     ], string="Status Klaim", default='draft', tracking=True)
     
     admin_notes = fields.Text(string="Catatan Admin")
+
+    @api.depends('found_item_id.name', 'lost_claim_id.name')
+    def _compute_name(self):
+        for record in self:
+            if record.found_item_id:
+                record.name = f"Klaim Temuan - {record.found_item_id.name}"
+            elif record.lost_claim_id:
+                record.name = f"Klaim Kehilangan - {record.lost_claim_id.name}"
+            else:
+                record.name = "Klaim Baru"
 
     @api.constrains('found_item_id', 'lost_claim_id')
     def _check_target_item(self):

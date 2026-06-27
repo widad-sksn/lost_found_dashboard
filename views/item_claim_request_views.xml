@@ -11,6 +11,7 @@
         <field name="model">item.claim.request</field>
         <field name="arch" type="xml">
             <search>
+                <field name="name" string="Referensi" filter_domain="[('name', 'ilike', self)]"/>
                 <filter string="Menunggu Verifikasi" name="filter_pending" domain="[('status', '=', 'draft')]"/>
                 <filter string="Diterima" name="filter_approved" domain="[('status', '=', 'approved')]"/>
                 <filter string="Ditolak" name="filter_rejected" domain="[('status', '=', 'rejected')]"/>
@@ -28,6 +29,7 @@
         <field name="model">item.claim.request</field>
         <field name="arch" type="xml">
             <tree create="0">
+                <field name="name"/>
                 <field name="found_item_id"/>
                 <field name="lost_claim_id"/>
                 <field name="user_id"/>
