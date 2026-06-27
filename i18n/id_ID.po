@@ -384,14 +384,14 @@ msgstr ""
 msgid ""
 "<small class=\"text-white-50 mt-1 d-block\">Attach a photo of the item you "
 "just found as proof for the admin.</small>"
-msgstr ""
+msgstr "Lampirkan foto barang yang baru saja Anda temukan sebagai bukti untuk admin."
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 msgid ""
 "<small class=\"text-white-50 mt-1 d-block\">Attach a photo proving this item"
 " is yours (e.g., a photo of you using it, a receipt, etc).</small>"
-msgstr ""
+msgstr "Lampirkan foto yang membuktikan barang ini milik Anda (cth: foto Anda saat menggunakannya, struk pembelian, dll)."
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.custom_portal_home
@@ -819,7 +819,7 @@ msgstr ""
 msgid ""
 "Describe in detail where, when, and the condition of the item when you found"
 " it."
-msgstr ""
+msgstr "Deskripsikan secara rinci di mana, kapan, dan bagaimana kondisi barang saat Anda menemukannya."
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
@@ -2129,14 +2129,14 @@ msgstr ""
 msgid ""
 "Please provide a description of the found item's condition along with a "
 "photo to be sent to the admin."
-msgstr ""
+msgstr "Mohon berikan deskripsi kondisi barang yang ditemukan beserta fotonya untuk dikirim ke admin."
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 msgid ""
 "Please provide a specific description and photo proof of ownership for "
 "verification by the admin."
-msgstr ""
+msgstr "Mohon berikan deskripsi spesifik dan foto bukti kepemilikan untuk verifikasi oleh admin."
 
 #. module: lost_found_dashboard
 #. odoo-javascript
