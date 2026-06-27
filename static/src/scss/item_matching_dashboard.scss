@@ -189,3 +189,22 @@
         }
     }
 }
+
+/* PAKSA HIDE ODOO SEARCH BAR AGRESSIVELY */
+html .o_web_client .o_item_matching_dashboard .o_control_panel .o_cp_top_right,
+html .o_web_client .o_item_matching_dashboard .o_control_panel .o_searchview,
+html .o_web_client .o_item_matching_dashboard .o_control_panel .o_cp_searchview,
+html .o_web_client .o_item_matching_dashboard .o_control_panel .o_searchview_input_container,
+html .o_web_client .o_item_matching_dashboard .o_control_panel_actions,
+html .o_web_client .dark-mode-odoo-view .o_control_panel .o_cp_top_right,
+html .o_web_client .dark-mode-odoo-view .o_searchview {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+}
