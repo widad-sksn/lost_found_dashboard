@@ -93,7 +93,10 @@
                                 </div>
                                 <style>
                                     /* Sembunyikan search bar bawaan Odoo agar tidak ada dua search bar */
-                                    .dark-mode-odoo-view .o_searchview {
+                                    .dark-mode-odoo-view .o_control_panel .o_cp_searchview,
+                                    .dark-mode-odoo-view .o_control_panel .o_searchview,
+                                    .dark-mode-odoo-view .o_control_panel .o_cp_top_right,
+                                    .dark-mode-odoo-view .o_search_options {
                                         display: none !important;
                                     }
                                 </style>
