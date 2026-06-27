@@ -91,6 +91,12 @@
                                         </div>
                                     </t>
                                 </div>
+                                <style>
+                                    /* Sembunyikan search bar bawaan Odoo agar tidak ada dua search bar */
+                                    .dark-mode-odoo-view .o_searchview {
+                                        display: none !important;
+                                    }
+                                </style>
 
                                 <!-- Custom Match Detail Modal Overlay -->
                                 <t t-if="state.selectedMatch">

@@ -60,7 +60,7 @@ export class ItemMatchingDashboard extends Component {
         
         if (this.state.searchQuery) {
             if (this.state.currentResModel === 'lost.claim') {
-                domain.push(['|', ['name', 'ilike', this.state.searchQuery], ['person_name', 'ilike', this.state.searchQuery]]);
+                domain.push('|', ['name', 'ilike', this.state.searchQuery], ['person_name', 'ilike', this.state.searchQuery]);
             } else {
                 domain.push(['name', 'ilike', this.state.searchQuery]);
             }
