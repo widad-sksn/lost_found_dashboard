@@ -260,7 +260,7 @@ msgstr "Tanggal Hilang:"
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 msgid "<i class=\"fa fa-check-circle text-success me-2\"/>This is my item"
-msgstr ""
+msgstr "Ini barang saya"
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
@@ -287,7 +287,7 @@ msgstr ""
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
 msgid "<i class=\"fa fa-handshake-o text-primary me-2\"/>I found this item"
-msgstr ""
+msgstr "Saya menemukan barang ini"
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_found_items
@@ -826,7 +826,7 @@ msgstr ""
 msgid ""
 "Describe specific characteristics (e.g., serial number, specific scratches, "
 "unique marks, etc.)"
-msgstr ""
+msgstr "Deskripsikan ciri khusus barang (cth: nomor seri, goresan tertentu, tanda unik, dll.)"
 
 #. module: lost_found_dashboard
 #: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__description
@@ -989,12 +989,12 @@ msgstr ""
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
 msgid "Found Item Description"
-msgstr ""
+msgstr "Deskripsi Penemuan"
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
 msgid "Found Item Photo *"
-msgstr ""
+msgstr "Foto Barang yang Ditemukan (Wajib)"
 
 #. module: lost_found_dashboard
 #: model:ir.model,name:lost_found_dashboard.model_found_item
@@ -2022,7 +2022,7 @@ msgstr ""
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
 msgid "Open Modern Dashboard"
-msgstr "Buka Dashboard Modern"
+msgstr ""
 
 #. module: lost_found_dashboard
 #: model:ir.model.fields.selection,name:lost_found_dashboard.selection__found_item__location__campus_grounds
@@ -2159,12 +2159,12 @@ msgstr ""
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 msgid "Proof of Ownership Description"
-msgstr ""
+msgstr "Deskripsi Bukti Kepemilikan"
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 msgid "Proof of Ownership Photo *"
-msgstr ""
+msgstr "Foto Bukti Kepemilikan (Wajib)"
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.found_item_view_search
@@ -2307,7 +2307,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_claim_found_item
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.public_lost_item_detail
 msgid "Send to Admin"
-msgstr ""
+msgstr "Kirim ke Admin"
 
 #. module: lost_found_dashboard
 #: model:ir.actions.client,name:lost_found_dashboard.action_item_matching_dashboard
@@ -2509,7 +2509,7 @@ msgstr ""
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
 msgid "Welcome to the Campus Citizen Portal!"
-msgstr "Selamat datang di Portal Warga Kampus!"
+msgstr ""
 
 #. module: lost_found_dashboard
 #: model:ir.model.fields,field_description:lost_found_dashboard.field_lost_claim__name
@@ -2520,7 +2520,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_home_override
 msgid ""
 "You can now access the advanced Lost &amp; Found dashboard with a new theme."
-msgstr "Sekarang Anda dapat mengakses dashboard Hilang &amp; Temu canggih dengan tema baru."
+msgstr ""
 
 #. module: lost_found_dashboard
 #: model_terms:ir.ui.view,arch_db:lost_found_dashboard.portal_my_lost_items

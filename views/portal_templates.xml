@@ -720,22 +720,22 @@
                             </div>
                             
                             <div class="glass-card p-4 p-md-5" style="border-radius: 16px; background: linear-gradient(135deg, rgba(30,160,110,0.1) 0%, rgba(35,40,75,0.6) 100%); border: 1px solid rgba(30,160,110,0.3);">
-                                <h4 class="text-white mb-2"><i class="fa fa-check-circle text-success me-2"/>Ini barang saya</h4>
-                                <p class="text-white-50 mb-4">Mohon berikan deskripsi spesifik dan foto bukti kepemilikan untuk verifikasi oleh admin.</p>
+                                <h4 class="text-white mb-2"><i class="fa fa-check-circle text-success me-2"/>This is my item</h4>
+                                <p class="text-white-50 mb-4">Please provide a specific description and photo proof of ownership for verification by the admin.</p>
                                 
                                 <form t-attf-action="/claim/found_item/#{item.id}" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Submitting...';">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Deskripsi Bukti Kepemilikan</label>
-                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Deskripsikan ciri khusus barang (cth: nomor seri, goresan tertentu, tanda unik, dll.)"></textarea>
+                                        <label class="text-white mb-2 font-weight-bold" for="proof_description">Proof of Ownership Description</label>
+                                        <textarea class="form-control dark-form-control p-3" name="proof_description" rows="5" required="required" placeholder="Describe specific characteristics (e.g., serial number, specific scratches, unique marks, etc.)"></textarea>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Foto Bukti Kepemilikan (Wajib)</label>
+                                        <label class="text-white mb-2 font-weight-bold" for="photo_proof">Proof of Ownership Photo *</label>
                                         <input type="file" class="form-control dark-form-control p-2" name="photo_proof" accept="image/*" required="required"/>
-                                        <small class="text-white-50 mt-1 d-block">Lampirkan foto yang membuktikan barang ini milik Anda (cth: foto Anda saat menggunakannya, struk pembelian, dll).</small>
+                                        <small class="text-white-50 mt-1 d-block">Attach a photo proving this item is yours (e.g., a photo of you using it, a receipt, etc).</small>
                                     </div>
                                     <button type="submit" class="btn btn-grad w-100 py-3 rounded-pill font-weight-bold" style="background: linear-gradient(90deg, #1ea06e 0%, #157347 100%); font-size: 1.1rem; border: none; box-shadow: 0 4px 15px rgba(30,160,110,0.4);">
-                                        Kirim ke Admin
+                                        Send to Admin
                                     </button>
                                 </form>
                             </div>
