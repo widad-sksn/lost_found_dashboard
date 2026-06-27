@@ -297,6 +297,15 @@
                         <a href="/my/lost_items/new" class="btn btn-grad"><i class="fa fa-plus me-2"/>New Report</a>
                     </div>
                     
+                    <ul class="nav nav-tabs mb-4" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <li class="nav-item">
+                            <a t-attf-class="nav-link #{'active bg-dark text-white border-bottom-0' if filter_type != 'history' else 'text-white-50'}" href="/my/lost_items?filter=active">Active Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a t-attf-class="nav-link #{'active bg-dark text-white border-bottom-0' if filter_type == 'history' else 'text-white-50'}" href="/my/lost_items?filter=history">History (Done)</a>
+                        </li>
+                    </ul>
+                    
                     <t t-if="not lost_claims">
                         <div class="alert alert-glass text-center p-5">
                             <i class="fa fa-inbox fa-3x mb-3 text-muted"></i>
@@ -357,6 +366,15 @@
                         <a href="/my/found_items/new" class="btn btn-grad"><i class="fa fa-plus me-2"/>Report Found Item</a>
                     </div>
                     
+                    <ul class="nav nav-tabs mb-4" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <li class="nav-item">
+                            <a t-attf-class="nav-link #{'active bg-dark text-white border-bottom-0' if filter_type != 'history' else 'text-white-50'}" href="/my/found_items?filter=active">Active Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a t-attf-class="nav-link #{'active bg-dark text-white border-bottom-0' if filter_type == 'history' else 'text-white-50'}" href="/my/found_items?filter=history">History (Done)</a>
+                        </li>
+                    </ul>
+                    
                     <t t-if="not found_items">
                         <div class="alert alert-glass text-center p-5">
                             <i class="fa fa-inbox fa-3x mb-3 text-muted"></i>
@@ -395,8 +413,7 @@
                                                 <div class="bg-secondary rounded-circle me-2" style="width: 20px; height: 20px;"></div>
                                                 <small class="text-white-50" style="font-size: 0.7rem;">User<t t-out="item.user_id.id"/></small>
                                             </div>
-                                            <!-- Tombol Detail untuk Penemuan Saya akan mengarah ke detail, buat dummy link dulu jika belum ada detail penemuan -->
-                                            <a href="#" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
+                                            <a t-attf-href="/my/found_items/{{ item.id }}" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1034,6 +1051,60 @@
                                         <button type="submit" class="btn btn-grad text-white px-5 py-2 font-weight-bold">Save Changes</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <!-- Detail Found Item -->
+    <template id="portal_found_item_detail" name="Found Item Report Details">
+        <t t-call="lost_found_dashboard.custom_lost_found_layout">
+            <div id="wrap" class="o_portal" style="padding: 40px 0;">
+                <div class="container">
+                    <div class="mb-4">
+                        <a href="/my/found_items" class="btn btn-outline-light"><i class="fa fa-arrow-left me-2"/>Back to My Reports</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="glass-card p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h2 class="text-white mb-0"><t t-out="item.name"/></h2>
+                                    <span t-if="item.status == 'draft'" class="badge bg-warning text-dark px-3 py-2">Pending Verification</span>
+                                    <span t-if="item.status == 'approved'" class="badge bg-success px-3 py-2">Active / Approved</span>
+                                    <span t-if="item.status == 'matched'" class="badge bg-info text-dark px-3 py-2">Matched</span>
+                                    <span t-if="item.status == 'done'" class="badge bg-secondary px-3 py-2">Done</span>
+                                </div>
+                                <hr style="border-color: rgba(255,255,255,0.1);"/>
+                                <div class="row mb-4 text-white-50">
+                                    <div class="col-md-6 mb-2">
+                                        <i class="fa fa-calendar-times-o me-2"/> <strong>Date Found:</strong> <br/><span class="ms-4 text-white"><t t-out="item.date"/></span>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <i class="fa fa-map-marker me-2"/> <strong>Location Found:</strong> <br/><span class="ms-4 text-white"><t t-out="dict(item.fields_get(allfields=['location'])['location']['selection']).get(item.location, item.location)"/></span>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h5 class="text-white">Description / Details:</h5>
+                                    <p class="text-white-50"><t t-out="item.description or 'No detailed description available.'"/></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="glass-card p-4 text-center">
+                                <h5 class="text-white mb-3">Item Photo</h5>
+                                <t t-if="item.photo">
+                                    <img t-att-src="image_data_uri(item.photo)" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 200px; border: 1px dashed rgba(255,255,255,0.2);">
+                                        <div class="text-muted-dark text-center">
+                                            <i class="fa fa-image fa-3x mb-2"></i><br/>No photo
+                                        </div>
+                                    </div>
+                                </t>
                             </div>
                         </div>
                     </div>

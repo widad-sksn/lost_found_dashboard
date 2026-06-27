@@ -41,8 +41,15 @@ class LostFoundPortal(CustomerPortal):
         LostClaim = request.env['lost.claim']
         domain = [('user_id', '=', request.env.user.id)]
         
+        filter_type = kw.get('filter', 'active')
+        if filter_type == 'history':
+            domain.append(('status', '=', 'done'))
+        else:
+            domain.append(('status', '!=', 'done'))
+            
         pager = portal_pager(
             url="/my/lost_items",
+            url_args={'filter': filter_type},
             total=LostClaim.search_count(domain),
             page=page,
             step=10
@@ -53,6 +60,7 @@ class LostFoundPortal(CustomerPortal):
             'page_name': 'lost_items',
             'pager': pager,
             'default_url': '/my/lost_items',
+            'filter_type': filter_type,
         })
         return request.render("lost_found_dashboard.portal_my_lost_items", values)
 
@@ -64,8 +72,15 @@ class LostFoundPortal(CustomerPortal):
         FoundItem = request.env['found.item']
         domain = [('user_id', '=', request.env.user.id)]
         
+        filter_type = kw.get('filter', 'active')
+        if filter_type == 'history':
+            domain.append(('status', '=', 'done'))
+        else:
+            domain.append(('status', '!=', 'done'))
+            
         pager = portal_pager(
             url="/my/found_items",
+            url_args={'filter': filter_type},
             total=FoundItem.search_count(domain),
             page=page,
             step=10
@@ -76,6 +91,7 @@ class LostFoundPortal(CustomerPortal):
             'page_name': 'found_items',
             'pager': pager,
             'default_url': '/my/found_items',
+            'filter_type': filter_type,
         })
         return request.render("lost_found_dashboard.portal_my_found_items", values)
 
@@ -114,6 +130,13 @@ class LostFoundPortal(CustomerPortal):
         if not item:
             return request.redirect('/my/lost_items')
         return request.render("lost_found_dashboard.portal_lost_item_detail", {'item': item})
+
+    @http.route(['/my/found_items/<int:item_id>'], type='http', auth="user", website=True)
+    def portal_found_item_detail(self, item_id, **kw):
+        item = request.env['found.item'].search([('id', '=', item_id), ('user_id', '=', request.env.user.id)])
+        if not item:
+            return request.redirect('/my/found_items')
+        return request.render("lost_found_dashboard.portal_found_item_detail", {'item': item})
 
     @http.route(['/my/lost_items/<int:item_id>/edit'], type='http', auth="user", website=True, methods=['GET', 'POST'])
     def portal_lost_item_edit(self, item_id, **post):
