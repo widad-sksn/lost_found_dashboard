@@ -2616,3 +2616,112 @@ msgstr "Kembali ke Beranda"
 msgid "Item Photo"
 msgstr "Foto Barang"
 
+
+#. module: lost_found_dashboard
+msgid "My Reports"
+msgstr "Laporanku"
+
+#. module: lost_found_dashboard
+msgid "My Claim Status"
+msgstr "Status Klaim Saya"
+
+#. module: lost_found_dashboard
+msgid "Search Other Items"
+msgstr "Cari Barang Lain"
+
+#. module: lost_found_dashboard
+msgid "No Claims Yet"
+msgstr "Belum Ada Klaim"
+
+#. module: lost_found_dashboard
+msgid "You have not submitted any ownership claims."
+msgstr "Anda belum pernah mengajukan klaim kepemilikan."
+
+#. module: lost_found_dashboard
+msgid "Search Items"
+msgstr "Cari Barang"
+
+#. module: lost_found_dashboard
+msgid "Pending Verification"
+msgstr "Menunggu Verifikasi"
+
+#. module: lost_found_dashboard
+msgid "Active / Approved"
+msgstr "Aktif / Diterima"
+
+#. module: lost_found_dashboard
+msgid "Matched"
+msgstr "Cocok"
+
+#. module: lost_found_dashboard
+msgid "Done"
+msgstr "Selesai"
+
+#. module: lost_found_dashboard
+msgid "Date Lost:"
+msgstr "Tanggal Hilang:"
+
+#. module: lost_found_dashboard
+msgid "Date Found:"
+msgstr "Tanggal Ditemukan:"
+
+#. module: lost_found_dashboard
+msgid "Approximate Location:"
+msgstr "Perkiraan Lokasi:"
+
+#. module: lost_found_dashboard
+msgid "Location Found:"
+msgstr "Lokasi Ditemukan:"
+
+#. module: lost_found_dashboard
+msgid "Description / Details:"
+msgstr "Deskripsi / Detail:"
+
+#. module: lost_found_dashboard
+msgid "No detailed description available."
+msgstr "Tidak ada deskripsi detail."
+
+#. module: lost_found_dashboard
+msgid "Edit Report"
+msgstr "Edit Laporan"
+
+#. module: lost_found_dashboard
+msgid "Reference Photo"
+msgstr "Foto Referensi"
+
+#. module: lost_found_dashboard
+msgid "No photo"
+msgstr "Tidak ada foto"
+
+#. module: lost_found_dashboard
+msgid "Back to My Reports"
+msgstr "Kembali ke Laporanku"
+
+#. module: lost_found_dashboard
+msgid "Your Proof:"
+msgstr "Bukti Anda:"
+
+#. module: lost_found_dashboard
+msgid "Proof provided:"
+msgstr "Bukti yang Diberikan:"
+
+#. module: lost_found_dashboard
+msgid "Claim Approved"
+msgstr "Klaim Diterima"
+
+#. module: lost_found_dashboard
+msgid "Claim Rejected"
+msgstr "Klaim Ditolak"
+
+#. module: lost_found_dashboard
+msgid "Welcome to the Campus Citizen Portal!"
+msgstr "Selamat datang di Portal Warga Kampus!"
+
+#. module: lost_found_dashboard
+msgid "You can now access the advanced Lost &amp; Found dashboard with a new theme."
+msgstr "Sekarang Anda dapat mengakses dashboard Hilang &amp; Temu canggih dengan tema baru."
+
+#. module: lost_found_dashboard
+msgid "Open Modern Dashboard"
+msgstr "Buka Dashboard Modern"
+
