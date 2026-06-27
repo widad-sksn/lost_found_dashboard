@@ -320,7 +320,7 @@
                                 <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(120,115,245,0.2) 100%); border-radius: 15px;">
                                     <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                         <t t-if="claim.photo">
-                                            <img t-attf-src="/public/image/item.claim.request/{{claim.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                            <img t-attf-src="/public/image/lost.claim/{{claim.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                         </t>
                                         <t t-else="">
                                             <i class="fa fa-image fa-3x text-white-50"></i>
