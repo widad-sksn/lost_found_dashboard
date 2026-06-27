@@ -54,9 +54,9 @@ export class ItemMatchingDashboard extends Component {
         };
         
         if (this.state.activeMenu === 'found' || this.state.activeMenu === 'lost') {
-            props.domain = [['status', '!=', 'done']];
+            props.domain = [['status', 'not in', ['done', 'rejected']]];
         } else if (this.state.activeMenu === 'history_found' || this.state.activeMenu === 'history_lost') {
-            props.domain = [['status', '=', 'done']];
+            props.domain = [['status', 'in', ['done', 'rejected']]];
         }
         
         if (this.state.currentViewType === 'kanban') {
