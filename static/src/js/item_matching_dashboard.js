@@ -52,6 +52,13 @@ export class ItemMatchingDashboard extends Component {
             selectRecord: (resId) => this.openFormView(resId),
             createRecord: () => this.openFormView(false),
         };
+        
+        if (this.state.activeMenu === 'found' || this.state.activeMenu === 'lost') {
+            props.domain = [['status', '!=', 'done']];
+        } else if (this.state.activeMenu === 'history_found' || this.state.activeMenu === 'history_lost') {
+            props.domain = [['status', '=', 'done']];
+        }
+        
         if (this.state.currentViewType === 'kanban') {
             props.forceGlobalClick = true;
         }
@@ -94,8 +101,16 @@ export class ItemMatchingDashboard extends Component {
             this.state.activeMenu = 'found';
             this.state.currentResModel = 'found.item';
             this.state.currentViewType = 'list';
+        } else if (actionTag === 'history_found') {
+            this.state.activeMenu = 'history_found';
+            this.state.currentResModel = 'found.item';
+            this.state.currentViewType = 'list';
         } else if (actionTag === 'lost_found_dashboard.lost_claim_action') {
             this.state.activeMenu = 'lost';
+            this.state.currentResModel = 'lost.claim';
+            this.state.currentViewType = 'list';
+        } else if (actionTag === 'history_lost') {
+            this.state.activeMenu = 'history_lost';
             this.state.currentResModel = 'lost.claim';
             this.state.currentViewType = 'list';
         } else if (actionTag === 'lost_found_dashboard.action_item_matching') {

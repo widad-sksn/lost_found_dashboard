@@ -23,7 +23,13 @@
                         <i class="fa fa-check-square-o me-3"></i> Pencocokan Barang
                     </a>
                     <a href="#" t-attf-class="sidebar-link d-flex align-items-center py-3 px-3 rounded text-white text-decoration-none {{ state.activeMenu === 'claims' ? 'active' : '' }}" t-att-style="state.activeMenu === 'claims' ? 'background-color: #1e3a8a;' : ''" t-on-click="() => this.navigateToAction('lost_found_dashboard.item_claim_request_action')">
-                        <i class="fa fa-history me-3"></i> History Laporan
+                        <i class="fa fa-history me-3"></i> Data Klaim
+                    </a>
+                    <a href="#" t-attf-class="sidebar-link d-flex align-items-center py-3 px-3 rounded text-white text-decoration-none {{ state.activeMenu === 'history_found' ? 'active' : '' }}" t-att-style="state.activeMenu === 'history_found' ? 'background-color: #1e3a8a;' : ''" t-on-click="() => this.navigateToAction('history_found')">
+                        <i class="fa fa-archive me-3"></i> History Ditemukan
+                    </a>
+                    <a href="#" t-attf-class="sidebar-link d-flex align-items-center py-3 px-3 rounded text-white text-decoration-none {{ state.activeMenu === 'history_lost' ? 'active' : '' }}" t-att-style="state.activeMenu === 'history_lost' ? 'background-color: #1e3a8a;' : ''" t-on-click="() => this.navigateToAction('history_lost')">
+                        <i class="fa fa-archive me-3"></i> History Hilang
                     </a>
                 </div>
                 
@@ -42,7 +48,9 @@
                             <t t-if="state.activeMenu === 'matching'">Pencocokan Barang</t>
                             <t t-if="state.activeMenu === 'found'">Barang Ditemukan</t>
                             <t t-if="state.activeMenu === 'lost'">Data Barang Hilang</t>
-                            <t t-if="state.activeMenu === 'claims'">History Laporan</t>
+                            <t t-if="state.activeMenu === 'claims'">Data Klaim</t>
+                            <t t-if="state.activeMenu === 'history_found'">History Barang Ditemukan</t>
+                            <t t-if="state.activeMenu === 'history_lost'">History Data Barang Hilang</t>
                         </h2>
                         <p class="text-white-50 m-0 small">Sistem Hilang Temu Terpadu</p>
                     </div>
