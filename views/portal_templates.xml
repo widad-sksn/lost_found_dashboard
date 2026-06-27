@@ -209,7 +209,7 @@
                                 <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(120,115,245,0.2) 100%); border-radius: 15px;">
                                     <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                         <t t-if="item.photo">
-                                            <img t-attf-src="/web/image/lost.claim/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                            <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                         </t>
                                         <t t-else="">
                                             <i class="fa fa-image fa-3x text-white-50"></i>
@@ -252,7 +252,7 @@
                                 <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(30,70,160,0.2) 100%); border-radius: 15px;">
                                     <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                         <t t-if="f_item.photo">
-                                            <img t-attf-src="/web/image/found.item/{{f_item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                            <img t-attf-src="/public/image/found.item/{{f_item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                         </t>
                                         <t t-else="">
                                             <i class="fa fa-image fa-3x text-white-50"></i>
@@ -320,7 +320,7 @@
                                 <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(120,115,245,0.2) 100%); border-radius: 15px;">
                                     <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                         <t t-if="claim.photo">
-                                            <img t-attf-src="/web/image/item.claim.request/{{claim.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                            <img t-attf-src="/public/image/item.claim.request/{{claim.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                         </t>
                                         <t t-else="">
                                             <i class="fa fa-image fa-3x text-white-50"></i>
@@ -389,7 +389,7 @@
                                 <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(30,70,160,0.2) 100%); border-radius: 15px;">
                                     <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                         <t t-if="item.photo">
-                                            <img t-attf-src="/web/image/found.item/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                            <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                         </t>
                                         <t t-else="">
                                             <i class="fa fa-image fa-3x text-white-50"></i>
@@ -571,7 +571,7 @@
                     </div>
                     
                     <div class="text-center mb-5">
-                        <a href="/" class="btn btn-outline-secondary text-white rounded-pill px-4"><i class="fa fa-home me-2"></i>Back to Home</a>
+                        <a href="/" class="btn-glass text-white rounded-pill px-4"><i class="fa fa-home me-2"></i>Back to Home</a>
                     </div>
                     
                     <t t-if="not lost_items and not found_items">
@@ -593,7 +593,7 @@
                                     <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(120,115,245,0.2) 100%); border-radius: 15px; border-bottom: 3px solid #7873F5;">
                                         <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                             <t t-if="item.photo">
-                                                <img t-attf-src="/web/image/lost.claim/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                                <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                             </t>
                                             <t t-else="">
                                                 <i class="fa fa-image fa-3x text-white-50"></i>
@@ -610,7 +610,7 @@
                                             <p class="text-white-50 small mb-3" style="font-size: 0.75rem;"><i class="fa fa-map-marker me-1"/> <t t-out="dict(item.fields_get(allfields=['location'])['location']['selection']).get(item.location, item.location)"/></p>
                                             
                                             <div class="mt-auto pt-3 border-top border-secondary text-center">
-                                                <a t-attf-href="/public/lost_item/{{ item.id }}" class="btn btn-outline-light btn-sm w-100">Details</a>
+                                                <a t-attf-href="/public/lost_item/{{ item.id }}" class="btn-glass btn-sm w-100">Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -630,7 +630,7 @@
                                     <div class="glass-card h-100 p-0 overflow-hidden" style="background: linear-gradient(180deg, rgba(30,35,55,0.8) 0%, rgba(30,160,110,0.2) 100%); border-radius: 15px; border-bottom: 3px solid #1ea06e;">
                                         <div style="height: 160px; overflow: hidden;" class="bg-dark d-flex align-items-center justify-content-center">
                                             <t t-if="item.photo">
-                                                <img t-attf-src="/web/image/found.item/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
+                                                <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="w-100 h-100" style="object-fit: cover;"/>
                                             </t>
                                             <t t-else="">
                                                 <i class="fa fa-image fa-3x text-white-50"></i>
@@ -647,7 +647,7 @@
                                             <p class="text-white-50 small mb-3" style="font-size: 0.75rem;"><i class="fa fa-map-marker me-1"/> <t t-out="dict(item.fields_get(allfields=['location'])['location']['selection']).get(item.location, item.location)"/></p>
                                             
                                             <div class="mt-auto pt-3 border-top border-secondary text-center">
-                                                <a t-attf-href="/claim/found_item/{{ item.id }}" class="btn btn-outline-light btn-sm w-100" style="background-color: rgba(30,160,110,0.2);">Details &amp; Claim</a>
+                                                <a t-attf-href="/claim/found_item/{{ item.id }}" class="btn-glass btn-sm w-100" style="background-color: rgba(30,160,110,0.2);">Details &amp; Claim</a>
                                             </div>
                                         </div>
                                     </div>
@@ -666,7 +666,7 @@
             <div id="wrap" class="o_portal" style="padding: 60px 0; min-height: calc(100vh - 80px);">
                 <div class="container">
                     <div class="mb-4 d-flex align-items-center">
-                        <a href="/public/found_items?type=found" class="btn btn-outline-secondary text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
+                        <a href="/public/found_items?type=found" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
                     </div>
                     
                     <div class="row g-4 g-lg-5 align-items-start">
@@ -675,7 +675,7 @@
                             <div class="glass-card p-0 overflow-hidden sticky-lg-top" style="top: 100px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
                                 <t t-if="item.photo">
                                     <div style="position: relative; width: 100%; padding-top: 100%; background: rgba(0,0,0,0.3); cursor: zoom-in;" onclick="document.getElementById('zoomModalFound').style.display='flex'">
-                                        <img t-attf-src="/web/image/found.item/{{item.id}}/photo" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; border-radius: 20px;" id="detailPhotoFound"/>
+                                        <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; border-radius: 20px;" id="detailPhotoFound"/>
                                         <div class="position-absolute bottom-0 end-0 p-3">
                                             <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; opacity: 0.8;">
                                                 <i class="fa fa-search-plus"></i>
@@ -747,7 +747,7 @@
             <!-- Zoom Modal Found -->
             <div id="zoomModalFound" onclick="this.style.display='none'" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:99999; align-items:center; justify-content:center; cursor:zoom-out;">
                 <t t-if="item.photo">
-                    <img t-attf-src="/web/image/found.item/{{item.id}}/photo" style="max-width:90%; max-height:90%; object-fit:contain; border-radius:12px;"/>
+                    <img t-attf-src="/public/image/found.item/{{item.id}}/photo" style="max-width:90%; max-height:90%; object-fit:contain; border-radius:12px;"/>
                 </t>
             </div>
         </t>
@@ -759,7 +759,7 @@
             <div id="wrap" class="o_portal" style="padding: 60px 0; min-height: calc(100vh - 80px);">
                 <div class="container">
                     <div class="mb-4 d-flex align-items-center">
-                        <a href="/public/found_items?type=lost" class="btn btn-outline-secondary text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
+                        <a href="/public/found_items?type=lost" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
                     </div>
                     
                     <div class="row g-4 g-lg-5 align-items-start">
@@ -768,7 +768,7 @@
                             <div class="glass-card p-0 overflow-hidden sticky-lg-top" style="top: 100px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
                                 <t t-if="item.photo">
                                     <div style="position: relative; width: 100%; padding-top: 100%; background: rgba(0,0,0,0.3); cursor: zoom-in;" onclick="document.getElementById('zoomModalLost').style.display='flex'">
-                                        <img t-attf-src="/web/image/lost.claim/{{item.id}}/photo" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; border-radius: 20px;" id="detailPhotoLost"/>
+                                        <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; border-radius: 20px;" id="detailPhotoLost"/>
                                         <div class="position-absolute bottom-0 end-0 p-3">
                                             <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; opacity: 0.8;">
                                                 <i class="fa fa-search-plus"></i>
@@ -840,7 +840,7 @@
             <!-- Zoom Modal Lost -->
             <div id="zoomModalLost" onclick="this.style.display='none'" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:99999; align-items:center; justify-content:center; cursor:zoom-out;">
                 <t t-if="item.photo">
-                    <img t-attf-src="/web/image/lost.claim/{{item.id}}/photo" style="max-width:90%; max-height:90%; object-fit:contain; border-radius:12px;"/>
+                    <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" style="max-width:90%; max-height:90%; object-fit:contain; border-radius:12px;"/>
                 </t>
             </div>
         </t>
@@ -970,7 +970,7 @@
             <div id="wrap" class="o_portal" style="padding: 40px 0;">
                 <div class="container">
                     <div class="mb-4">
-                        <a href="/my/lost_items" class="btn btn-outline-light"><i class="fa fa-arrow-left me-2"/>Back to My Reports</a>
+                        <a href="/my/lost_items" class="btn-glass"><i class="fa fa-arrow-left me-2"/>Back to My Reports</a>
                     </div>
                     <div class="row">
                         <div class="col-lg-8">
@@ -1005,7 +1005,7 @@
                             <div class="glass-card p-4 text-center">
                                 <h5 class="text-white mb-3">Reference Photo</h5>
                                 <t t-if="item.photo">
-                                    <img t-attf-src="/web/image/found.item/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
+                                    <img t-attf-src="/public/image/found.item/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
                                 </t>
                                 <t t-else="">
                                     <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 200px; border: 1px dashed rgba(255,255,255,0.2);">
@@ -1032,7 +1032,7 @@
                             <div class="glass-card p-4 p-md-5">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <h3 class="text-white font-weight-bold mb-0">Edit Lost Item Report</h3>
-                                    <a t-attf-href="/my/lost_items/{{ item.id }}" class="btn btn-outline-secondary text-white btn-sm">Cancel</a>
+                                    <a t-attf-href="/my/lost_items/{{ item.id }}" class="btn-glass text-white btn-sm">Cancel</a>
                                 </div>
                                 <form t-attf-action="/my/lost_items/{{ item.id }}/edit" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button[type=submit]').disabled=true; this.querySelector('button[type=submit]').innerHTML='&lt;i class=\'fa fa-spinner fa-spin me-2\'&gt;&lt;/i&gt;Processing...';">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -1065,7 +1065,7 @@
             <div id="wrap" class="o_portal" style="padding: 40px 0;">
                 <div class="container">
                     <div class="mb-4">
-                        <a href="/my/found_items" class="btn btn-outline-light"><i class="fa fa-arrow-left me-2"/>Back to My Reports</a>
+                        <a href="/my/found_items" class="btn-glass"><i class="fa fa-arrow-left me-2"/>Back to My Reports</a>
                     </div>
                     <div class="row">
                         <div class="col-lg-8">
@@ -1096,7 +1096,7 @@
                             <div class="glass-card p-4 text-center">
                                 <h5 class="text-white mb-3">Item Photo</h5>
                                 <t t-if="item.photo">
-                                    <img t-attf-src="/web/image/lost.claim/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
+                                    <img t-attf-src="/public/image/lost.claim/{{item.id}}/photo" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;"/>
                                 </t>
                                 <t t-else="">
                                     <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 200px; border: 1px dashed rgba(255,255,255,0.2);">

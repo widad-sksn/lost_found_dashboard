@@ -243,6 +243,22 @@ class LostFoundPortal(CustomerPortal):
         claims = request.env['item.claim.request'].search([('user_id', '=', request.env.user.id)])
         return request.render("lost_found_dashboard.portal_my_claims", {'claims': claims})
 
+    @http.route(['/public/image/<string:model>/<int:id>/<string:field>'], type='http', auth="public", website=True)
+    def public_image(self, model, id, field, **kw):
+        if model not in ['found.item', 'lost.claim', 'item.claim.request']:
+            return request.not_found()
+        record = request.env[model].sudo().browse(id)
+        if not record.exists() or not getattr(record, field):
+            return request.not_found()
+        
+        image_data = getattr(record, field)
+        if not image_data:
+            return request.not_found()
+            
+        image_base64 = base64.b64decode(image_data)
+        headers = [('Content-Type', 'image/jpeg')]
+        return request.make_response(image_base64, headers)
+
     @http.route(['/my/profil'], type='http', auth="user", website=True, methods=['GET', 'POST'])
     def portal_my_profil(self, **post):
         user = request.env.user
