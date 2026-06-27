@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="action_item_matching_dashboard" model="ir.actions.client">
-        <field name="name">Dashboard Hilang Temu</field>
+        <field name="name">Sistem Hilang Temu</field>
         <field name="tag">lost_found_dashboard.action_item_matching</field>
-        <field name="target">main</field>
+        <field name="target">fullscreen</field>
     </record>
 
     <!-- Root Menu -->
@@ -11,37 +11,6 @@
         id="lost_found_menu_root"
         name="Hilang &amp; Temu"
         web_icon="lost_found_dashboard,static/description/icon.png"
-        sequence="10"/>
-
-    <!-- Main Dashboard Menu -->
-    <menuitem
-        id="lost_found_menu_dashboard"
-        name="Dashboard"
-        parent="lost_found_menu_root"
         action="action_item_matching_dashboard"
         sequence="10"/>
-
-    <!-- Settings Menu (Parent) -->
-    <menuitem
-        id="lost_found_menu_settings"
-        name="Pengaturan (Admin)"
-        parent="lost_found_menu_root"
-        groups="base.group_system,lost_found_dashboard.group_lostnfound_staff"
-        sequence="100"/>
-
-    <!-- Users Menu -->
-    <menuitem
-        id="lost_found_menu_users"
-        name="Kelola Pengguna (Users)"
-        parent="lost_found_menu_settings"
-        action="base.action_res_users"
-        sequence="10"/>
-
-    <!-- Groups Menu -->
-    <menuitem
-        id="lost_found_menu_groups"
-        name="Hak Akses (Groups)"
-        parent="lost_found_menu_settings"
-        action="base.action_res_groups"
-        sequence="20"/>
 </odoo>

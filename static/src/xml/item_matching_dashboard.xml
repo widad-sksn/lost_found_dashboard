@@ -31,6 +31,18 @@
                     <a href="#" t-attf-class="sidebar-link d-flex align-items-center py-3 px-3 rounded text-white text-decoration-none {{ state.activeMenu === 'history_lost' ? 'active' : '' }}" t-att-style="state.activeMenu === 'history_lost' ? 'background-color: #1e3a8a;' : ''" t-on-click="() => this.navigateToAction('history_lost')">
                         <i class="fa fa-archive me-3"></i> History Hilang
                     </a>
+                    
+                    <t t-if="user.isAdmin">
+                        <div class="mt-4 mb-2 px-3 text-white-50 text-uppercase small font-weight-bold" style="letter-spacing: 1px; font-size: 0.7rem;">
+                            Pengaturan (Admin)
+                        </div>
+                        <a href="#" class="sidebar-link d-flex align-items-center py-2 px-3 rounded text-white-50 text-decoration-none hover-white" t-on-click="() => this.navigateToAction('base.action_res_users')">
+                            <i class="fa fa-users me-3"></i> Kelola Pengguna
+                        </a>
+                        <a href="#" class="sidebar-link d-flex align-items-center py-2 px-3 rounded text-white-50 text-decoration-none hover-white" t-on-click="() => this.navigateToAction('base.action_res_groups')">
+                            <i class="fa fa-shield me-3"></i> Hak Akses
+                        </a>
+                    </t>
                 </div>
                 
                 <div class="p-3 border-top border-light" style="border-color: rgba(255,255,255,0.1) !important;">
