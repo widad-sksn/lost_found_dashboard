@@ -228,7 +228,7 @@
                                                 <div class="bg-secondary rounded-circle me-2" style="width: 20px; height: 20px;"></div>
                                                 <small class="text-white-50" style="font-size: 0.7rem;">User<t t-out="item.user_id.id"/></small>
                                             </div>
-                                            <a t-attf-href="/public/lost_item/{{ item.id }}" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
+                                            <a t-attf-href="/public/lost_item/{{ item.id }}?src=home" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                                 <div class="bg-secondary rounded-circle me-2" style="width: 20px; height: 20px;"></div>
                                                 <small class="text-white-50" style="font-size: 0.7rem;">User<t t-out="f_item.user_id.id"/></small>
                                             </div>
-                                            <a t-attf-href="/claim/found_item/{{ f_item.id }}" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
+                                            <a t-attf-href="/claim/found_item/{{ f_item.id }}?src=home" class="text-white-50 small text-decoration-none border border-secondary rounded px-2 py-1" style="font-size: 0.7rem;">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -666,7 +666,7 @@
             <div id="wrap" class="o_portal" style="padding: 60px 0; min-height: calc(100vh - 80px);">
                 <div class="container">
                     <div class="mb-4 d-flex align-items-center">
-                        <a href="/public/found_items?type=found" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
+                        <a t-attf-href="{{ '/' if request.params.get('src') == 'home' else '/public/found_items?type=found' }}" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/><t t-out="'Back to Home' if request.params.get('src') == 'home' else 'Back to List'"/></a>
                     </div>
                     
                     <div class="row g-4 g-lg-5 align-items-start">
@@ -759,7 +759,7 @@
             <div id="wrap" class="o_portal" style="padding: 60px 0; min-height: calc(100vh - 80px);">
                 <div class="container">
                     <div class="mb-4 d-flex align-items-center">
-                        <a href="/public/found_items?type=lost" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/>Back to List</a>
+                        <a t-attf-href="{{ '/' if request.params.get('src') == 'home' else '/public/found_items?type=lost' }}" class="btn-glass text-white btn-sm rounded-pill px-3"><i class="fa fa-arrow-left me-2"/><t t-out="'Back to Home' if request.params.get('src') == 'home' else 'Back to List'"/></a>
                     </div>
                     
                     <div class="row g-4 g-lg-5 align-items-start">
