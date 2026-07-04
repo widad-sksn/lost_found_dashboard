@@ -124,7 +124,7 @@ class LostFoundPortal(CustomerPortal):
             # Send Email Template
             template = request.env.ref('lost_found_dashboard.email_template_lost_claim_created', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(new_claim.id, force_send=True)
+                template.sudo().send_mail(new_claim.id)
 
             return request.redirect('/my/lost_items')
             
@@ -178,7 +178,7 @@ class LostFoundPortal(CustomerPortal):
             # Send Email Template
             template = request.env.ref('lost_found_dashboard.email_template_found_item_created', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(new_item.id, force_send=True)
+                template.sudo().send_mail(new_item.id)
 
             return request.redirect('/my/found_items')
             
