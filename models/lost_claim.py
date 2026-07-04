@@ -117,7 +117,7 @@ class LostClaim(models.Model):
             record.status = 'approved'
             template = self.env.ref('lost_found_dashboard.email_template_lost_claim_approved', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
 
 
@@ -126,7 +126,7 @@ class LostClaim(models.Model):
             record.status = 'rejected'
             template = self.env.ref('lost_found_dashboard.email_template_lost_claim_rejected', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
 
     def action_done(self):
@@ -134,7 +134,7 @@ class LostClaim(models.Model):
             record.status = 'done'
             template = self.env.ref('lost_found_dashboard.email_template_report_done', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
 
     @api.model

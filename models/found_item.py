@@ -114,7 +114,7 @@ class FoundItem(models.Model):
             record.status = 'approved'
             template = self.env.ref('lost_found_dashboard.email_template_found_item_approved', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
 
     def action_reject(self):
@@ -122,7 +122,7 @@ class FoundItem(models.Model):
             record.status = 'rejected'
             template = self.env.ref('lost_found_dashboard.email_template_found_item_rejected', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
 
     def action_done(self):
@@ -130,7 +130,7 @@ class FoundItem(models.Model):
             record.status = 'done'
             template = self.env.ref('lost_found_dashboard.email_template_report_done_found', raise_if_not_found=False)
             if template:
-                template.sudo().send_mail(record.id)
+                template.sudo().send_mail(record.id, force_send=True)
         return True
     
     @api.model_create_multi
