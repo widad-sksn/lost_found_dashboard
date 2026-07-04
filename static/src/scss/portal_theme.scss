@@ -168,6 +168,20 @@
     color: var(--text-muted) !important;
 }
 
+.dark-form-control::file-selector-button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 6px 15px !important;
+    margin-right: 15px !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+.dark-form-control::file-selector-button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
 select.dark-form-control option {
     background-color: var(--bg-dark-secondary);
     color: var(--text-primary);
