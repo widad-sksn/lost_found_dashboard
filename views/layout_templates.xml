@@ -4,5 +4,8 @@
         <xpath expr="//link[@rel='shortcut icon']" position="replace">
             <link type="image/x-icon" rel="shortcut icon" href="/web/image/website/1/favicon"/>
         </xpath>
+        <xpath expr="//title" position="replace">
+            <title t-esc="title or 'Smart Lost &amp; Found'"/>
+        </xpath>
     </template>
 </odoo>

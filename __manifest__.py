@@ -32,6 +32,7 @@
             'lost_found_dashboard/static/src/scss/backend_theme.scss',
             'lost_found_dashboard/static/src/scss/item_matching_dashboard.scss',
             'lost_found_dashboard/static/src/js/item_matching_dashboard.js',
+            'lost_found_dashboard/static/src/js/title_override.js',
             'lost_found_dashboard/static/src/xml/item_matching_dashboard.xml',
         ],
     }
