@@ -6,7 +6,7 @@ import base64
 class LostFoundPortal(CustomerPortal):
 
     def _prepare_portal_layout_values(self):
-        values = super(CustomerPortal, self)._prepare_portal_layout_values()
+        values = super()._prepare_portal_layout_values()
         values['lost_item_count'] = request.env['lost.claim'].sudo().search_count([('user_id', '=', request.env.user.id)])
         values['found_item_count'] = request.env['found.item'].sudo().search_count([('user_id', '=', request.env.user.id)])
         values['claim_count'] = request.env['item.claim.request'].sudo().search_count([('user_id', '=', request.env.user.id)])
