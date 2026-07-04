@@ -7,7 +7,7 @@
         -Auto-match engine connects claims to found items based on category and date
             """,
     "depends":["base", "mail", "portal", "website", "auth_signup"],
-    "version": '1.0.17',
+    "version": '1.0.18',
     "application": True,
     "data":[
         'security/security.xml',
