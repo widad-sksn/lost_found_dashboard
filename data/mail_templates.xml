@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <!-- Laporan Hilang Dibuat -->
-        <record id="email_template_lost_claim_created" model="mail.template">
+        <record id="email_template_v2_lost_claim_created" model="mail.template">
             <field name="name">Laporan Barang Hilang: Berhasil Dibuat</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Barang Hilang Berhasil Dibuat: {{ object.name }}</field>
@@ -45,7 +45,7 @@
         </record>
 
         <!-- Laporan Hilang Selesai -->
-        <record id="email_template_lost_claim_done" model="mail.template">
+        <record id="email_template_v2_lost_claim_done" model="mail.template">
             <field name="name">Laporan Barang Hilang: Selesai</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Barang Hilang Selesai: {{ object.name }}</field>
@@ -87,7 +87,7 @@
         </record>
 
         <!-- Laporan Ditemukan Dibuat -->
-        <record id="email_template_found_item_created" model="mail.template">
+        <record id="email_template_v2_found_item_created" model="mail.template">
             <field name="name">Laporan Barang Ditemukan: Berhasil Dibuat</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Barang Berhasil Dibuat: {{ object.name }}</field>
@@ -128,7 +128,7 @@
             </field>
         </record>
         <!-- Laporan Selesai (Lost Claim) -->
-        <record id="email_template_report_done" model="mail.template">
+        <record id="email_template_v2_report_done" model="mail.template">
             <field name="name">Laporan Selesai</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Anda Telah Selesai: {{ object.name }}</field>
@@ -170,7 +170,7 @@
         </record>
 
         <!-- Laporan Selesai (Found Item) -->
-        <record id="email_template_report_done_found" model="mail.template">
+        <record id="email_template_v2_report_done_found" model="mail.template">
             <field name="name">Penemuan Selesai</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Selesai: {{ object.name }}</field>
@@ -212,7 +212,7 @@
         </record>
 
         <!-- Klaim Diterima -->
-        <record id="email_template_claim_approved" model="mail.template">
+        <record id="email_template_v2_claim_approved" model="mail.template">
             <field name="name">Klaim Barang Diterima</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Klaim Kepemilikan Diterima!</field>
@@ -258,7 +258,7 @@
         </record>
 
         <!-- Klaim Ditolak -->
-        <record id="email_template_claim_rejected" model="mail.template">
+        <record id="email_template_v2_claim_rejected" model="mail.template">
             <field name="name">Klaim Barang Ditolak</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Status Klaim Kepemilikan Barang</field>
@@ -307,7 +307,7 @@
         </function>
 
         <!-- Laporan Hilang Diterima -->
-        <record id="email_template_lost_claim_approved" model="mail.template">
+        <record id="email_template_v2_lost_claim_approved" model="mail.template">
             <field name="name">Laporan Barang Hilang: Diterima</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Diterima: {{ object.name }}</field>
@@ -350,7 +350,7 @@
         </record>
 
         <!-- Laporan Hilang Ditolak -->
-        <record id="email_template_lost_claim_rejected" model="mail.template">
+        <record id="email_template_v2_lost_claim_rejected" model="mail.template">
             <field name="name">Laporan Barang Hilang: Ditolak</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Ditolak: {{ object.name }}</field>
@@ -393,7 +393,7 @@
         </record>
 
         <!-- Laporan Penemuan Diterima -->
-        <record id="email_template_found_item_approved" model="mail.template">
+        <record id="email_template_v2_found_item_approved" model="mail.template">
             <field name="name">Laporan Penemuan: Diterima</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Diterima: {{ object.name }}</field>
@@ -436,7 +436,7 @@
         </record>
 
         <!-- Laporan Penemuan Ditolak -->
-        <record id="email_template_found_item_rejected" model="mail.template">
+        <record id="email_template_v2_found_item_rejected" model="mail.template">
             <field name="name">Laporan Penemuan: Ditolak</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Ditolak: {{ object.name }}</field>
@@ -478,7 +478,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched) -->
-        <record id="email_template_lost_claim_matched" model="mail.template">
+        <record id="email_template_v2_lost_claim_matched" model="mail.template">
             <field name="name">Barang Anda Ditemukan (Matched)</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Kabar Gembira! Barang Anda Ditemukan: {{ object.name }}</field>
@@ -522,7 +522,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
-        <record id="email_template_finder_matched" model="mail.template">
+        <record id="email_template_v2_finder_matched" model="mail.template">
             <field name="name">Barang Ditemukan: Telah Diklaim dan Disetujui</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Barang Temuan Anda Telah Dikembalikan: {{ object.found_item_id.name }}</field>
@@ -565,7 +565,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
-        <record id="email_template_loser_matched" model="mail.template">
+        <record id="email_template_v2_loser_matched" model="mail.template">
             <field name="name">Barang Hilang: Telah Ditemukan dan Disetujui</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Kabar Gembira! Barang Anda Telah Ditemukan: {{ object.lost_claim_id.name }}</field>
