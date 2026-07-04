@@ -42,19 +42,19 @@ class ItemClaimRequest(models.Model):
             record.status = 'approved'
             
             # Send Notification to Claimer
-            template_claimer = self.env.ref('lost_found_dashboard.email_template_v4_claim_approved', raise_if_not_found=False)
+            template_claimer = self.env.ref('lost_found_dashboard.email_template_v5_claim_approved', raise_if_not_found=False)
             if template_claimer:
                 template_claimer.sudo().send_mail(record.id, force_send=True)
                 
             # Send Notification to original Reporter and update status to done
             if record.found_item_id:
                 record.found_item_id.status = 'done'
-                template_finder = self.env.ref('lost_found_dashboard.email_template_v4_finder_matched', raise_if_not_found=False)
+                template_finder = self.env.ref('lost_found_dashboard.email_template_v5_finder_matched', raise_if_not_found=False)
                 if template_finder and record.found_item_id.user_id:
                     template_finder.sudo().send_mail(record.id, force_send=True)
             elif record.lost_claim_id:
                 record.lost_claim_id.status = 'done'
-                template_loser = self.env.ref('lost_found_dashboard.email_template_v4_loser_matched', raise_if_not_found=False)
+                template_loser = self.env.ref('lost_found_dashboard.email_template_v5_loser_matched', raise_if_not_found=False)
                 if template_loser and record.lost_claim_id.user_id:
                     template_loser.sudo().send_mail(record.id, force_send=True)
 
@@ -65,7 +65,7 @@ class ItemClaimRequest(models.Model):
             record.status = 'rejected'
             
             # Send Email Notification
-            template = self.env.ref('lost_found_dashboard.email_template_v4_claim_rejected', raise_if_not_found=False)
+            template = self.env.ref('lost_found_dashboard.email_template_v5_claim_rejected', raise_if_not_found=False)
             if template:
                 template.sudo().send_mail(record.id, force_send=True)
                 

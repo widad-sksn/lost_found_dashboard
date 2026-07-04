@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <!-- Laporan Hilang Dibuat -->
-        <record id="email_template_v4_lost_claim_created" model="mail.template">
+        <record id="email_template_v5_lost_claim_created" model="mail.template">
             <field name="name">Laporan Barang Hilang: Berhasil Dibuat</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Barang Hilang Berhasil Dibuat: {{ object.name }}</field>
@@ -18,7 +18,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -48,7 +48,7 @@
         </record>
 
         <!-- Laporan Hilang Selesai -->
-        <record id="email_template_v4_lost_claim_done" model="mail.template">
+        <record id="email_template_v5_lost_claim_done" model="mail.template">
             <field name="name">Laporan Barang Hilang: Selesai</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Barang Hilang Selesai: {{ object.name }}</field>
@@ -63,7 +63,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -93,7 +93,7 @@
         </record>
 
         <!-- Laporan Ditemukan Dibuat -->
-        <record id="email_template_v4_found_item_created" model="mail.template">
+        <record id="email_template_v5_found_item_created" model="mail.template">
             <field name="name">Laporan Barang Ditemukan: Berhasil Dibuat</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Barang Berhasil Dibuat: {{ object.name }}</field>
@@ -108,7 +108,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -137,7 +137,7 @@
             </field>
         </record>
         <!-- Laporan Selesai (Lost Claim) -->
-        <record id="email_template_v4_report_done" model="mail.template">
+        <record id="email_template_v5_report_done" model="mail.template">
             <field name="name">Laporan Selesai</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Anda Telah Selesai: {{ object.name }}</field>
@@ -152,7 +152,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -182,7 +182,7 @@
         </record>
 
         <!-- Laporan Selesai (Found Item) -->
-        <record id="email_template_v4_report_done_found" model="mail.template">
+        <record id="email_template_v5_report_done_found" model="mail.template">
             <field name="name">Penemuan Selesai</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Selesai: {{ object.name }}</field>
@@ -197,7 +197,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -227,7 +227,7 @@
         </record>
 
         <!-- Klaim Diterima -->
-        <record id="email_template_v4_claim_approved" model="mail.template">
+        <record id="email_template_v5_claim_approved" model="mail.template">
             <field name="name">Klaim Barang Diterima</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Klaim Kepemilikan Diterima!</field>
@@ -242,7 +242,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -276,7 +276,7 @@
         </record>
 
         <!-- Klaim Ditolak -->
-        <record id="email_template_v4_claim_rejected" model="mail.template">
+        <record id="email_template_v5_claim_rejected" model="mail.template">
             <field name="name">Klaim Barang Ditolak</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Status Klaim Kepemilikan Barang</field>
@@ -291,7 +291,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -328,7 +328,7 @@
         </function>
 
         <!-- Laporan Hilang Diterima -->
-        <record id="email_template_v4_lost_claim_approved" model="mail.template">
+        <record id="email_template_v5_lost_claim_approved" model="mail.template">
             <field name="name">Laporan Barang Hilang: Diterima</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Diterima: {{ object.name }}</field>
@@ -343,7 +343,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -374,7 +374,7 @@
         </record>
 
         <!-- Laporan Hilang Ditolak -->
-        <record id="email_template_v4_lost_claim_rejected" model="mail.template">
+        <record id="email_template_v5_lost_claim_rejected" model="mail.template">
             <field name="name">Laporan Barang Hilang: Ditolak</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Laporan Ditolak: {{ object.name }}</field>
@@ -389,7 +389,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -420,7 +420,7 @@
         </record>
 
         <!-- Laporan Penemuan Diterima -->
-        <record id="email_template_v4_found_item_approved" model="mail.template">
+        <record id="email_template_v5_found_item_approved" model="mail.template">
             <field name="name">Laporan Penemuan: Diterima</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Diterima: {{ object.name }}</field>
@@ -435,7 +435,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -466,7 +466,7 @@
         </record>
 
         <!-- Laporan Penemuan Ditolak -->
-        <record id="email_template_v4_found_item_rejected" model="mail.template">
+        <record id="email_template_v5_found_item_rejected" model="mail.template">
             <field name="name">Laporan Penemuan: Ditolak</field>
             <field name="model_id" ref="model_found_item"/>
             <field name="subject">Laporan Penemuan Ditolak: {{ object.name }}</field>
@@ -481,7 +481,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -511,7 +511,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched) -->
-        <record id="email_template_v4_lost_claim_matched" model="mail.template">
+        <record id="email_template_v5_lost_claim_matched" model="mail.template">
             <field name="name">Barang Anda Ditemukan (Matched)</field>
             <field name="model_id" ref="model_lost_claim"/>
             <field name="subject">Kabar Gembira! Barang Anda Ditemukan: {{ object.name }}</field>
@@ -526,7 +526,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -558,7 +558,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
-        <record id="email_template_v4_finder_matched" model="mail.template">
+        <record id="email_template_v5_finder_matched" model="mail.template">
             <field name="name">Barang Ditemukan: Telah Diklaim dan Disetujui</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Barang Temuan Anda Telah Dikembalikan: {{ object.found_item_id.name }}</field>
@@ -573,7 +573,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
@@ -604,7 +604,7 @@
         </record>
 
         <!-- Barang Anda Ditemukan (Matched via Manual Claim) -->
-        <record id="email_template_v4_loser_matched" model="mail.template">
+        <record id="email_template_v5_loser_matched" model="mail.template">
             <field name="name">Barang Hilang: Telah Ditemukan dan Disetujui</field>
             <field name="model_id" ref="model_item_claim_request"/>
             <field name="subject">Kabar Gembira! Barang Anda Telah Ditemukan: {{ object.lost_claim_id.name }}</field>
@@ -619,7 +619,7 @@
                                 <tr>
                                     <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
                                         <div style="text-align: center;">
-                                            <img src="https://lostn-found.web.id/web/image/website/1/logo" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
+                                            <img src="https://lostn-found.web.id/logo.png" alt="Smart Lost &amp; Found Logo" style="max-height: 50px; vertical-align: middle; margin-right: 15px;"/>
                                             <h2 style="margin: 0; display: inline-block; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
                                         </div>
                                     </td>
