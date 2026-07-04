@@ -10,13 +10,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         Laporan Anda mengenai barang hilang <strong><t t-out="object.name"/></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong> oleh Admin.<br/><br/>
                         Terima kasih.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -28,13 +52,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         Laporan Anda mengenai barang hilang <strong><t t-out="object.name"/></strong> telah ditandai sebagai <strong>Selesai</strong>.<br/><br/>
                         Terima kasih atas kerja samanya.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -46,13 +94,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
                         Laporan Anda mengenai barang ditemukan <strong><t t-out="object.name"/></strong> telah berhasil kami terima dan saat ini berstatus <strong>Menunggu Verifikasi</strong>.<br/><br/>
                         Terima kasih atas kebaikan Anda.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
         <!-- Laporan Selesai (Lost Claim) -->
@@ -63,13 +135,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         Kabar baik! Laporan barang hilang Anda untuk <strong><t t-out="object.name"/></strong> kini telah kami tandai sebagai <strong>Selesai</strong>.<br/>
                         Terima kasih telah menggunakan layanan Smart Lost &amp; Found.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -81,13 +177,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name"/>,<br/><br/>
                         Barang yang Anda temukan (<strong><t t-out="object.name"/></strong>) telah berhasil dikembalikan kepada pemiliknya dan laporan ini dinyatakan <strong>Selesai</strong>.<br/>
                         Terima kasih atas kebaikan Anda!<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -99,8 +219,20 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name"/>,<br/><br/>
                         Selamat! Klaim Anda untuk barang <strong><t t-out="object.found_item_id.name"/></strong> telah <strong>Diterima</strong> oleh Admin.<br/>
                         <t t-if="object.admin_notes">
@@ -109,7 +241,19 @@
                         <br/>
                         Silakan ambil barang Anda di pos keamanan / pusat layanan kampus.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -121,15 +265,39 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name"/>,<br/><br/>
                         Mohon maaf, klaim kepemilikan Anda untuk barang <strong><t t-out="object.found_item_id.name"/></strong> <strong>Ditolak</strong> karena informasi/bukti tidak valid atau kurang lengkap.<br/>
                         <t t-if="object.admin_notes">
                             <strong>Alasan Penolakan:</strong> <t t-out="object.admin_notes"/><br/>
                         </t>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
         <!-- Enable Password Reset -->
@@ -146,14 +314,38 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         Laporan kehilangan Anda untuk barang <strong><t t-out="object.name"/></strong> telah diperiksa dan <strong>DITERIMA</strong> oleh Admin.<br/>
                         Kami akan segera menghubungi Anda jika ada perkembangan pencarian.<br/><br/>
                         Terima kasih.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -165,14 +357,38 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         Mohon maaf, laporan kehilangan Anda untuk barang <strong><t t-out="object.name"/></strong> <strong>DITOLAK</strong> oleh Admin.<br/>
                         Hal ini mungkin karena informasi yang diberikan kurang lengkap atau tidak valid. Silakan buat laporan baru dengan detail yang lebih jelas.<br/><br/>
                         Terima kasih.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -184,14 +400,38 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
                         Laporan penemuan Anda untuk barang <strong><t t-out="object.name"/></strong> telah <strong>DITERIMA</strong> oleh Admin.<br/>
                         Barang tersebut kini telah tercatat di sistem pencarian publik. Terima kasih atas kejujuran dan partisipasi Anda!<br/><br/>
                         Salam,<br/>Tim Smart Lost &amp; Found<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -203,13 +443,37 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.user_id.name or 'Penemu'"/>,<br/><br/>
                         Mohon maaf, laporan penemuan Anda untuk barang <strong><t t-out="object.name"/></strong> <strong>DITOLAK</strong> oleh Admin karena terdeteksi tidak valid.<br/><br/>
                         Terima kasih.<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -221,15 +485,39 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.user_id.email or object.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.person_name or 'Warga Kampus'"/>,<br/><br/>
                         <strong>Kabar Gembira!</strong> Sistem kami mendeteksi bahwa barang Anda yang hilang (<strong><t t-out="object.name"/></strong>) kemungkinan besar telah ditemukan!<br/>
                         Barang tersebut dilaporkan ditemukan di sekitar: <strong><t t-out="object.matched_item_location"/></strong>.<br/><br/>
                         Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk memverifikasi dan mengambil barang tersebut.<br/><br/>
                         Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -241,14 +529,38 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.found_item_id.user_id.email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.found_item_id.user_id.name or 'Penemu'"/>,<br/><br/>
                         Barang yang Anda laporkan (<strong><t t-out="object.found_item_id.name"/></strong>) telah berhasil diklaim dan diverifikasi oleh pemilik aslinya!<br/>
                         Terima kasih atas kebaikan dan kejujuran Anda membantu sesama.<br/><br/>
                         Salam hangat,<br/>Tim Smart Lost &amp; Found<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
@@ -260,14 +572,38 @@
             <field name="email_from">{{ object.env.company.email or 'noreply@kampus.edu' }}</field>
             <field name="email_to">{{ object.lost_claim_id.user_id.email or object.lost_claim_id.contact_email }}</field>
             <field name="body_html" type="html">
-                <div style="margin: 0px; padding: 0px;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <tr>
+                                    <td align="center" style="background-color: #4F46E5; padding: 30px 20px; color: #ffffff;">
+                                        <h2 style="margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 24px;">Smart Lost &amp; Found</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 40px 30px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: #374151; line-height: 1.6;">
+
+                <p style="margin: 0 0 15px 0;">
                         Halo <t t-out="object.lost_claim_id.person_name or 'Warga Kampus'"/>,<br/><br/>
                         <strong>Kabar Gembira!</strong> Klaim dari penemu atas barang hilang Anda (<strong><t t-out="object.lost_claim_id.name"/></strong>) telah diverifikasi dan disetujui!<br/>
                         Silakan segera kunjungi pos keamanan atau pusat layanan kampus dengan membawa identitas Anda untuk mengambil barang tersebut.<br/><br/>
                         Terima kasih telah menggunakan layanan Smart Lost &amp; Found!<br/>
                     </p>
-                </div>
+            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="background-color: #F9FAFB; padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; border-top: 1px solid #E5E7EB;">
+                                        <p style="margin: 0;">Email ini dikirim secara otomatis oleh sistem.</p>
+                                        <p style="margin: 5px 0 0 0;">&amp;copy; <t t-out="object.env.company.name or 'Smart Lost &amp; Found'"/>. Hak Cipta Dilindungi.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </field>
         </record>
 
