@@ -112,7 +112,7 @@ class FoundItem(models.Model):
     def action_approve(self):
         for record in self:
             record.status = 'approved'
-            template = self.env.ref('lost_found_dashboard.email_template_v2_found_item_approved', raise_if_not_found=False)
+            template = self.env.ref('lost_found_dashboard.email_template_v3_found_item_approved', raise_if_not_found=False)
             if template:
                 template.sudo().send_mail(record.id, force_send=True)
         return True
@@ -120,7 +120,7 @@ class FoundItem(models.Model):
     def action_reject(self):
         for record in self:
             record.status = 'rejected'
-            template = self.env.ref('lost_found_dashboard.email_template_v2_found_item_rejected', raise_if_not_found=False)
+            template = self.env.ref('lost_found_dashboard.email_template_v3_found_item_rejected', raise_if_not_found=False)
             if template:
                 template.sudo().send_mail(record.id, force_send=True)
         return True
@@ -128,7 +128,7 @@ class FoundItem(models.Model):
     def action_done(self):
         for record in self:
             record.status = 'done'
-            template = self.env.ref('lost_found_dashboard.email_template_v2_report_done_found', raise_if_not_found=False)
+            template = self.env.ref('lost_found_dashboard.email_template_v3_report_done_found', raise_if_not_found=False)
             if template:
                 template.sudo().send_mail(record.id, force_send=True)
         return True

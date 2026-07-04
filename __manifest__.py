@@ -13,6 +13,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'security/security_rules.xml',
+        'views/layout_templates.xml',
         'data/mail_templates.xml',
         'views/menu_views.xml',
         'views/found_item_views.xml',
