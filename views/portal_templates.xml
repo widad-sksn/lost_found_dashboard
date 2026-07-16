@@ -118,7 +118,7 @@
                     <div class="row align-items-center mb-5">
                         <div class="col-lg-7">
                             <h1 class="display-4 font-weight-bold text-white mb-3" style="line-height: 1.2;"><span>Find Your</span> <br/><span>Lost Items</span></h1>
-                            <p class="text-white-50 lead mb-4" style="font-size: 1.1rem; max-width: 90%;"> tesss find lost items on campus. Fast, easy, and secure for all students.</p>
+                            <p class="text-white-50 lead mb-4" style="font-size: 1.1rem; max-width: 90%;"> fuad.</p>
                             
                             <form action="/public/found_items" method="get" class="hero-search-form d-flex align-items-center bg-dark p-2 rounded-pill mb-4" style="max-width: 500px; border: 1px solid rgba(255,255,255,0.1);">
                                 <i class="fa fa-search text-white ms-3 me-2"></i>
